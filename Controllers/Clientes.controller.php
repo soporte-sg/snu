@@ -11,7 +11,9 @@ class ClientesController
     
     public function Index()
     {
-        require_once 'Views/Layout/default.php';
+        $clientes= $this->model->getCliente();
+    
+        require_once 'Views/Layout/clientes.php';
         require_once 'Views/Cliente/index.php';
         require_once 'Views/Layout/foot.php';
     }
