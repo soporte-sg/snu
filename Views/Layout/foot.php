@@ -26,20 +26,14 @@
 
     <!-- ChartJs -->
     <script src="Assets/plugins/chartjs/Chart.bundle.js"></script>
-
-    <!-- Flot Charts Plugin Js 
-    <script src="Assets/plugins/flot-charts/jquery.flot.js"></script>
-    <script src="Assets/plugins/flot-charts/jquery.flot.resize.js"></script>
-    <script src="Assets/plugins/flot-charts/jquery.flot.pie.js"></script>
-    <script src="Assets/plugins/flot-charts/jquery.flot.categories.js"></script>
-    <script src="Assets/plugins/flot-charts/jquery.flot.time.js"></script>-->
-
+    
     <!-- Sparkline Chart Plugin Js -->
     <script src="Assets/plugins/jquery-sparkline/jquery.sparkline.js"></script>
 
     <!-- Custom Js -->
     <script src="Assets/js/admin.js"></script>
     <script src="Assets/js/pages/index.js"></script>
+    <script src="Assets/js/pages/examples/profile.js"></script>
     <!-- Demo Js -->
     <script src="Assets/js/demo.js"></script>
 </body>

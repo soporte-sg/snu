@@ -46,4 +46,37 @@ class Seguridad
         } else {
         }
     }
+
+    public function SubirImg($files){
+
+       
+
+        $nombre = mt_rand(1, 10000000);
+        // get details of the uploaded file 1
+        $fileTmpPath = $files->tpm_name;
+        $fileName = $files->name;
+        $fileSize = $files->size;
+        $fileType = $files->type;
+        $fileNameCmps = explode(".", $fileName);
+        $fileExtension = strtolower(end($fileNameCmps));
+        $newFileName = 'logo_' . $nombre . '.' . $fileExtension;
+
+        $allowedfileExtensions = array('jpg', 'png');
+        if (in_array($fileExtension, $allowedfileExtensions)) {
+
+            // directory in which the uploaded file will be moved
+            $uploadFileDir = 'Assets/img/logos/';
+
+            $dest_path = $uploadFileDir . $newFileName;
+            if (!file_exists($uploadFileDir)) {
+                mkdir($uploadFileDir, 0777, true);
+            }
+            if (move_uploaded_file($fileTmpPath, $dest_path)) {
+                $message = 'El archivo se cargó correctamente.';
+            } else {
+                $message = 'Hubo algún error al mover el archivo al directorio de carga. Asegúrese de que el servidor web pueda escribir en el directorio de carga.';
+            }
+        }
+         return $newFileName;
+    } 
 }
