@@ -49,21 +49,15 @@
         </div>
     </div>
 </div>
-<!-- #END# CPU Usage -->
-
-
+<!--#END# CPU Usage-->
 <?php
 if (isset($_REQUEST['success'])) {
+        echo "    
+        <script>
+        Swal.fire({    
+            icon: 'success',
+            title: 'BIEN HECHO!!',
+            timer: 1500
+        },)</script>";
 }
-echo "    
-<script>
-Swal.fire({    
-    icon: 'success',
-    title: 'BIEN HECHO!!',
-    timer: 1500
-},
-
-)
-    </script>";
-
 ?>
