@@ -43,10 +43,16 @@ class RolesController
     }
 
 public function Registrar(){
+  
+    $_REQUEST['id'] > 0 ?
+     $this->model->Actualizar($_REQUEST['rol'],$_REQUEST['id'])
+    :$this->model->Registrar($_REQUEST['rol']);
 
- $rol = [];
- $rol->rol=$_REQUEST['rol'];
-
+    echo "
+        <script>
+         window.location.href ='?c=roles&a=index&success';
+         </script>
+    ";
 
 }
 

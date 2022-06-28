@@ -5,7 +5,7 @@
         <div class="card">
             <div class="header">
                 <h2>
-                    REGISTRAR ROL
+                ROL
                 </h2>
             </div>
             <div class="body">
@@ -16,6 +16,7 @@
                                 <label>ROL</label>
                                 <?php $fecha = date('Y-m-d'); ?>
                                 <input type="text" name="rol" class='form-control' value="<?=$rols->rol?>">
+                                <input type="hidden" name="id" class='form-control' value="<?=$rols->id?>">
                             </div>
                         </div>
                     </div>

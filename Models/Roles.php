@@ -33,9 +33,33 @@ class Roles
     public function AddEdit()
     {
     }
-    public function Crud()
+    public function Registrar($rol)
     {
+              $created=date('Y-m-d');
+              $modified=date('Y-m-d');
+              try {
+
+                $stm = "INSERT INTO rols(rol, created, modified )
+                VALUES(?, ?, ?)";
+                $this->pdo->prepare($stm)->execute(array($rol,$created,$modified));
+            } catch (Exception $e) {
+                die($e->getMessage());
+            }
+
     }
+    public function Actualizar($rol,$id)
+    {
+             
+              $modified=date('Y-m-d');
+              try {
+                $sql = "UPDATE rols SET rol='$rol' , modified='$modified' WHERE id = $id";
+                $this->pdo->prepare($sql)->execute();
+            } catch (Exception $e) {
+                die($e->getMessage());
+            }
+
+    }
+
     public function getRol($id)
     {
         try {

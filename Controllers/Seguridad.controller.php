@@ -14,7 +14,6 @@ class SeguridadController
     {
         if (isset($_REQUEST['usuario']) && isset($_REQUEST['clave'])) {
             $user =  $this->model->Identificar($_REQUEST['usuario'], md5($_REQUEST['clave']));
-            print_r($user);
             if ($user) {
                 session_start();
                 $_SESSION['log'] = 'true';

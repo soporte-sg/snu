@@ -3,9 +3,11 @@
         <div class="card">
             <div class="header">
                 <div class="row clearfix">
-                    <div class="col-xs-12 col-sm-12">
+                    <div class="col-xs-12 col-sm-6">
                         <h2>LISTADO DE ROLES</h2>
-                        <a href="?c=roles&a=addedit" class="btn btn-success float-right"> </a>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 align-right">
+                        <a href="?c=roles&a=addedit" class="btn btn-success ">CREAR</a>
                     </div>
                 </div>
             </div>
@@ -31,7 +33,7 @@
                                         <td><?php echo ucwords($rol->rol) ?></td>
                                         <td><?php echo $rol->created; ?>&nbsp;</td>
                                         <td class="actions">
-                                            <a href="?c=roles&a=addedit&id=<?=$rol->id ?>" type="button" title="Editar Rol">
+                                            <a href="?c=roles&a=addedit&id=<?= $rol->id ?>" type="button" title="Editar Rol">
                                                 <span class="material-icons">
                                                     bookmark_add
                                                 </span>
@@ -48,3 +50,20 @@
     </div>
 </div>
 <!-- #END# CPU Usage -->
+
+
+<?php
+if (isset($_REQUEST['success'])) {
+}
+echo "    
+<script>
+Swal.fire({    
+    icon: 'success',
+    title: 'BIEN HECHO!!',
+    timer: 1500
+},
+
+)
+    </script>";
+
+?>
