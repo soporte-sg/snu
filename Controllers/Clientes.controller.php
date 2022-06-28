@@ -76,8 +76,7 @@ class ClientesController
             $clientes = $this->model->upClienteValidar($_REQUEST['id']);
            // print_r($clientes->squema);
             $_SESSION['squema'] = $clientes->squema;
-            echo'<script>
-            
+            echo'<script>            
             window.location.href = "?c=clientes&a=dashboard";
             </script>';
         }else{

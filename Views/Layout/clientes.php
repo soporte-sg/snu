@@ -97,29 +97,27 @@
             <!-- Menu -->
             <div class="menu" style="font-size: 5px !important;">
             <ul class="list" >
-                    <li class="header">Menú de Navegacion</li>
-                    
-                    
+                    <li class="header">Menú de Navegacion</li>                  
                     <li>
-                        <a href="<?php echo APP_WWW . "colegios/index"; ?>">
+                        <a href="?c=clientes&a=index">
                             <i class="material-icons">account_circle</i>
                             <span>Inicio</span>
                         </a>
                     </li>
                     <li>
-                        <a href="<?php echo APP_WWW . "colegios/administracion"; ?>">
+                        <a href="?c=roles&a=index">
                             <i class="material-icons">account_circle</i>
-                            <span>Administrar Clientes</span>
+                            <span>Administrar Roles</span>
                         </a>
                     </li>
                     <li>
-                        <a href="<?php echo APP_WWW . "squemas/add"; ?>">
+                        <a href="?c=permisos&a=index">
                             <i class="material-icons">account_circle</i>
-                            <span>Registrar Bases de Datos </span>
+                            <span>Administrar Permisos</span>
                         </a>
                     </li>
                     <li>
-                        <a href="<?php echo APP_WWW . "users/indexadmin"; ?>">
+                        <a href="?c=usuariosa=indexadmin">
                             <i class="material-icons">account_circle</i>
                             <span>Administrar Usuarios</span>
                         </a>
