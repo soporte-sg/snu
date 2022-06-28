@@ -12,7 +12,6 @@ class SeguridadController
 
     public function Logon()
     {
-
         if (isset($_REQUEST['usuario']) && isset($_REQUEST['clave'])) {
             $user =  $this->model->Identificar($_REQUEST['usuario'], md5($_REQUEST['clave']));
             print_r($user);
@@ -27,10 +26,14 @@ class SeguridadController
                   si por el contrario  no es ni root, admin sera dirigido al dashboard segun el squema registrado*/
                 switch ($user->rol) {
                     case 'root':
+                        $_SESSION['squema'] = 'snu';
                          header('location:?c=clientes&a=index');
+                         
                         break;
-                    case 'administrador':
+                    case 'administrador': 
+                        $_SESSION['squema'] = $user->squema;
                         header('location:?c=clientes&a=dashboard');
+                       
                         break;
                     default:
                         # code...
@@ -46,5 +49,11 @@ class SeguridadController
     public function Index()
     {
         require_once 'Views/Seguridad/login.php';
+    }
+
+    public function Logout()
+    {
+       session_destroy();
+       header('location:/SNU');
     }
 }

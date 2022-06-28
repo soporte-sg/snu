@@ -126,7 +126,7 @@
                     </li>
                     
                      <li>
-                        <a href="<?php echo APP_WWW . 'users/logout'?>">
+                        <a href="?c=seguridad&a=logout">
                             <i class="material-icons">close</i>
                             <span>SALIR</span>
                         </a>

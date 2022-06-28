@@ -24,7 +24,7 @@
                                     <span><a onclick="Clientes_Edit('<?php echo $cliente->cliente_id ?>')"  data-toggle="modal" data-target="#modelId"><i class="glyphicon glyphicon-edit"></i></a></span>
                                 </li>                                                                
                             </ul>
-                            <button class="btn btn-primary btn-lg waves-effect btn-block">ENTRAR</button>
+                            <a  href='?c=clientes&a=verificar&id=<?php echo $cliente->cliente_id ?>' class="btn btn-primary btn-lg waves-effect btn-block">ENTRAR</a>
                         </div>
                     </div>                    
                 </div>

@@ -57,13 +57,28 @@ class Cliente
         }
     }
 
+    public function upClienteValidar($id)
+    {
+
+        try {
+            $stm = $this->pdo->prepare("SELECT clientes.*, squemas.* FROM  clientes, squemas 
+            WHERE clientes.id=squemas.cliente_id AND clientes.id=$id ");
+            $stm->execute();
+            return $stm->fetch(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+
+
     public function Registrar(Cliente $data)
     {
 
         try {
 
             $stm = "INSERT INTO clientes(nombre, direccion, telefono, correos, salario, matriz, fechainicio, rector, rect_telefono, filename,dir )
-            VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
+            VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $this->pdo->prepare($stm)->execute(array(
                 $data->nombre,
                 $data->direccion,
@@ -74,8 +89,17 @@ class Cliente
                 $data->fechainicio,
                 $data->rector,
                 $data->rector,
-                $data->filename='--',
-                $data->dir='--'
+                $data->filename,
+                $data->dir = 'img/uploads/colegio/filename'
+            ));
+            $id_cliente = $this->pdo->lastInsertId();
+            $squema_nombre = 'documentalsg_' . $data->nombre;
+            $squema = "INSERT INTO squemas(squema,cliente_id,created,modified)VALUES(?,?,?,?)";
+            $this->pdo->prepare($squema)->execute(array(
+                $data->squema = $squema_nombre,
+                $data->cliente_id = $id_cliente,
+                $data->created = date('Y-m-d'),
+                $data->modified = date('Y-m-d'),
             ));
         } catch (Exception $e) {
             die($e->getMessage());
@@ -95,4 +119,7 @@ class Cliente
             die($e->getMessage());
         }
     }
+
+
+    
 }

@@ -57,8 +57,41 @@ class ClientesController
         } else {
         }
         $clientes->filename = $filename;
-        $clientes->id > 0 ?
+   
+       $clientes->id > 0 ?
             $this->model->Actualizar($clientes) :
             $this->model->Registrar($clientes);
+           
+            echo'<script>
+            alert("El cliente fue creado con Éxito");
+            window.location.href = "?c=clientes&a=index";
+            </script>';
+
     }
+
+    public function Verificar()
+    {
+        $clientes = new Cliente();
+        if (isset($_REQUEST['id'])) {
+            $clientes = $this->model->upClienteValidar($_REQUEST['id']);
+           // print_r($clientes->squema);
+            $_SESSION['squema'] = $clientes->squema;
+            echo'<script>
+            
+            window.location.href = "?c=clientes&a=dashboard";
+            </script>';
+        }else{
+
+        }
+        
+    }
+
+    public function Dashboard()
+    {
+       
+        require_once 'Views/Layout/clientes.php';
+        require_once 'Views/Cliente/dashboard.php';
+        require_once 'Views/Layout/foot.php';
+    }
+
 }
