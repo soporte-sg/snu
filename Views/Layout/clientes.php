@@ -21,7 +21,7 @@
 
     <!-- Animation Css -->
     <link href="Assets/plugins/animate-css/animate.css" rel="stylesheet" />
-
+    <link href="Assets/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
     <!-- Morris Chart Css-->
     <link href="Assets/plugins/morrisjs/morris.css" rel="stylesheet" />
 
@@ -32,8 +32,7 @@
     <link href="Assets/css/themes/all-themes.css" rel="stylesheet" />
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="sweetalert2.all.min.js"></script>
-</head>   
-
+</head>  
 
 <body class="theme-red">
     <!-- Page Loader 
@@ -117,7 +116,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="?c=usuariosa=indexadmin">
+                        <a href="?c=usuarios&a=indexadmin">
                             <i class="material-icons">account_circle</i>
                             <span>Administrar Usuarios</span>
                         </a>
