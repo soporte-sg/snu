@@ -1,7 +1,7 @@
 
         </div>
     </section>
-
+    
     <!-- Jquery Core Js -->
     <script src="Assets/plugins/jquery/jquery.min.js"></script>
 
@@ -32,12 +32,12 @@
 
     <!-- Custom Js -->
     <script src="Assets/js/admin.js"></script>
-    <script src="Assets/js/pages/index.js"></script>
-    <script src="Assets/js/pages/examples/profile.js"></script>
+    <script src="Assets/js/pages/index.js"></script>    
     <!-- Demo Js -->
     <script src="Assets/js/demo.js"></script>
 
-    
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap.min.js"></script>
     
     <!-- Jquery DataTable Plugin Js -->
     <script src="Assets/plugins/jquery-datatable/jquery.dataTables.js"></script>

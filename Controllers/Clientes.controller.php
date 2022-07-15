@@ -2,6 +2,7 @@
 
 require_once 'Models/Cliente.php';
 require_once 'Models/Seguridad.php';
+require_once 'Models/Solicitud.php';
 
 class ClientesController
 {
@@ -12,8 +13,7 @@ class ClientesController
 
     public function Index()
     {
-        $clientes = $this->model->getCliente();
-
+        $clientes = $this->model->getCliente();       
         require_once 'Views/Layout/clientes.php';
         require_once 'Views/Cliente/index.php';
         require_once 'Views/Layout/foot.php';
@@ -72,10 +72,12 @@ class ClientesController
     public function Verificar()
     {
         $clientes = new Cliente();
+        $_SESSION['datos_cliente'] = $this->model->upCliente($_REQUEST['id']);
         if (isset($_REQUEST['id'])) {
             $clientes = $this->model->upClienteValidar($_REQUEST['id']);
            // print_r($clientes->squema);
             $_SESSION['squema'] = $clientes->squema;
+          //  exit();
             echo'<script>            
             window.location.href = "?c=clientes&a=dashboard";
             </script>';
@@ -87,10 +89,17 @@ class ClientesController
 
     public function Dashboard()
     {
+       $solicitud=new Solicitud();
+       $solicitudes =$solicitud->SolicitudesTotal();  
+       $si =$solicitud->SolicitudesSi();     
+       $no =$solicitud->SolicitudesNo();
+       $rev =$solicitud->SolicitudesRev();
+       $vacias= $solicitud->SolicitudesVacias();
        
-        require_once 'Views/Layout/clientes.php';
+        require_once 'Views/Layout/default.php';
         require_once 'Views/Cliente/dashboard.php';
-        require_once 'Views/Layout/foot.php';
+        require_once 'Views/Layout/footer.php';
+      
     }
 
 }

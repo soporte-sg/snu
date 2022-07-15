@@ -16,6 +16,7 @@ class SeguridadController
             $user =  $this->model->Identificar($_REQUEST['usuario'], md5($_REQUEST['clave']));
             if ($user) {
                 session_start();
+                $_SESSION['start']='TRUE';
                 $_SESSION['log'] = 'true';
                 $_SESSION['user'] = $user;
                 $_SESSION['squema'] = $user->squema;

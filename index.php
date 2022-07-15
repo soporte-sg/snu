@@ -1,5 +1,13 @@
-<html lang="es">
 <?php
+date_default_timezone_set('America/Bogota');
+if (isset($_SESSION['start']) && (time() - $_SESSION['start'] > 1800)) {
+  session_unset();
+  session_destroy();
+  echo "<script type='text/javascript'>  
+            alert('LA APLICACION SE CERRARA POR INACTIVIDAD');
+            window.location.href = '?c=seguridad&a=Logout';
+          </script>";
+}
 //mostrar errores
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);

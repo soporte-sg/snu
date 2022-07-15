@@ -31,7 +31,6 @@ class Cliente
 
     public function getCliente()
     {
-
         try {
             $result = array();
             $stm = $this->pdo->prepare("SELECT clientes.*, squemas.* FROM  clientes, squemas 

@@ -1,13 +1,17 @@
 <?php
 class Database
-{// Validamos que previamente exista la variable de la sesión 
+{ // Validamos que previamente exista la variable de la sesión 
 
     public static function StartUp()
-    {        
-        session_start();
-        
+    {
+        @session_start();
+
         $host = 'localhost';
-        if(!isset($_SESSION['squema'])){$dbname ='snu';}else{$dbname =$_SESSION['squema'];}
+        if (!isset($_SESSION['squema'])) {
+            $dbname = 'snu';
+        } else {
+            $dbname = $_SESSION['squema'];
+        }
         $username = 'root';
         $password = '';
         try {
@@ -17,7 +21,8 @@ class Database
             echo "Connected to $dbname at $host successfully.";
         } catch (PDOException $pe) {
             die("Could not connect to the database $dbname :" . $pe->getMessage());
+            session_reset();
+            session_destroy();
         }
-    
     }
 }
