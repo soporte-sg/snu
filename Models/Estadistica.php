@@ -22,7 +22,7 @@ class Estadistica
 
     public function Est()
     {
-       /* echo "<h1>Estadisticas del sitio:</h1>";
+        /* echo "<h1>Estadisticas del sitio:</h1>";
         //Recuperar informacion del visitante de la variabler globa $_SERVER
         echo "<h4>nombre de la pagina web actual</h4>";
         echo $_SERVER['PHP_SELF'];
@@ -68,8 +68,19 @@ class Estadistica
                 $data->navegador,
                 $data->usuario,
                 $data->fecha_hora
-
             ));
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function Get()
+    {
+        try {
+            $user = $_SESSION['user']->FullName;
+            $stm = $this->pdo->prepare("SELECT  MAX(fecha_hora) AS ULTIMA, estadisticas.* FROM  estadisticas WHERE usuario= '$user'");
+            $stm->execute();
+            return $stm->fetch(PDO::FETCH_OBJ);
         } catch (Exception $e) {
             die($e->getMessage());
         }

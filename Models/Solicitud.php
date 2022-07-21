@@ -3,7 +3,7 @@ class Solicitud
 {
     private $pdo;
     public $id;
-    public $NombreSolicitante ;
+    public $NombreSolicitante;
     public $FechaSolicitud;
     public $Proceso;
     public $TipoSolicitud;
@@ -27,114 +27,106 @@ class Solicitud
     }
 
     //fin dashboard//
-    public function SolicitudesTotal(){
+    public function SolicitudesTotal()
+    {
         try {
-            
+
             $stm = $this->pdo->prepare("SELECT count(id)as total FROM solicitudes");
             $stm->execute();
             return $stm->fetch(PDO::FETCH_OBJ);
-
         } catch (Exception $e) {
             die($e->getMessage());
         }
-
     }
 
-    public function SolicitudesSi(){
+    public function SolicitudesSi()
+    {
         try {
-            
+
             $stm = $this->pdo->prepare("SELECT count(id)as total FROM solicitudes WHERE Aprobado ='si'");
             $stm->execute();
             return $stm->fetch(PDO::FETCH_OBJ);
-
         } catch (Exception $e) {
             die($e->getMessage());
         }
-
     }
-    public function SolicitudesNo(){
+    public function SolicitudesNo()
+    {
         try {
-            
+
             $stm = $this->pdo->prepare("SELECT count(id)as total FROM solicitudes WHERE Aprobado ='no'");
             $stm->execute();
             return $stm->fetch(PDO::FETCH_OBJ);
-
         } catch (Exception $e) {
             die($e->getMessage());
         }
-
     }
-    public function SolicitudesRev(){
+    public function SolicitudesRev()
+    {
         try {
-            
+
             $stm = $this->pdo->prepare("SELECT count(id)as total FROM solicitudes WHERE Aprobado ='revision'");
             $stm->execute();
             return $stm->fetch(PDO::FETCH_OBJ);
-
         } catch (Exception $e) {
             die($e->getMessage());
         }
-
     }
 
-    public function SolicitudesMax(){
+    public function SolicitudesMax()
+    {
         try {
-            
+
             $stm = $this->pdo->prepare("SELECT MAX(id)as ULTIMA FROM solicitudes");
             $stm->execute();
             return $stm->fetch(PDO::FETCH_OBJ);
-
         } catch (Exception $e) {
             die($e->getMessage());
         }
-
     }
-    public function SolicitudesVacias(){
+    public function SolicitudesVacias()
+    {
         try {
-            
+
             $stm = $this->pdo->prepare("SELECT count(id)as total FROM solicitudes WHERE Aprobado =''");
             $stm->execute();
             return $stm->fetch(PDO::FETCH_OBJ);
-
         } catch (Exception $e) {
             die($e->getMessage());
         }
-
     }
 
     //fin dashboard//
-    
+
 
     //GESTION DE SOLICITUDES//
-    public function Solicitudes(){
+    public function Solicitudes()
+    {
         try {
-            
+
             $stm = $this->pdo->prepare("SELECT * FROM solicitudes");
             $stm->execute();
             return $stm->fetchAll(PDO::FETCH_OBJ);
-
         } catch (Exception $e) {
             die($e->getMessage());
         }
-
     }
 
-    public function GetSolicitud($id){
+    public function GetSolicitud($id)
+    {
         try {
-            
+
             $stm = $this->pdo->prepare("SELECT * FROM solicitudes WHERE id='$id'");
             $stm->execute();
             return $stm->fetch(PDO::FETCH_OBJ);
-
         } catch (Exception $e) {
             die($e->getMessage());
         }
-
     }
 
     public function Registrar(Solicitud $data)
     {
-   // print_r($data);
+        // print_r($data);
 
         try {
             $stm = "INSERT INTO solicitudes(NombreSolicitante, FechaSolicitud, Proceso, TipoSolicitud, Codigo, VersionCambiar, TipoDocumento, Descripcion, EjecucionCambio, Aprobado,Observaciones,filename, dir)
@@ -145,16 +137,15 @@ class Solicitud
                 $data->Proceso,
                 $data->TipoSolicitud,
                 $data->Codigo,
-                $data->VersionCambiar=0,
+                $data->VersionCambiar = 0,
                 $data->TipoDocumento,
                 $data->Descripcion,
-                $data->EjecucionCambio='0000-00-00',
+                $data->EjecucionCambio = '0000-00-00',
                 $data->Aprobado,
-                $data->Observaciones='',
+                $data->Observaciones = '',
                 $data->filename,
                 $data->dir
             ));
-            
         } catch (Exception $e) {
             die($e->getMessage());
         }
@@ -162,7 +153,7 @@ class Solicitud
 
     public function Actualizar(Solicitud $data)
     {
-         //print_r($data);
+        //print_r($data);
         try {
 
             $sql = "UPDATE solicitudes SET NombreSolicitante='$data->NombreSolicitante', FechaSolicitud='$data->FechaSolicitud', 	Proceso='$data->Proceso',
@@ -187,11 +178,12 @@ class Solicitud
         }
     }
 
-     public function Descripcion($TipoDocumento, $proceso, $TipoSolicitud){
-                
-         if ($TipoDocumento=='documento' AND $TipoSolicitud=='creacion') {       
-           
-          echo'<div class="col-sm-3">
+    public function Descripcion($TipoDocumento, $proceso, $TipoSolicitud)
+    {
+
+        if ($TipoDocumento == 'documento' and $TipoSolicitud == 'creacion') {
+
+            echo '<div class="col-sm-3">
                 <div class="form-group">
                     <div class="form-line">
                         <label>Descripción</label>
@@ -199,36 +191,36 @@ class Solicitud
                     </div>
                 </div>
             </div>';
-         }   
+        }
 
-         if ($TipoDocumento=='documento' AND ($TipoSolicitud =='actualizacion' or $TipoSolicitud =='eliminacion' )) {    
-            
+        if ($TipoDocumento == 'documento' and ($TipoSolicitud == 'actualizacion' or $TipoSolicitud == 'eliminacion')) {
+
             try {
-            
+
                 $stm = $this->pdo->prepare("SELECT CodDocumento, NomDocumento FROM documentos WHERE Proceso ='$proceso'");
                 $stm->execute();
-               $result= $stm->fetchAll(PDO::FETCH_OBJ);
+                $result = $stm->fetchAll(PDO::FETCH_OBJ);
                 ///print_r($result);
-    
+
             } catch (Exception $e) {
                 die($e->getMessage());
-            }            
-            echo'<div class="col-sm-3">
+            }
+            echo '<div class="col-sm-3">
             <div class="form-group">
                 <div class="form-line">
                     <label>Descripción</label>
                     <select name="Codigo" id="Codigo" class="form-control">';
-                 foreach ($result as $value) {                    
-                  echo   '<option value="'.$value->CodDocumento.'">'.$value->CodDocumento.'-'.$value->NomDocumento.'</option>';
-                 }
-            echo'</select> 
+            foreach ($result as $value) {
+                echo   '<option value="' . $value->CodDocumento . '">' . $value->CodDocumento . '-' . $value->NomDocumento . '</option>';
+            }
+            echo '</select> 
              </div>
             </div>
-           </div>';             
-         }   
+           </div>';
+        }
 
-         if ($TipoDocumento =='formato' AND $TipoSolicitud =='creacion') {           
-            echo'<div class="col-sm-3">
+        if ($TipoDocumento == 'formato' and $TipoSolicitud == 'creacion') {
+            echo '<div class="col-sm-3">
                 <div class="form-group">
                     <div class="form-line">
                         <label>Descripción</label>
@@ -236,42 +228,64 @@ class Solicitud
                     </div>
                 </div>
             </div>';
-         }    
+        }
 
-         if ($TipoDocumento=='formato' AND ($TipoSolicitud=='actualizacion' or $TipoSolicitud=='eliminacion' )) {           
-            
+        if ($TipoDocumento == 'formato' and ($TipoSolicitud == 'actualizacion' or $TipoSolicitud == 'eliminacion')) {
+
             try {
-            
+
                 $stm = $this->pdo->prepare("SELECT CodFormato, NomFormato FROM formatos WHERE Proceso ='$proceso'");
                 $stm->execute();
-               $result= $stm->fetchAll(PDO::FETCH_OBJ);
+                $result = $stm->fetchAll(PDO::FETCH_OBJ);
                 ///print_r($result);
-    
+
             } catch (Exception $e) {
                 die($e->getMessage());
-            }            
-            echo'<div class="col-sm-3">
+            }
+            echo '<div class="col-sm-3">
             <div class="form-group">
                 <div class="form-line">
                     <label>Descripción</label>
                     <select name="Codigo" id="Codigo" class="form-control">';
-                 foreach ($result as $value) {                    
-                  echo '<option value="'.$value->CodFormato.'">'.$value->CodFormato.'-'.$value->NomFormato.'</option>';
-                 }
-            echo'</select> 
+            foreach ($result as $value) {
+                echo '<option value="' . $value->CodFormato . '">' . $value->CodFormato . '-' . $value->NomFormato . '</option>';
+            }
+            echo '</select> 
              </div>
             </div>
-           </div>'; 
+           </div>';
+        }
 
-         } 
 
+        if ($TipoDocumento == 'externo' and ($TipoSolicitud == 'actualizacion' or $TipoSolicitud == 'eliminacion')) {
 
-     }
+            try {
+
+                $stm = $this->pdo->prepare("SELECT codigo, nombre FROM sgcexternos WHERE Proceso ='$proceso'");
+                $stm->execute();
+                $result = $stm->fetchAll(PDO::FETCH_OBJ);
+                ///print_r($result);
+
+            } catch (Exception $e) {
+                die($e->getMessage());
+            }
+            echo '<div class="col-sm-3">
+            <div class="form-group">
+                <div class="form-line">
+                    <label>Descripción</label>
+                    <select name="Codigo" id="Codigo" class="form-control">';
+            foreach ($result as $value) {
+                echo   '<option value="' . $value->codigo . '">' . $value->codigo . '-' . $value->nombre . '</option>';
+            }
+            echo '</select> 
+             </div>
+            </div>
+           </div>';
+        }
+    }
 
 
     //FIN GESTION DE SOLICITUDES//
 
 
 }
-
- ?>   

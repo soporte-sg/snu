@@ -1,0 +1,82 @@
+<?php
+require_once 'Models/database.php';
+require_once 'Models/Doc_ext.php';
+require_once 'Models/Proceso.php';
+
+class Doc_extsController
+{
+    private $rol;
+    public function __CONSTRUCT()
+    {
+        $this->model = new Doc_ext();
+    }
+
+
+    public function Index()
+    {
+        $proceso = new Proceso();
+        $procesos = $proceso->getProceso();
+
+        require_once 'Views/layout/default.php';
+        require_once 'Views/Doc_ext/index.php';
+        require_once 'Views/layout/foot.php';
+    }
+
+    public function AddEdit()
+    {
+        $rols =  new Roles();
+        if (isset($_REQUEST['id'])) {
+            $rols = $this->model->getRol($_REQUEST['id']);
+            print_r($rols);
+        }
+        require_once 'Views/layout/clientes.php';
+        require_once 'Views/Roles/crud.php';
+        require_once 'Views/layout/foot.php';
+    }
+
+
+    public function Ver()
+    {
+
+        $documentos = $this->model->getDocs($_REQUEST['id']);
+        //equire_once 'Views/layout/default.php';
+        require_once 'Views/Doc_ext/ver.php';
+        // require_once 'Views/layout/foot.php';
+    }
+
+    public function Getdoc()
+    {
+
+        $documentos = $this->model->getDoc($_REQUEST['doc_id']);
+        //equire_once 'Views/layout/default.php';
+        require_once 'Views/Doc_ext/getdoc.php';
+        // require_once 'Views/layout/foot.php';
+    }
+
+    public function Edit()
+    {
+
+        $documentos = $this->model->getDoc($_REQUEST['doc_id']);
+        //equire_once 'Views/layout/default.php';
+        require_once 'Views/Doc_ext/editdoc.php';
+        // require_once 'Views/layout/foot.php';
+    }
+
+    public function Registrar()
+    {
+        $data = new Doc_ext();
+        $data->id = $_REQUEST['id'];
+        $data->CodDocumento = $_REQUEST['CodDocumento'];
+        $data->Proceso = $_REQUEST['Proceso'];
+        $data->NomDocumento = $_REQUEST['NomDocumento'];
+        $data->Version = $_REQUEST['Version'];
+        $data->Recuperacion = $_REQUEST['preservacion'];
+        $data->proteccion = $_REQUEST['proteccion'];
+        $data->Almacenamiento = $_REQUEST['Almacenamiento'];
+        $data->preservacion = $_REQUEST['preservacion'];
+        $data->Emision = $_REQUEST['Emision'];
+        $data->Actualizacion = $_REQUEST['Actualizacion'];
+
+        $this->model->Actualizar($data);
+    }
+}
