@@ -4,6 +4,7 @@ class Estadistica
 {
     private $pdo;
 
+    
     public $id;
     public $url;
     public $navegador;

@@ -8,6 +8,8 @@ class Usuario
     public $identificacion;
     public $cliente_id;
     public $rol_id;
+    public $cargo_id;
+    public $email;
     public $squema_id;
     public $username;
     public $password;

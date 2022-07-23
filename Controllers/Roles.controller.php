@@ -27,7 +27,7 @@ class RolesController
         $rols=  new Roles();
         if(isset($_REQUEST['id'])){
         $rols=$this->model->getRol($_REQUEST['id']);  
-        print_r($rols);
+        //print_r($rols);
          }
         require_once 'Views/layout/clientes.php';
         require_once 'Views/Roles/crud.php';

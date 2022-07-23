@@ -16,7 +16,7 @@ class SeguridadController
             $user =  $this->model->Identificar($_REQUEST['usuario'], md5($_REQUEST['clave']));
             if ($user) {
                 session_start();
-                $_SESSION['start']='TRUE';
+                $_SESSION['start'] = 'TRUE';
                 $_SESSION['log'] = 'true';
                 $_SESSION['user'] = $user;
                 $_SESSION['squema'] = $user->squema;
@@ -27,13 +27,13 @@ class SeguridadController
                 switch ($user->rol) {
                     case 'root':
                         $_SESSION['squema'] = 'snu';
-                         header('location:?c=clientes&a=index');
-                         
+                        header('location:?c=clientes&a=index');
+
                         break;
-                    case 'administrador': 
+                    case 'administrador':
                         $_SESSION['squema'] = $user->squema;
                         header('location:?c=clientes&a=dashboard');
-                       
+
                         break;
                     default:
                         # code...
@@ -53,7 +53,7 @@ class SeguridadController
 
     public function Logout()
     {
-       session_destroy();
-       header('location:/SNU');
+        session_destroy();
+        header('location:/SNU');
     }
 }

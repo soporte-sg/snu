@@ -338,7 +338,7 @@ $entrada=$data->Get();?>
                                 <a href="?c=autoreportes&a=add">Registro del evento</a>
                             </li>
                             <li>
-                                <a href="pages/ui/animations.html">Consulta del evento</a>
+                                <a href="?c=autoreportes&a=buscarIndex">Consulta del evento</a>
                             </li>
                             <li>
                                 <a href="pages/ui/badges.html">Consolidado de eventos</a>
@@ -394,7 +394,7 @@ $entrada=$data->Get();?>
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="pages/charts/morris.html">Configurar</a>
+                                <a href="?c=indicadors&a=index">Configurar</a>
                             </li>
                             <li>
                                 <a href="pages/charts/flot.html">Registrar</a>
