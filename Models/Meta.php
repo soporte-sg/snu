@@ -57,18 +57,32 @@ class Meta
         try {
             $stm = $this->pdo->prepare("SELECT * 
             FROM   metas
-            WHERE  indicadors.indicador_id='$id'");
+            WHERE  id='$id'");
             $stm->execute();
             return $stm->fetch(PDO::FETCH_OBJ);
         } catch (Exception $e) {
         }
     }
 
+    public function GetMetas($id)
+    {
+
+        try {
+            $stm = $this->pdo->prepare("SELECT * FROM  metas WHERE  indicador_id='$id'");
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+        }
+    }
 
 
-    public function Delete()
+
+    public function Quitar($id)
     {
         try {
+            $stm = $this->pdo->prepare("DELETE FROM  metas WHERE id='$id'");
+            $stm->execute();
+
         } catch (Exception $e) {
             die($e->getMessage());
         }

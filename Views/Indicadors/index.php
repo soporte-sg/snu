@@ -46,13 +46,16 @@
                                             ?>&nbsp;</td>
                                         <td> <?php echo $indicador->formula ?></td>
                                         <td class="actions">
-                                            <a href="<?php echo '?c=indicadors&a=add&id=' . $indicador->i_id ?>" type="button" class="" title="">
+                                            <a href="<?php echo '?c=indicadors&a=add&id=' . $indicador->i_id ?>" type="button" class="" title="editar indicador">
                                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                                             </a>
-                                            <a onclick="Ver('<?=$indicador->i_id?>')" data-toggle="modal" href='#modal-id' type="button" class="" title="">
+                                            <a onclick="Ver('<?=$indicador->i_id?>')" data-toggle="modal" href='#modal-id' type="button" class="" title="crear meta">
                                                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
                                             </a>
-
+                                            <a onclick="VerIndex('<?=$indicador->i_id?>')" data-toggle="modal" href='#modal-id' type="button" class="" title="ver metas">
+                                               <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                                            </a>
+                                            
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -100,7 +103,21 @@ function Ver(val) {
             }
         });
     }
-
+    function VerIndex(val) {
+        var id = val
+        $.ajax({
+            data: {
+                ind: id
+            },
+            type: "post",
+            url: "?c=indicadors&a=Indexmeta",
+            
+            success: function(resp) {
+                $('#metas').html(resp);
+                //$('#resultado').html("<div class='alert alert-success'></div>");
+            }
+        });
+    }
 
 </script>
 

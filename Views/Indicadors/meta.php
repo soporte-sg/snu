@@ -17,12 +17,12 @@
                                 <div class="form-line">
                                     <select name="comparativo" class="form-control" required>
                                         <option value="">seleccionar</option>
-                                        <option value="=" <?php $metas->comparativo == '=' ? 'selected' : '' ?>>IGUAL QUE ( = )</option>
-                                        <option value=">" <?php $metas->comparativo == '>' ? 'selected' : '' ?>>MAYOR QUE( > )</option>
-                                        <option value=">=" <?php $metas->comparativo == '>=' ? 'selected' : '' ?>>MAYOR IGUAL QUE ( >= )</option>
-                                        <option value="< " <?php $metas->comparativo == '<' ? 'selected' : '' ?>>MENOR QUE( < )</option>
-                                        <option value="<=" <?php $metas->comparativo == '<=' ? 'selected' : '' ?>>MENOR IGUAL QUE ( <= )</option>
-                                        <option value="entre" <?php $metas->comparativo == 'entre' ? 'selected' : '' ?>>ENTRE</option>
+                                        <option value="=" <?php  echo $metas->comparativo == '=' ? 'selected' : '' ?>>IGUAL QUE ( = )</option>
+                                        <option value=">" <?php echo $metas->comparativo == '>' ? 'selected' : '' ?>>MAYOR QUE( > )</option>
+                                        <option value=">=" <?php echo $metas->comparativo == '>=' ? 'selected' : '' ?>>MAYOR IGUAL QUE ( >= )</option>
+                                        <option value="< " <?php echo $metas->comparativo == '<' ? 'selected' : '' ?>>MENOR QUE( < )</option>
+                                        <option value="<=" <?php echo $metas->comparativo == '<=' ? 'selected' : '' ?>>MENOR IGUAL QUE ( <= )</option>
+                                        <option value="entre" <?php echo $metas->comparativo == 'entre' ? 'selected' : '' ?>>ENTRE</option>
                                     </select>
                                 </div>
                             </div>
