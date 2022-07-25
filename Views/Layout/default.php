@@ -1,3 +1,7 @@
+<?php 
+require_once 'Models/Estadistica.php';
+$data = new Estadistica();
+$entrada=$data->Get();?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -283,7 +287,7 @@
                 </div>
                 <div class="info-container">
                     <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo ucwords($_SESSION['user']->FullName) ?></div>
-                    <div class="email"></div>
+                    <div class="email"> <?= $entrada->ULTIMA?></div>
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                         <ul class="dropdown-menu pull-right">
@@ -331,7 +335,7 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="pages/ui/alerts.html">Registro del evento</a>
+                                <a href="?c=autoreportes&a=add">Registro del evento</a>
                             </li>
                             <li>
                                 <a href="pages/ui/animations.html">Consulta del evento</a>
@@ -366,7 +370,7 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="pages/tables/normal-tables.html">Consultar</a>
+                                <a href="?c=doc_exts&a=index">Consultar</a>
                             </li>
                             
                         </ul>
@@ -483,8 +487,7 @@
         <div class="container-fluid">
 
 <?php 
-require_once 'Models/Estadistica.php';
-$data = new Estadistica();
+
 print_r($data->Est());
 
 $data->url= $_SERVER['PHP_SELF'];

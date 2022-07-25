@@ -3,6 +3,7 @@ require_once 'Models/Solicitud.php';
 require_once 'Models/Proceso.php';
 require_once 'Models/Documento.php';
 require_once 'Models/Formato.php';
+require_once 'Models/Doc_ext.php';
 
 class SolicitudesController
 {
@@ -54,7 +55,7 @@ class SolicitudesController
     }
 
     public function Registrar()
-    {     
+    {
 
         $solicitud = new Solicitud();
         @$solicitud->id = $_REQUEST['id'];
@@ -70,15 +71,15 @@ class SolicitudesController
         @$solicitud->Observaciones = $_REQUEST['Observaciones'];
         $solicitud->Descripcion = $_REQUEST['Descripcion'];
         $solicitud->filename = $_FILES['filename']['name'];
-        $solicitud->dir = 'Assets/Solicitudes/'.$_SESSION['datos_cliente']->nombre.'/';
-       
+        $solicitud->dir = 'Assets/Solicitudes/' . $_SESSION['datos_cliente']->nombre . '/';
+
 
         $solicitud->id > 0 ?
             $this->model->Actualizar($solicitud) :
             $this->model->Registrar($solicitud);
 
-            $documento= new Documento();
-            $documentos=$documento->SubirDoc();
+        $documento = new Documento();
+        $documentos = $documento->SubirDoc();
     }
 
 
@@ -96,8 +97,8 @@ class SolicitudesController
         $TipoDocumento = $_REQUEST['TipoDocumento'];
         $proceso = $_REQUEST['Proceso'];
         $TipoSolicitud = $_REQUEST['TipoSolicitud'];
-        $this->model->Descripcion($TipoDocumento, $proceso, $TipoSolicitud);
 
+        $this->model->Descripcion($TipoDocumento, $proceso, $TipoSolicitud);
     }
 
     public function Responder()
@@ -107,6 +108,7 @@ class SolicitudesController
         $TipoDocumento = $solicitud->TipoDocumento;
         $documento = new Documento();
         $formato = new Formato();
+        $ext = new Doc_ext();
         $docProceso = $documento->getDocProceso($solicitud->Proceso);
         require_once 'Views/layout/default.php';
         require_once 'Views/Solicitudes/responder.php';
@@ -118,12 +120,18 @@ class SolicitudesController
             require_once 'Views/Solicitudes/creardoc.php';
         }
 
-
         if ($sol == "creacion" & $TipoDocumento == "formato") {
             $formatos = $formato->getFormato($solicitud->Proceso);
             $separada = explode("-", $formatos->ultimo);
             require_once 'Views/Solicitudes/crearformato.php';
         }
+
+        if ($sol == "creacion" & $TipoDocumento == "externo") {
+            $documentos = $ext->getDocumentos($solicitud->Proceso);
+            $separada = explode("-", $documentos->ultimo);
+            require_once 'Views/Solicitudes/crearext.php';
+        }
+
         /*creaciones*/
 
         /*actualizaciones*/
@@ -131,7 +139,10 @@ class SolicitudesController
             $docCodigo = $documento->getDocCod($solicitud->Codigo);
             require_once 'Views/Solicitudes/actdoc.php';
         }
-
+        if ($sol == "actualizacion" & $TipoDocumento == "externo") {
+            $docCodigo = $ext->getDocCod($solicitud->Codigo);
+            require_once 'Views/Solicitudes/actdocext.php';
+        }
         if ($sol == "actualizacion" & $TipoDocumento == "formato") {
             $documentos = $formato->getForCod($solicitud->Codigo);
             require_once 'Views/Solicitudes/actformato.php';
@@ -146,7 +157,7 @@ class SolicitudesController
     {
 
         $documento = new Documento();
-       @$documento->id = $_REQUEST['id'];
+        @$documento->id = $_REQUEST['id'];
         $documento->CodDocumento = $_REQUEST['CodDocumento'];
         $documento->Proceso = $_REQUEST['Proceso'];
         $documento->NomDocumento = $_REQUEST['NomDocumento'];
@@ -215,5 +226,38 @@ class SolicitudesController
         } else {
             $documentos = $documento->Registrar($documento);
         }
+    }
+
+
+    public function GestionDocext()
+    {
+
+        $documento = new Doc_ext();
+        @$documento->id = $_REQUEST['id'];
+        $documento->codigo = $_REQUEST['codigo'];
+        $documento->proceso = $_REQUEST['proceso'];
+        $documento->nombre = $_REQUEST['nombre'];
+        $documento->expedicion = $_REQUEST['expedicion'];
+        $documento->descripcion = $_REQUEST['descripcion'];
+        $documento->filename = $_FILES['filename']['name'];
+        $documento->dir = $_REQUEST['dir'];
+        /*fin datos documento*/
+
+        $solictud = new Solicitud();
+        $solictud->id = $_REQUEST['sol_id'];
+        $solictud->EjecucionCambio = $_REQUEST['EjecucionCambio'];
+        $solictud->Codigo = $_REQUEST['codigo'];
+        $solictud->Observaciones = $_REQUEST['Observaciones'];
+        $solictud->Aprobado = $_REQUEST['Aprobado']; //estado
+        $this->model->ActualizaGestion($solictud);
+
+        if ($documento->id > 0) {
+            $documento->Actualizacion = $_REQUEST['Actualizacion'];
+            $documentos = $documento->Actualizar($documento);
+        } else {
+            $documentos = $documento->Registrar($documento);
+        }
+
+        $documentos = $documento->SubirDoc();
     }
 }
