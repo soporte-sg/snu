@@ -92,6 +92,7 @@ class Cliente
                 $data->dir = 'img/uploads/colegio/filename'
             ));
             $id_cliente = $this->pdo->lastInsertId();
+            
             $squema_nombre = 'documentalsg_' . $data->nombre;
             $squema = "INSERT INTO squemas(squema,cliente_id,created,modified)VALUES(?,?,?,?)";
             $this->pdo->prepare($squema)->execute(array(

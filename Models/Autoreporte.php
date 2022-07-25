@@ -1,14 +1,8 @@
 <?php
 
-<<<<<<< HEAD
-class Autoreporte 
-{
-    private $pdo;    
-=======
 class Autoreporte
 {
     private $pdo;
->>>>>>> b9ab8a7f8347787494f360b9ec5764de210a568c
     public $proceso;
     public $cargo_id;
     public $TbCondiciones_id;
@@ -23,11 +17,8 @@ class Autoreporte
     public $observacion;
     public $fechaRespuesta;
     public $num_accion_corr;
-<<<<<<< HEAD
-=======
     public $conciliacion;
     public $taccion;
->>>>>>> b9ab8a7f8347787494f360b9ec5764de210a568c
 
     public function __CONSTRUCT()
     {
@@ -40,21 +31,6 @@ class Autoreporte
 
 
     public function Index()
-<<<<<<< HEAD
-     {
-             try {
-                $result = array();
-                $stm = $this->pdo->prepare("SELECT * FROM  usuarios ");
-                $stm->execute();
-                return $stm->fetchAll(PDO::FETCH_OBJ);
-            } catch (Exception $e) {
-                die($e->getMessage());
-            }
-     }
-
-
-    public function Categoriaevento(){
-=======
     {
         try {
             $result = array();
@@ -69,7 +45,6 @@ class Autoreporte
 
     public function Categoriaevento()
     {
->>>>>>> b9ab8a7f8347787494f360b9ec5764de210a568c
         try {
             $result = array();
             $stm = $this->pdo->prepare("SELECT * FROM  categoriaeventos ");
@@ -80,39 +55,6 @@ class Autoreporte
         }
     }
 
-<<<<<<< HEAD
-     public function Add()
-     {
-             try {
-                
-            } catch (Exception $e) {
-                die($e->getMessage());
-            }
-     }
-     
-     public function Edit()
-     {
-             try {
-                
-            } catch (Exception $e) {
-                die($e->getMessage());
-            }
-     }
-
-
-     public function Delete()
-     {
-             try {
-                
-            } catch (Exception $e) {
-                die($e->getMessage());
-            }
-     }
-     
-
-    }
-
-=======
     public function Add(Autoreporte $data)
     {
         try {
@@ -233,4 +175,3 @@ class Autoreporte
         }
     }
 }
->>>>>>> b9ab8a7f8347787494f360b9ec5764de210a568c

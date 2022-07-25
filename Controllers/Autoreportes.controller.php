@@ -2,13 +2,8 @@
 require_once 'Models/database.php';
 require_once 'Models/Autoreporte.php';
 require_once 'Models/Proceso.php';
-<<<<<<< HEAD
-
-
-=======
 require_once 'Models/Cargo.php';
 require_once 'Models/Condicion.php';
->>>>>>> b9ab8a7f8347787494f360b9ec5764de210a568c
 class AutoreportesController
 {
     public function __CONSTRUCT()
@@ -18,11 +13,6 @@ class AutoreportesController
 
     public function Index()
     {
-<<<<<<< HEAD
-        
-=======
-
->>>>>>> b9ab8a7f8347787494f360b9ec5764de210a568c
         require_once 'Views/Layout/default.php';
         require_once 'Views/Cliente/index.php';
         require_once 'Views/Layout/foot.php';
@@ -31,31 +21,14 @@ class AutoreportesController
 
     public function Add()
     {
-<<<<<<< HEAD
-        $proceso= new Proceso();
-        $procesos =$proceso->getProceso();
-        $cat_eventos =$this->model->Categoriaevento();
-=======
         $proceso = new Proceso();
         $procesos = $proceso->getProceso();
         $cat_eventos = $this->model->Categoriaevento();
->>>>>>> b9ab8a7f8347787494f360b9ec5764de210a568c
         require_once 'Views/Layout/default.php';
         require_once 'Views/Autoreportes/add.php';
         require_once 'Views/Layout/foot.php';
     }
 
-<<<<<<< HEAD
-  public function Proceso_reponsable(){
-     echo'listo para mostra proceso';
-  }
-
-  public function Evento(){
-    echo'listo para mostra evento';
-   }
-
-
-=======
     public function Proceso_reponsable()
     {
         $cargo = new Cargo();
@@ -100,7 +73,6 @@ class AutoreportesController
 
         </div>
 <?php }
->>>>>>> b9ab8a7f8347787494f360b9ec5764de210a568c
 
 
     public function Crud()
@@ -116,78 +88,6 @@ class AutoreportesController
 
     public function Registrar()
     {
-<<<<<<< HEAD
-        $clientes = new Cliente();
-        $clientes->id = $_REQUEST['id'];
-        $clientes->nombre = $_REQUEST['nombre'];
-        $clientes->telefono = $_REQUEST['telefono'];
-        $clientes->direccion = $_REQUEST['direccion'];
-        $clientes->fechainicio = date('Y-m-d');
-        $clientes->direccion = $_REQUEST['direccion'];
-        $clientes->rector = $_REQUEST['rector'];
-        $clientes->correos = $_REQUEST['correos0'] . '~' . $_REQUEST['correos1'] . '~' . $_REQUEST['correos2'];
-        $clientes->salario = $_REQUEST['salario'];
-
-        /*manejando la img*/
-        $files = new Seguridad();
-        $files->name = $_FILES['filename']['name'];
-        $files->tpm_name = $_FILES['filename']['tmp_name'];
-        $files->type = $_FILES['filename']['type'];
-        $files->size = $_FILES['filename']['size'];
-        $files->error = $_FILES['filename']['error'];
-
-
-        if ($_FILES['filename']['size'] > 200000) {
-            $filename =   $files->SubirImg($files);
-        } else {
-        }
-        $clientes->filename = $filename;
-   
-       $clientes->id > 0 ?
-            $this->model->Actualizar($clientes) :
-            $this->model->Registrar($clientes);
-           
-            echo'<script>
-            alert("El cliente fue creado con Éxito");
-            window.location.href = "?c=clientes&a=index";
-            </script>';
-
-    }
-
-    public function Verificar()
-    {
-        $clientes = new Cliente();
-        $_SESSION['datos_cliente'] = $this->model->upCliente($_REQUEST['id']);
-        if (isset($_REQUEST['id'])) {
-            $clientes = $this->model->upClienteValidar($_REQUEST['id']);
-           // print_r($clientes->squema);
-            $_SESSION['squema'] = $clientes->squema;
-          //  exit();
-            echo'<script>            
-            window.location.href = "?c=clientes&a=dashboard";
-            </script>';
-        }else{
-
-        }
-        
-    }
-
-    public function Dashboard()
-    {
-       $solicitud=new Solicitud();
-       $solicitudes =$solicitud->SolicitudesTotal();  
-       $si =$solicitud->SolicitudesSi();     
-       $no =$solicitud->SolicitudesNo();
-       $rev =$solicitud->SolicitudesRev();
-       $vacias= $solicitud->SolicitudesVacias();
-       
-        require_once 'Views/Layout/default.php';
-        require_once 'Views/Cliente/dashboard.php';
-        require_once 'Views/Layout/footer.php';
-      
-    }
-
-=======
         $autoreporte = new Autoreporte();
         //$autoreporte->id = $_REQUEST['id'];
         /*reporte*/
@@ -299,5 +199,4 @@ class AutoreportesController
         require_once 'Views/Cliente/dashboard.php';
         require_once 'Views/Layout/footer.php';
     }
->>>>>>> b9ab8a7f8347787494f360b9ec5764de210a568c
 }

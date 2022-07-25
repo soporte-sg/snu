@@ -1,10 +1,13 @@
 <?php
+require_once 'Models/Dato.php';
 require_once 'Models/database.php';
 require_once 'Models/Proceso.php';
 require_once 'Models/Indicador.php';
 require_once 'Models/Cargo.php';
 require_once 'Models/Modelo.php';
 require_once 'Models/Meta.php';
+require_once 'Models/Accion.php';
+
 
 class IndicadorsController
 {
@@ -117,7 +120,51 @@ public function Quitar ()
   $meta = new Meta();   
   $meta->Quitar($_REQUEST['id']);
 }
+//fin metas//
 
+//inicio datos//
+
+public function Datos()
+{
+  
+  $indicadors=$this->model->GetIndicador($_REQUEST['id']);
+  $metas = new Meta();
+  $metas = $metas->GetMetas($_REQUEST['id']);
+ 
+  require_once 'Views/layout/default.php';
+  require_once 'Views/Indicadors/datos.php'; 
+  require_once 'Views/layout/foot.php';
+}
+public function AddDatos()
+{
+ $dato= new Dato();
+ $dato->id=$_REQUEST['id'];
+ $dato->indicador_id=$_REQUEST['indicador_id'];
+ $dato->meta_id=$_REQUEST['meta_id'];
+ $dato->fecha_aplicacion=$_REQUEST['fecha_aplicacion'];
+ $dato->expresion=$_REQUEST['expr1'].' '.@$_REQUEST['expr2'].' '.@$_REQUEST['expr3'] ;
+ $dato->resultado =$_REQUEST['resultado'];
+
+ $_REQUEST['id']>0 ? 
+ $dato->Update($dato):
+ $dato->Add($dato);
+
+}
+
+public function VerDatos ()
+{
+
+   $dato= new Dato();
+  $datos=$dato->GetDatos($_REQUEST['indicador_id']);
+  $accion = new Accion();
+  $acciones= $accion->GetAccionInd($_REQUEST['indicador_id']);
+  $indicador=$this->model->GetIndicador($_REQUEST['indicador_id']);
+
+
+  require_once 'Views/layout/default.php';
+  require_once 'Views/Indicadors/ver.php'; 
+  require_once 'Views/layout/foot.php';
+}
 
 
 
