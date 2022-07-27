@@ -2,11 +2,12 @@
     <div class="header">
         <h2>
             Documentos
-            <small>de clic en el proceso para ver el listado de documentos</small>
+            <small>De clic en el proceso para ver el listado de documentos</small>
         </h2>
-    </div>
-    <div class="body">
-    <table id="table" class="table table-bordered table-striped">
+</div>
+<div class="body">
+<div class="responsive">
+    <table class="table table-bordered table-striped">
             <thead>
                 <tr>
                     <th>Codigo</th>
@@ -20,20 +21,18 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($documentos as $value) : ?>
+                <?php foreach ($documentos as $value) : 
+                    $dir='Assets/img/'.$_SESSION['datos_cliente']->nombre.'/'.$value->CodDocumento.'pdf';
+                    ?>
                     <tr>
                         <td><?= $value->CodDocumento ?></td>
-                        <td><a href="<?=$value->dir.$value->filename?>"><?= $value->NomDocumento ?></a>   </td>
+                        <td><a  href="Assets/img/<?=$_SESSION['datos_cliente']->nombre.'/'.$value->CodDocumento?>.pdf" target="_blank">         <?= $value->NomDocumento ?></a>   </td>
                         <td><?= $value->proteccion ?></td>
                         <td><?= $value->Version ?></td>
                         <td><?= $value->preservacion ?></td>
                         <td><?= $value->Emision ?></td>
                         <td><?= $value->Actualizacion ?></td>
                         <td>
-                               
-                            <!-- <a data-toggle="modal" href='#modal-id' type="button" onclick="Get('<?=$value->id ?>')" title="Ver datos del Documento">
-                                <i class="material-icons">visibility</i>-->
-                            </a>
                             <?php if ($_SESSION['user']->rol_id == 4 or $_SESSION['user']->rol_id == 1) : ?>
                                 <a data-toggle="modal" href='#modal-id' type="button" onclick="Edit('<?=$value->id ?>')" type="button" title="Actualizar datos del Documento">
                                     <i class="material-icons">system_update</i>
@@ -43,7 +42,20 @@
                     </tr>
                 <?php endforeach; ?>
             </tbody>
+            <tfoot>
+                <tr>
+                    <th>Codigo</th>
+                    <th>Nombre</th>
+                    <th>Responsable</th>
+                    <th>Versión</th>
+                    <th>Recuparación</th>
+                    <th>Emision</th>
+                    <th>Actualización</th>
+                    <th>Menu</th>
+                </tr>
+            </tfoot>
         </table>
+        </div>
     </div>
 </div>
 
@@ -64,6 +76,7 @@
 </div>
 
 <script>
+
    function Get(doc_id){
     var doc_id =  doc_id
         $.ajax({

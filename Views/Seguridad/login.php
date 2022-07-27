@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="Assets\css\estilos.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
     <script>
@@ -68,8 +69,13 @@
 <style type="text/css">
     @import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
 
+
+    body{
+        color: #bbb;
+    }
+
     .login-block {
-        background-color: #ecf0f3;
+        background-color: #041826;
         align-items: center;
         display: flex;
         float: left;
@@ -119,12 +125,9 @@
     .login-sec {
         padding: 50px 30px;
         position: relative;
-        background-color: #ecf0f3;
-        border-radius: 10px;
-        box-shadow: -5px -5px 10px #fff,
-            5px 5px 10px #c1c1c1,
-            inset 0px 0px 0px #fff,
-            inset 0px 0px 0px #c1c1c1;
+        background-color: #073c64;
+        border-radius: 8px;
+        
     }
 
     .login-sec .copy-text {
@@ -168,10 +171,7 @@
         text-shadow: 1px 1px 1px #c0c0c0;
         color: #000000;
         border-radius: 10px;
-        box-shadow: -10px -10px 15px #fff,
-            10px 10px 15px #c1c1c1,
-            inset 0px 0px 0px #fff,
-            inset 0px 0px 0px #c1c1c1;
+        
         cursor: pointer;
         transition: all 300ms ease;
 

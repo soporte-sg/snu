@@ -8,13 +8,8 @@
                             <h2>SOLICITUDES</h2>
                         </div>
                     </div>
-                    <ul class="header-dropdown m-r--5">
-                        <li class="dropdown">
-
-                        </li>
-                    </ul>
                 </div>
-                <div class="body">
+                <div class="body">            
                     <!-- Widgets -->
                     <div class="row clearfix">
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">

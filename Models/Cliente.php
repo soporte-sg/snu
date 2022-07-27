@@ -22,7 +22,7 @@ class Cliente
     public function __CONSTRUCT()
     {
         try {
-            $this->pdo = Database::StartUp();
+            $this->pdo = Database::StartUp01();
         } catch (Exception $e) {
             die($e->getMessage());
         }
@@ -61,7 +61,7 @@ class Cliente
 
         try {
             $stm = $this->pdo->prepare("SELECT clientes.*, squemas.* FROM  clientes, squemas 
-            WHERE clientes.id=squemas.cliente_id AND clientes.id=$id ");
+            WHERE clientes.id=squemas.cliente_id AND clientes.id='$id' ");
             $stm->execute();
             return $stm->fetch(PDO::FETCH_OBJ);
         } catch (Exception $e) {

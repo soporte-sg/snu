@@ -24,6 +24,9 @@
 <!-- Slimscroll Plugin Js -->
 <script src="Assets/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
 
+<!-- Jquery CountTo Plugin Js -->
+<script src="Assets/plugins/jquery-countto/jquery.countTo.js"></script>
+
 <!-- Waves Effect Plugin Js -->
 <script src="Assets/plugins/node-waves/waves.js"></script>
 

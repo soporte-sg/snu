@@ -2,6 +2,7 @@
 require_once 'Models/Usuario.php';
 require_once 'Models/Cliente.php';
 require_once 'Models/Roles.php';
+require_once 'Models/Cargo.php';
 //require_once 'Models/Squema.php';
 class UsuariosController
 {
@@ -17,6 +18,14 @@ class UsuariosController
         $usuarios = $this->model->Index();
         require_once 'Views/Layout/clientes.php';
         require_once 'Views/Usuarios/index.php';
+        require_once 'Views/Layout/foot.php';
+    }
+    function Index2()
+    {
+        $usuario= new Cargo();        
+        $usuarios = $usuario->IndexUsuarios($_SESSION['datos_cliente']->id);
+        require_once 'Views/Layout/default.php';
+        require_once 'Views/Usuarios/index2.php';
         require_once 'Views/Layout/foot.php';
     }
     function Clave()

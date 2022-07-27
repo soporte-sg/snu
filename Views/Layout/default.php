@@ -1,10 +1,11 @@
-<?php 
+<?php
 require_once 'Models/Estadistica.php';
 $data = new Estadistica();
-$entrada=$data->Get();?>
+$entrada = $data->Get(); ?>
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -33,14 +34,29 @@ $entrada=$data->Get();?>
     <!-- Custom Css -->
     <link href="Assets/css/style.css" rel="stylesheet">
 
+
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="Assets/css/themes/all-themes.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-</head>
+ <style>
 
-<body class="theme-red">
-    <!-- Page Loader 
+ .imgbrand{
+     padding: 10px;       
+     width: 78px;
+     height: 78px;
+
+ }
+ .navbar{
+    background-color:#F4F6F6;
+ }
+ .user-info{
+    background: url('Assets/img/uploads/colegio/<?php echo $_SESSION['datos_cliente']->filename ?>') no-repeat no-repeat;
+ }
+</style>
+</head>
+<body class="theme">
+    <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">
             <div class="preloader">
@@ -53,227 +69,34 @@ $entrada=$data->Get();?>
                     </div>
                 </div>
             </div>
-            <p>Please wait...</p>
+            <p>Cargando los recursos</p>
         </div>
     </div>
     <!-- #END# Page Loader -->
     <!-- Overlay For Sidebars -->
     <div class="overlay"></div>
     <!-- #END# Overlay For Sidebars -->
-    <!-- Search Bar -->
-    <div class="search-bar">
-        <div class="search-icon">
-            <i class="material-icons">search</i>
-        </div>
-        <input type="text" placeholder="START TYPING...">
-        <div class="close-search">
-            <i class="material-icons">close</i>
-        </div>
-    </div>
-    <!-- #END# Search Bar -->
+    
     <!-- Top Bar -->
     <nav class="navbar">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="index.html"><?php echo $_SESSION['datos_cliente']->nombre ?></a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-left">
                     <!-- Call Search -->
-                    <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
+                    <li><img src="Assets/img/uploads/colegio/<?php echo $_SESSION['datos_cliente']->filename ?>"  alt="User" class="imgbrand" /></li>
+                       <!-- #END# Call Search -->
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- Call Search -->                    
+                    <a href="?c=seguridad&a=Logout" class="navbar-brand" href="index.html"><i class="glyphicon glyphicon-off"></i> Salir</a>
                     <!-- #END# Call Search -->
-                    <!-- Notifications -->
-                    <li class="dropdown">
-                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
-                            <i class="material-icons">notifications</i>
-                            <span class="label-count">7</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="header">NOTIFICATIONS</li>
-                            <li class="body">
-                                <ul class="menu">
-                                    <li>
-                                        <a href="javascript:void(0);">
-                                            <div class="icon-circle bg-light-green">
-                                                <i class="material-icons">person_add</i>
-                                            </div>
-                                            <div class="menu-info">
-                                                <h4>12 new members joined</h4>
-                                                <p>
-                                                    <i class="material-icons">access_time</i> 14 mins ago
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);">
-                                            <div class="icon-circle bg-cyan">
-                                                <i class="material-icons">add_shopping_cart</i>
-                                            </div>
-                                            <div class="menu-info">
-                                                <h4>4 sales made</h4>
-                                                <p>
-                                                    <i class="material-icons">access_time</i> 22 mins ago
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);">
-                                            <div class="icon-circle bg-red">
-                                                <i class="material-icons">delete_forever</i>
-                                            </div>
-                                            <div class="menu-info">
-                                                <h4><b>Nancy Doe</b> deleted account</h4>
-                                                <p>
-                                                    <i class="material-icons">access_time</i> 3 hours ago
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);">
-                                            <div class="icon-circle bg-orange">
-                                                <i class="material-icons">mode_edit</i>
-                                            </div>
-                                            <div class="menu-info">
-                                                <h4><b>Nancy</b> changed name</h4>
-                                                <p>
-                                                    <i class="material-icons">access_time</i> 2 hours ago
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);">
-                                            <div class="icon-circle bg-blue-grey">
-                                                <i class="material-icons">comment</i>
-                                            </div>
-                                            <div class="menu-info">
-                                                <h4><b>John</b> commented your post</h4>
-                                                <p>
-                                                    <i class="material-icons">access_time</i> 4 hours ago
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);">
-                                            <div class="icon-circle bg-light-green">
-                                                <i class="material-icons">cached</i>
-                                            </div>
-                                            <div class="menu-info">
-                                                <h4><b>John</b> updated status</h4>
-                                                <p>
-                                                    <i class="material-icons">access_time</i> 3 hours ago
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);">
-                                            <div class="icon-circle bg-purple">
-                                                <i class="material-icons">settings</i>
-                                            </div>
-                                            <div class="menu-info">
-                                                <h4>Settings updated</h4>
-                                                <p>
-                                                    <i class="material-icons">access_time</i> Yesterday
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="footer">
-                                <a href="javascript:void(0);">View All Notifications</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- #END# Notifications -->
-                    <!-- Tasks -->
-                    <li class="dropdown">
-                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
-                            <i class="material-icons">flag</i>
-                            <span class="label-count">9</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="header">TASKS</li>
-                            <li class="body">
-                                <ul class="menu tasks">
-                                    <li>
-                                        <a href="javascript:void(0);">
-                                            <h4>
-                                                Footer display issue
-                                                <small>32%</small>
-                                            </h4>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-pink" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 32%">
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);">
-                                            <h4>
-                                                Make new buttons
-                                                <small>45%</small>
-                                            </h4>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-cyan" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);">
-                                            <h4>
-                                                Create new dashboard
-                                                <small>54%</small>
-                                            </h4>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-teal" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 54%">
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);">
-                                            <h4>
-                                                Solve transition issue
-                                                <small>65%</small>
-                                            </h4>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-orange" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 65%">
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);">
-                                            <h4>
-                                                Answer GitHub questions
-                                                <small>92%</small>
-                                            </h4>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-purple" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 92%">
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="footer">
-                                <a href="javascript:void(0);">View All Tasks</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- #END# Tasks -->
-                    <li class="pull-right"><a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="material-icons">more_vert</i></a></li>
                 </ul>
             </div>
+            
         </div>
     </nav>
     <!-- #Top Bar -->
@@ -282,38 +105,24 @@ $entrada=$data->Get();?>
         <aside id="leftsidebar" class="sidebar">
             <!-- User Info -->
             <div class="user-info">
-                <div class="image">
-                    <img src="" width="48" height="48" alt="User" />
-                </div>
                 <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo ucwords($_SESSION['user']->FullName) ?></div>
-                    <div class="email"> <?= $entrada->ULTIMA?></div>
-                    <div class="btn-group user-helper-dropdown">
-                        <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
-                        <ul class="dropdown-menu pull-right">
-                            <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">group</i>Followers</a></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">favorite</i>Likes</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sign Out</a></li>
-                        </ul>
+                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">                       
+                        <?php echo ucwords($_SESSION['user']->FullName) ?>                   
                     </div>
+                    <div class="email"> <?= $entrada->ULTIMA ?></div>
                 </div>
             </div>
             <!-- #User Info -->
             <!-- Menu -->
             <div class="menu">
                 <ul class="list">
-                    <li class="header">MAIN NAVIGATION</li>
+                    <li class="header"><?php echo $_SESSION['datos_cliente']->nombre ?></li>
                     <li class="active">
                         <a href="?c=clientes&a=dashboard">
                             <i class="material-icons">home</i>
                             <span>Inicio</span>
                         </a>
-                    </li>                  
-                    
+                    </li>
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">widgets</i>
@@ -321,10 +130,10 @@ $entrada=$data->Get();?>
                         </a>
                         <ul class="ml-menu">
                             <li>
-                            <a href="?c=solicitudes&a=index">Consultar</a>                                
+                                <a href="?c=solicitudes&a=index">Consultar</a>
                             </li>
                             <li>
-                            <a href="?c=solicitudes&a=add">Registrar</a>                                
+                                <a href="?c=solicitudes&a=add">Registrar</a>
                             </li>
                         </ul>
                     </li>
@@ -346,7 +155,7 @@ $entrada=$data->Get();?>
 
                             <li>
                                 <a href="pages/ui/breadcrumbs.html">Clasificacion de eventos</a>
-                            </li>                            
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -360,7 +169,7 @@ $entrada=$data->Get();?>
                             </li>
                             <li>
                                 <a href="pages/forms/advanced-form-elements.html">Subir</a>
-                            </li>                            
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -372,7 +181,6 @@ $entrada=$data->Get();?>
                             <li>
                                 <a href="?c=doc_exts&a=index">Consultar</a>
                             </li>
-                            
                         </ul>
                     </li>
                     <li>
@@ -384,7 +192,7 @@ $entrada=$data->Get();?>
                             <li>
                                 <a href="?c=formatos&a=index">Consultar</a>
                             </li>
-                            
+
                         </ul>
                     </li>
                     <li>
@@ -404,7 +212,7 @@ $entrada=$data->Get();?>
                             </li>
                             <li>
                                 <a href="pages/charts/sparkline.html">Gestioanar</a>
-                            </li>                            
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -415,7 +223,7 @@ $entrada=$data->Get();?>
                         <ul class="ml-menu">
                             <li>
                                 <a href="pages/examples/profile.html">Gestionar</a>
-                            </li>                            
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -439,11 +247,11 @@ $entrada=$data->Get();?>
                         <a href="">
                             <i class="material-icons">trending_down</i>
                             <span>PQRSF</span>
-                        </a>                       
+                        </a>
                     </li>
                     <li>
-                        <a href="pages/changelogs.html">
-                            <i class="material-icons">update</i>
+                        <a href="?c=usuarios&a=index2">
+                            <i class="material-icons">face</i>
                             <span>Usuarios</span>
                         </a>
                     </li>
@@ -465,7 +273,7 @@ $entrada=$data->Get();?>
                             <i class="material-icons col-red">donut_large</i>
                             <span>Salir</span>
                         </a>
-                    </li>                
+                    </li>
                 </ul>
             </div>
             <!-- #Menu -->
@@ -485,24 +293,13 @@ $entrada=$data->Get();?>
 
     <section class="content">
         <div class="container-fluid">
-
-<?php 
-
-print_r($data->Est());
-
-$data->url= $_SERVER['PHP_SELF'];
-$data->url= $_SERVER['HTTP_REFERER'];
-$data->navegador= $_SERVER['HTTP_USER_AGENT'];
-$data->fecha_hora= date("Y-m-d h:i:sa");
-$data->ip = $data->getUserIpAddress();
-$data->usuario= $_SESSION['user']->FullName;
-
-$datas= $data->Add($data);
-
-
-
+            <?php
+            $data->Est();
+            $data->url = $_SERVER['PHP_SELF'];
+            $data->url = $_SERVER['HTTP_REFERER'];
+            $data->navegador = $_SERVER['HTTP_USER_AGENT'];
+            $data->fecha_hora = date("Y-m-d h:i:sa");
+            $data->ip = $data->getUserIpAddress();
+            $data->usuario = $_SESSION['user']->FullName;
+            $datas = $data->Add($data);
 ?>
-            
-
-
-    

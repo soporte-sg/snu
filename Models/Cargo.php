@@ -52,6 +52,21 @@ class Cargo
            }
    
        }
+    
+       public function IndexUsuarios($cliente_id)
+       {
+        try {
+            $stm = $this->pdo->prepare("SELECT usuarios.*, rols.rol, clientes.nombre AS cliente
+            FROM  usuarios
+             LEFT JOIN clientes ON clientes.id = usuarios.cliente_id
+             JOIN rols ON usuarios.rol_id=rols.id
+             AND clientes.id=$cliente_id");
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+       }
 
 
 }
