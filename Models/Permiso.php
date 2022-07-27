@@ -31,7 +31,7 @@ class Permiso
     {
         try {
             $id = $_REQUEST['id'];
-            $stm = $this->pdo->prepare("SELECT * FROM permisos WHERE tipo_usuarios=$id ");
+            $stm = $this->pdo->prepare("SELECT * FROM permisos_ WHERE tipo_usuarios=$id ");
             $stm->execute();
             return $stm->fetchAll(PDO::FETCH_OBJ);
         } catch (Exception $e) {
@@ -43,7 +43,7 @@ class Permiso
     {
         try {
             $id = $_REQUEST['id'];
-            $stm = $this->pdo->prepare("SELECT * FROM permisos WHERE id=$id ");
+            $stm = $this->pdo->prepare("SELECT * FROM permisos_ WHERE id=$id ");
             $stm->execute();
             return $stm->fetch(PDO::FETCH_OBJ);
         } catch (Exception $e) {
@@ -71,7 +71,7 @@ class Permiso
     {
         
         try {
-            $sql = "UPDATE permisos SET crear='$data->crear', leer='$data->leer', actualizar='$data->actualizar', borrar='$data->borrar' WHERE id = '$data->id'";
+            $sql = "UPDATE permisos_ SET crear='$data->crear', leer='$data->leer', actualizar='$data->actualizar', borrar='$data->borrar' WHERE id = '$data->id'";
             $this->pdo->prepare($sql)->execute();
         } catch (Exception $e) {
             die($e->getMessage());
@@ -91,4 +91,15 @@ class Permiso
     public function Delete()
     {
     }
+
+    public function validar($modulo, $tipo)
+	{
+		try {
+			$stm = $this->pdo->prepare("SELECT * FROM permisos_ WHERE  modulo = '$modulo'  and tipo_usuarios='$tipo'");
+			$stm->execute();
+			return $stm->fetch(PDO::FETCH_OBJ);
+		} catch (Exception $e) {
+			die($e->getMessage());
+		}
+	}
 }

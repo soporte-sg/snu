@@ -4,6 +4,8 @@ require_once 'Models/Proceso.php';
 require_once 'Models/Documento.php';
 require_once 'Models/Formato.php';
 require_once 'Models/Doc_ext.php';
+require_once 'Models/Permiso.php';
+require_once 'Models/Seguridad.php';
 
 class SolicitudesController
 {
@@ -29,28 +31,46 @@ class SolicitudesController
 
     public function Index()
     {
+
+
+        $seguridad = new Permiso();
+        $modulo = 'solicitudes';
+        $tipo = $_SESSION['rol_id'];
+        $val = $seguridad->Validar($modulo, $tipo);
         $solicitud = new Solicitud();
         $solicitudes = $solicitud->Solicitudes();
         require_once 'Views/layout/default.php';
-        require_once 'Views/Solicitudes/index.php';
+        $val->leer == 1  ? require_once 'Views/Solicitudes/index.php' : require_once 'Views/seguridad/error.php';
         require_once 'Views/layout/footer.php';
     }
 
     public function Add()
     {
+
+        $seguridad = new Permiso();
+        $modulo = 'solicitudes';
+        $tipo = $_SESSION['rol_id'];
+        $val = $seguridad->Validar($modulo, $tipo);
+
         $proceso = new Proceso();
         $procesos = $proceso->getProceso();
         $ultima_solicitud = $this->model->SolicitudesMax();
         require_once 'Views/layout/default.php';
-        require_once 'Views/Solicitudes/add.php';
+        $val->crear == 1  ? require_once 'Views/Solicitudes/add.php' : require_once 'Views/seguridad/error.php';
         require_once 'Views/layout/footer.php';
     }
 
     public function Edit()
     {
         $solicitudes =  $this->model->GetSolicitud($_REQUEST['id']);
+
+        $seguridad = new Seguridad();
+        $modulo = 'solicitudes';
+        $tipo = $_SESSION['rol_id'];
+        $val = $seguridad->Validar($modulo, $tipo);
+
         require_once 'Views/layout/default.php';
-        require_once 'Views/Solicitudes/Edit.php';
+        $val->crear == 1  ? require_once 'Views/Solicitudes/Edit.php' : require_once 'Views/seguridad/error.php';
         require_once 'Views/layout/footer.php';
     }
 
@@ -86,9 +106,11 @@ class SolicitudesController
     public function View()
     {
         $solicitudes =  $this->model->GetSolicitud($_REQUEST['id']);
-        //require_once 'Views/layout/default.php';
-        require_once 'Views/Solicitudes/View.php';
-        // require_once 'Views/layout/foot.php';
+        $seguridad = new Seguridad();
+        $modulo = 'solicitudes';
+        $tipo = $_SESSION['rol_id'];
+        $val = $seguridad->Validar($modulo, $tipo);
+        $val->crear == 1  ?  require_once 'Views/Solicitudes/View.php' : require_once 'Views/seguridad/error.php';
     }
 
     public function Descripcion()
@@ -97,58 +119,67 @@ class SolicitudesController
         $TipoDocumento = $_REQUEST['TipoDocumento'];
         $proceso = $_REQUEST['Proceso'];
         $TipoSolicitud = $_REQUEST['TipoSolicitud'];
-
         $this->model->Descripcion($TipoDocumento, $proceso, $TipoSolicitud);
     }
 
     public function Responder()
     {
-        $solicitud =  $this->model->GetSolicitud($_REQUEST['id']);
-        $sol = $solicitud->TipoSolicitud;
-        $TipoDocumento = $solicitud->TipoDocumento;
-        $documento = new Documento();
-        $formato = new Formato();
-        $ext = new Doc_ext();
-        $docProceso = $documento->getDocProceso($solicitud->Proceso);
-        require_once 'Views/layout/default.php';
-        require_once 'Views/Solicitudes/responder.php';
 
-        /*creaciones*/
-        if ($sol == "creacion" & $TipoDocumento == "documento") {
-            $documentos = $documento->getDocumentos($solicitud->Proceso);
-            $separada = explode("-", $documentos->ultimo);
-            require_once 'Views/Solicitudes/creardoc.php';
-        }
+        $seguridad = new Seguridad();
+        $modulo = 'solicitudes';
+        $tipo = $_SESSION['rol_id'];
+        $val = $seguridad->Validar($modulo, $tipo);
+        if ($val->crear != 1) {
+            require_once 'Views/seguridad/error.php';
+        } else {
 
-        if ($sol == "creacion" & $TipoDocumento == "formato") {
-            $formatos = $formato->getFormato($solicitud->Proceso);
-            $separada = explode("-", $formatos->ultimo);
-            require_once 'Views/Solicitudes/crearformato.php';
-        }
+            $solicitud =  $this->model->GetSolicitud($_REQUEST['id']);
+            $sol = $solicitud->TipoSolicitud;
+            $TipoDocumento = $solicitud->TipoDocumento;
+            $documento = new Documento();
+            $formato = new Formato();
+            $ext = new Doc_ext();
+            $docProceso = $documento->getDocProceso($solicitud->Proceso);
+            require_once 'Views/layout/default.php';
+            require_once 'Views/Solicitudes/responder.php';
 
-        if ($sol == "creacion" & $TipoDocumento == "externo") {
-            $documentos = $ext->getDocumentos($solicitud->Proceso);
-            $separada = explode("-", $documentos->ultimo);
-            require_once 'Views/Solicitudes/crearext.php';
-        }
+            /*creaciones*/
+            if ($sol == "creacion" & $TipoDocumento == "documento") {
+                $documentos = $documento->getDocumentos($solicitud->Proceso);
+                $separada = explode("-", $documentos->ultimo);
+                require_once 'Views/Solicitudes/creardoc.php';
+            }
 
-        /*creaciones*/
+            if ($sol == "creacion" & $TipoDocumento == "formato") {
+                $formatos = $formato->getFormato($solicitud->Proceso);
+                $separada = explode("-", $formatos->ultimo);
+                require_once 'Views/Solicitudes/crearformato.php';
+            }
 
-        /*actualizaciones*/
-        if ($sol == "actualizacion" & $TipoDocumento == "documento") {
-            $docCodigo = $documento->getDocCod($solicitud->Codigo);
-            require_once 'Views/Solicitudes/actdoc.php';
+            if ($sol == "creacion" & $TipoDocumento == "externo") {
+                $documentos = $ext->getDocumentos($solicitud->Proceso);
+                $separada = explode("-", $documentos->ultimo);
+                require_once 'Views/Solicitudes/crearext.php';
+            }
+
+            /*creaciones*/
+
+            /*actualizaciones*/
+            if ($sol == "actualizacion" & $TipoDocumento == "documento") {
+                $docCodigo = $documento->getDocCod($solicitud->Codigo);
+                require_once 'Views/Solicitudes/actdoc.php';
+            }
+            if ($sol == "actualizacion" & $TipoDocumento == "externo") {
+                $docCodigo = $ext->getDocCod($solicitud->Codigo);
+                require_once 'Views/Solicitudes/actdocext.php';
+            }
+            if ($sol == "actualizacion" & $TipoDocumento == "formato") {
+                $documentos = $formato->getForCod($solicitud->Codigo);
+                require_once 'Views/Solicitudes/actformato.php';
+            }
+            /*actualizaciones*/
+            require_once 'Views/layout/footer.php';
         }
-        if ($sol == "actualizacion" & $TipoDocumento == "externo") {
-            $docCodigo = $ext->getDocCod($solicitud->Codigo);
-            require_once 'Views/Solicitudes/actdocext.php';
-        }
-        if ($sol == "actualizacion" & $TipoDocumento == "formato") {
-            $documentos = $formato->getForCod($solicitud->Codigo);
-            require_once 'Views/Solicitudes/actformato.php';
-        }
-        /*actualizaciones*/
-        require_once 'Views/layout/footer.php';
     }
 
 

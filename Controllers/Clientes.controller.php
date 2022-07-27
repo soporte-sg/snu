@@ -89,7 +89,7 @@ class ClientesController
         $clientes->salario = $_REQUEST['salario'];
 
         /*manejando la img*/
-        $files = new Seguridad();
+        $files = new Permiso();
         $files->name = $_FILES['filename']['name'];
         $files->tpm_name = $_FILES['filename']['tmp_name'];
         $files->type = $_FILES['filename']['type'];

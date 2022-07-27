@@ -29,8 +29,7 @@ class PermisosController
         require_once 'Views/Permisos/ver.php';
         
     }
-    public function Actualizar(){     
-        
+    public function Actualizar(){          
         $permiso=new Permiso();
         $permiso->crear=$_REQUEST['crear'];
         $permiso->leer=$_REQUEST['leer'];
@@ -38,9 +37,11 @@ class PermisosController
         $permiso->borrar=$_REQUEST['borrar'];
         $permiso->id=$_REQUEST['id'];
         $permiso->tipo_usuarios=$_REQUEST['tipo_usuarios'];      
-        $this->model->Actualizar($permiso);
-        
+        $this->model->Actualizar($permiso);        
     }
-
+ public function Validar()
+ {
+   
+ }
 
 }

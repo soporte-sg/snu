@@ -19,6 +19,7 @@ class SeguridadController
                 $_SESSION['user'] = $user;
                 $_SESSION['squema'] = $user->squema;
                 $_SESSION['rol'] = $user->rol;
+                $_SESSION['rol_id'] = $user->rol_id;
                 /*se determina  que tipo de rol tiene para la redireccion rol->root,admin podran administrar toda el app
                   si por el contrario  no es ni root, admin sera dirigido al dashboard segun el squema registrado*/
                 switch ($user->rol) {
