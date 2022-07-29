@@ -1,13 +1,12 @@
 <?php
-
 require_once 'Models/Seguridad.php';
-
 class SeguridadController
 {
     public function __CONSTRUCT()
     {
         $this->model = new Seguridad();
     }
+
     public function Logon()
     {
         if (isset($_REQUEST['usuario']) && isset($_REQUEST['clave'])) {

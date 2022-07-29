@@ -22,7 +22,7 @@ class Roles
     public function Index()
     {
         try {
-        $stm = $this->pdo->prepare("SELECT * FROM rols");
+        $stm = $this->pdo->prepare("SELECT * FROM rols WHERE id != 1");
             $stm->execute();
             return $stm->fetchAll(PDO::FETCH_OBJ);
         } catch (Exception $e) {

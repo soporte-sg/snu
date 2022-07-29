@@ -8,40 +8,35 @@ class PermisosController
         $this->model = new Permiso();
     }
 
-
-    public function Index(){
-        $roles=$this->model->Index();
-        require_once 'Views/layout/clientes.php';
+    public function Index()
+    {
+        $roles = $this->model->Index();
+        $_SESSION['rol_id'] == 1 ?  require_once 'Views/layout/clientes.php' : require_once 'Views/layout/default.php';
         require_once 'Views/Permisos/index.php';
-        require_once 'Views/layout/foot.php'; 
+        require_once 'Views/layout/foot.php';
     }
 
-    public function Crud(){
-
+    public function Crud()
+    {
         $permiso = $this->model->Permiso($_REQUEST['id']);
-        
         require_once 'Views/Permisos/crud.php';
-        
     }
 
-    public function Ver(){     
-        $update=$this->model->Obtener($_REQUEST['id']);       
+    public function Ver()
+    {
+        $update = $this->model->Obtener($_REQUEST['id']);
         require_once 'Views/Permisos/ver.php';
-        
     }
-    public function Actualizar(){          
-        $permiso=new Permiso();
-        $permiso->crear=$_REQUEST['crear'];
-        $permiso->leer=$_REQUEST['leer'];
-        $permiso->actualizar=$_REQUEST['actualizar'];
-        $permiso->borrar=$_REQUEST['borrar'];
-        $permiso->id=$_REQUEST['id'];
-        $permiso->tipo_usuarios=$_REQUEST['tipo_usuarios'];      
-        $this->model->Actualizar($permiso);        
+    public function Actualizar()
+    {
+        $permiso = new Permiso();
+        $permiso->crear = $_REQUEST['crear'];
+        $permiso->leer = $_REQUEST['leer'];
+        $permiso->actualizar = $_REQUEST['actualizar'];
+        $permiso->borrar = $_REQUEST['borrar'];
+        $permiso->id = $_REQUEST['id'];
+        $permiso->tipo_usuarios = $_REQUEST['tipo_usuarios'];
+        $this->model->Actualizar($permiso);
     }
- public function Validar()
- {
-   
- }
-
+    
 }

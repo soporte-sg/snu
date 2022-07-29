@@ -103,6 +103,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href="?c=servicios&a=index">
+                            <i class="material-icons">account_circle</i>
+                            <span>Servicios</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="?c=roles&a=index">
                             <i class="material-icons">account_circle</i>
                             <span>Administrar Roles</span>

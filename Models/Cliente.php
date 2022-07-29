@@ -43,6 +43,18 @@ class Cliente
         }
     }
 
+    public function getCliente01()
+    {
+        try {
+            $result = array();
+            $stm = $this->pdo->prepare("SELECT clientes.id, nombre FROM  clientes ORDER BY clientes.id ");
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
     public function upCliente($id)
     {
 

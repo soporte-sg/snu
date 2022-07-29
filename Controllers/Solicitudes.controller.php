@@ -5,7 +5,7 @@ require_once 'Models/Documento.php';
 require_once 'Models/Formato.php';
 require_once 'Models/Doc_ext.php';
 require_once 'Models/Permiso.php';
-require_once 'Models/Seguridad.php';
+//require_once 'Models/Seguridad.php';
 
 class SolicitudesController
 {
@@ -64,7 +64,7 @@ class SolicitudesController
     {
         $solicitudes =  $this->model->GetSolicitud($_REQUEST['id']);
 
-        $seguridad = new Seguridad();
+        $seguridad = new Permiso();
         $modulo = 'solicitudes';
         $tipo = $_SESSION['rol_id'];
         $val = $seguridad->Validar($modulo, $tipo);
@@ -106,7 +106,7 @@ class SolicitudesController
     public function View()
     {
         $solicitudes =  $this->model->GetSolicitud($_REQUEST['id']);
-        $seguridad = new Seguridad();
+        $seguridad = new Permiso();
         $modulo = 'solicitudes';
         $tipo = $_SESSION['rol_id'];
         $val = $seguridad->Validar($modulo, $tipo);
@@ -125,7 +125,7 @@ class SolicitudesController
     public function Responder()
     {
 
-        $seguridad = new Seguridad();
+        $seguridad = new Permiso();
         $modulo = 'solicitudes';
         $tipo = $_SESSION['rol_id'];
         $val = $seguridad->Validar($modulo, $tipo);
