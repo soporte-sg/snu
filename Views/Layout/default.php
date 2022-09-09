@@ -1,7 +1,12 @@
 <?php
 require_once 'Models/Estadistica.php';
+require_once 'Models/Servicio.php';
 $data = new Estadistica();
-$entrada = $data->Get(); ?>
+$entrada = $data->Get(); 
+$servicio =new Servicio();
+$servicios=$servicio->Servicio();
+//print_r($servicios);
+?>
 <!DOCTYPE html>
 <html>
 
@@ -26,37 +31,47 @@ $entrada = $data->Get(); ?>
     <!-- Animation Css -->
     <link href="Assets/plugins/animate-css/animate.css" rel="stylesheet" />
 
-    <!-- JQuery DataTable Css 
-    <link href="Assets/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">-->
-    <!-- Morris Chart Css-->
-    <link href="Assets/plugins/morrisjs/morris.css" rel="stylesheet" />
-
+    <!-- JQuery DataTable Css -->
+    <link rel="stylesheet" href="Assests/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="Assests/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="Assests/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <!-- Morris Chart Css
+    <link href="Assets/plugins/morrisjs/morris.css" rel="stylesheet" />-->
     <!-- Custom Css -->
     <link href="Assets/css/style.css" rel="stylesheet">
-
-
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="Assets/css/themes/all-themes.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
- <style>
+    <style>
+        .imgbrand {
+            padding: 10px;
+            width: 78px;
+            height: 78px;
+        }
 
- .imgbrand{
-     padding: 10px;       
-     width: 78px;
-     height: 78px;
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.7);
+        }
 
- }
- .navbar{
-    background-color:#F4F6F6;
- }
- .user-info{
-    background: url('Assets/img/uploads/colegio/<?php echo $_SESSION['datos_cliente']->filename ?>') no-repeat no-repeat;
- }
-</style>
+        .image {
+            background-color: #F4F6F6;
+            border-radius: 10%;
+            box-shadow: 2px 2px 10px 2px gray;
+        }
+    </style>
 </head>
+ <!-- Google tag (gtag.js) -->
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-2KNSD09LYH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2KNSD09LYH');
+</script>
+
 <body class="theme">
-    <!-- Page Loader -->
+    <!-- Page Loader 
     <div class="page-loader-wrapper">
         <div class="loader">
             <div class="preloader">
@@ -71,12 +86,12 @@ $entrada = $data->Get(); ?>
             </div>
             <p>Cargando los recursos</p>
         </div>
-    </div>
+    </div>-->
     <!-- #END# Page Loader -->
     <!-- Overlay For Sidebars -->
     <div class="overlay"></div>
     <!-- #END# Overlay For Sidebars -->
-    
+
     <!-- Top Bar -->
     <nav class="navbar">
         <div class="container-fluid">
@@ -86,17 +101,17 @@ $entrada = $data->Get(); ?>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-left">
-                    <!-- Call Search -->
-                    <li><img src="Assets/img/uploads/colegio/<?php echo $_SESSION['datos_cliente']->filename ?>"  alt="User" class="imgbrand" /></li>
-                       <!-- #END# Call Search -->
+                    <!-- Call Search 
+                    <li><img src="Assets/img/uploads/colegio/<?php echo $_SESSION['datos_cliente']->filename ?>" alt="User" class="imgbrand" /></li>
+                     #END# Call Search -->
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <!-- Call Search -->                    
-                    <a href="?c=seguridad&a=Logout" class="navbar-brand" href="index.html"><i class="glyphicon glyphicon-off"></i> Salir</a>
+                    <!-- Call Search -->
+                    <a href="?c=seguridad&a=Logout" class="navbar-brand btn btn-circle " href="index.html"><i class="glyphicon glyphicon-off"></i></a>
                     <!-- #END# Call Search -->
                 </ul>
             </div>
-            
+
         </div>
     </nav>
     <!-- #Top Bar -->
@@ -105,23 +120,58 @@ $entrada = $data->Get(); ?>
         <aside id="leftsidebar" class="sidebar">
             <!-- User Info -->
             <div class="user-info">
+                <div class="image">
+                    <img src="Assets/img/uploads/colegio/<?php echo $_SESSION['datos_cliente']->filename ?>" width="90" height="90" alt="">
+                </div>
                 <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">                       
-                        <?php echo ucwords($_SESSION['user']->FullName) ?>                   
-                    </div>
-                    <div class="email"> <?= $entrada->ULTIMA ?></div>
+
+
                 </div>
             </div>
             <!-- #User Info -->
             <!-- Menu -->
             <div class="menu">
                 <ul class="list">
-                    <li class="header"><?php echo $_SESSION['datos_cliente']->nombre ?></li>
+                    <li class="header">
+                        <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <?php echo ucwords($_SESSION['user']->FullName) ?>
+                        </div>
+                        <div class="email"> <?= $entrada->ULTIMA ?></div>
+                    </li>
                     <li class="active">
                         <a href="?c=clientes&a=dashboard">
                             <i class="material-icons">home</i>
                             <span>Inicio</span>
                         </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">settings</i>
+                            <span>Configuración</span>
+                        </a>
+                        <ul class="ml-menu">
+                           <li>
+                                <a href="?c=usuarios&a=index2">usuarios</a>
+                            </li>
+                             <li>
+                                <a href="?c=cargos&a=index">Cargos</a>
+                            </li>
+                            <li>
+                                <a href="?c=procesos&a=index">Procesos</a>
+                            </li>
+                            <li>
+                                <a href="?c=permisos&aindex">Permisos</a>
+                            </li>
+                            <li>
+                                <a href="?c=ubicaciones&a=index">Ubicaciones</a>
+                            </li>
+                            <li>
+                                <a href="?c=sedes&a=index">Sedes</a>
+                            </li>
+                            <li>
+                                <a href="?c=depreciacions&a=index">Depreciación</a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
@@ -167,15 +217,17 @@ $entrada = $data->Get(); ?>
                             <li>
                                 <a href="?c=documentos&a=index">Consultar</a>
                             </li>
-                            <li>
-                                <a href="pages/forms/advanced-form-elements.html">Subir</a>
-                            </li>
+                            <?php if ($_SESSION['user']->rol_id == 1) : ?>
+                                <li>
+                                    <a href="pages/forms/advanced-form-elements.html">Subir</a>
+                                </li>
+                            <?php endif; ?>
                         </ul>
                     </li>
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">view_list</i>
-                            <span>Documentos Externos</span>
+                            <span>Doc Externos</span>
                         </a>
                         <ul class="ml-menu">
                             <li>
@@ -202,17 +254,11 @@ $entrada = $data->Get(); ?>
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="?c=indicadors&a=index">Configurar</a>
+                                <a href="?c=indicadors&a=index">Consolidado</a>
                             </li>
                             <li>
-                                <a href="pages/charts/flot.html">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="pages/charts/chartjs.html">Consultar</a>
-                            </li>
-                            <li>
-                                <a href="pages/charts/sparkline.html">Gestioanar</a>
-                            </li>
+                                <a href="?c=indicadors&a=add">Crear Ficha</a>
+                            </li>                            
                         </ul>
                     </li>
                     <li>
@@ -225,61 +271,32 @@ $entrada = $data->Get(); ?>
                                 <a href="pages/examples/profile.html">Gestionar</a>
                             </li>
                         </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">map</i>
-                            <span>Maps</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="pages/maps/google.html">Google Map</a>
-                            </li>
-                            <li>
-                                <a href="pages/maps/yandex.html">YandexMap</a>
-                            </li>
-                            <li>
-                                <a href="pages/maps/jvectormap.html">jVectorMap</a>
-                            </li>
-                        </ul>
-                    </li>
+                    </li>                    
                     <li>
                         <a href="">
                             <i class="material-icons">trending_down</i>
                             <span>PQRSF</span>
                         </a>
                     </li>
+                   <li class="header">Servicios</li>
+                    <?php if ($_SESSION['user']->rol_id == 1) : ?>
+                        <li>
+                            <a href="?c=clientes&a=index">
+                                <i class="material-icons col-red">donut_large</i>
+                                <span>Menu Principal</span>
+                            </a>
+                        </li>
+                    <?php endif; ?>
+                    
                     <li>
-                        <a href="?c=usuarios&a=index2">
-                            <i class="material-icons">face</i>
-                            <span>Usuarios</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="pages/changelogs.html">
+                       <?php foreach($servicios as $value): ?>
+                        <a href="<?=$value->dir?>">
                             <i class="material-icons">update</i>
-                            <span>Cargos</span>
+                            <span><?=$value->oferta?></span>
                         </a>
+                        <?php endforeach;?>
                     </li>
-                    <li>
-                        <a href="pages/changelogs.html">
-                            <i class="material-icons">update</i>
-                            <span>Procesos</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="?c=permisos&aindex">
-                            <i class="material-icons">update</i>
-                            <span>Permisos</span>
-                        </a>
-                    </li>
-                    <li class="header">LABELS</li>
-                    <li>
-                        <a href="?c=seguridad&a=Logout">
-                            <i class="material-icons col-red">donut_large</i>
-                            <span>Salir</span>
-                        </a>
-                    </li>
+
                 </ul>
             </div>
             <!-- #Menu -->
@@ -299,13 +316,4 @@ $entrada = $data->Get(); ?>
 
     <section class="content">
         <div class="container-fluid">
-            <?php
-            $data->Est();
-            $data->url = $_SERVER['PHP_SELF'];
-            $data->url = $_SERVER['HTTP_REFERER'];
-            $data->navegador = $_SERVER['HTTP_USER_AGENT'];
-            $data->fecha_hora = date("Y-m-d h:i:sa");
-            $data->ip = $data->getUserIpAddress();
-            $data->usuario = $_SESSION['user']->FullName;
-            $datas = $data->Add($data);
-?>
+            

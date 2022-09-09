@@ -55,7 +55,7 @@ class Autoreporte
         }
     }
 
-    public function Add(Autoreporte $data)
+    public function Add(Mantenimiento $data)
     {
         try {
 
@@ -84,7 +84,7 @@ class Autoreporte
         }
     }
 
-    public function Edit(Autoreporte $data)
+    public function Edit(Mantenimiento $data)
     {
         try {
             $sql = "UPDATE tb_proceso_noconformes SET nombre='$data->nombre', direccion='$data->direccion', telefono='$data->telefono',
@@ -95,7 +95,7 @@ class Autoreporte
             die($e->getMessage());
         }
     }
-    public function RespuestaEdit(Autoreporte $data)
+    public function RespuestaEdit(Mantenimiento $data)
     {
         try {
             $sql = "UPDATE  tb_proceso_noconformes SET estado='$data->estado', fechaRespuesta='$data->fechaRespuesta', conciliacion='$data->conciliacion',

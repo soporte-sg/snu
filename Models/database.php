@@ -8,23 +8,21 @@ class Database
 
         $host = 'localhost';
         if (!isset($_SESSION['squema'])) {
-            $dbname = 'snu';
+            $dbname = 'normalizacion_snu';
         } else {
             $dbname = $_SESSION['squema'];
         }
-        $username = 'root';
-        $password = '';
+        $username = 'normalizacion_snu';
+        $password = '?dXe0dmFlMcG';
         try {
             $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return $pdo;
             echo "Connected to $dbname at $host successfully.";
         } catch (PDOException $pe) {
-            die("Could not connect to the database $dbname :" . $pe->getMessage());
-
             session_destroy();
-            
-            header("Location: snu ");
+             header("Location: /snu ");
+             die("Could not connect to the database $dbname :" . $pe->getMessage());          
 
 
         }
@@ -35,9 +33,9 @@ class Database
           
         try {
             $host = 'localhost';
-            $dbname = 'snu';            
-            $username = 'root';
-            $password = '';
+            $dbname = 'normalizacion_snu';            
+            $username = 'normalizacion_snu';
+            $password = '?dXe0dmFlMcG';
 
             $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -46,6 +44,7 @@ class Database
         } catch (PDOException $pe) {
             die("Could not connect to the database $dbname :" . $pe->getMessage());
             session_reset();
+            header("Location: /snu ");
             session_destroy();
         }
 

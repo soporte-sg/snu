@@ -2,10 +2,9 @@
 
 class Estadistica
 {
-    private $pdo;
-
-    
+    private $pdo;    
     public $id;
+    public $ip;
     public $url;
     public $navegador;
     public $usuario;
@@ -62,9 +61,10 @@ class Estadistica
     public function Add(Estadistica $data)
     {
         try {
-            $stm = "INSERT INTO estadisticas(url, navegador, usuario, fecha_hora )
-            VALUES(?, ?, ?, ?)";
+            $stm = "INSERT INTO estadisticas(ip,url, navegador, usuario, fecha_hora )
+            VALUES(?,?, ?, ?, ?)";
             $this->pdo->prepare($stm)->execute(array(
+                $data->ip,
                 $data->url,
                 $data->navegador,
                 $data->usuario,
@@ -82,6 +82,17 @@ class Estadistica
             $stm = $this->pdo->prepare("SELECT  MAX(fecha_hora) AS ULTIMA, estadisticas.* FROM  estadisticas WHERE usuario= '$user'");
             $stm->execute();
             return $stm->fetch(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function Index()
+    {
+        try {
+            $stm = $this->pdo->prepare("SELECT * FROM  estadisticas ORDER BY fecha_hora asc");
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
         } catch (Exception $e) {
             die($e->getMessage());
         }

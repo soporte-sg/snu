@@ -11,9 +11,9 @@ class PermisosController
     public function Index()
     {
         $roles = $this->model->Index();
-        $_SESSION['rol_id'] == 1 ?  require_once 'Views/layout/clientes.php' : require_once 'Views/layout/default.php';
+        $_SESSION['rol_id'] == 1 ?  require_once 'Views/Layout/clientes.php' : require_once 'Views/Layout/default.php';
         require_once 'Views/Permisos/index.php';
-        require_once 'Views/layout/foot.php';
+        require_once 'Views/Layout/foot.php';
     }
 
     public function Crud()

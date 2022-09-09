@@ -7,7 +7,7 @@
     </div>
     <div class="responsive">
     <div class="body">        
-            <table id="table" class="table table-bordered table-striped">
+            <table id="example1" class="table table-bordered table-striped">
                 <thead>
                     <tr>
                         <th>Código</th>
@@ -18,27 +18,27 @@
                         <th>Protección</th>
                         <th>Tiempo</th>
                         <th>Disposición</th>
-                        <th>Responsable</th>
+                        <!--<th>Responsable</th>-->
                         <th>Menu</th>
                     </tr>
                 </thead>
                 <tbody>
+                   
                     <?php foreach ($documentos as $value) : ?>
                         <tr>
-                            <td><?= $value->CodFormato ?></td>
+                            <td width=11% ><?= $value->CodFormato ?></td>
                             <td><a href="<?= $value->RutaFormato ?>"><?= $value->NomFormato ?></a></td>
                             <td><?= $value->Version ?></td>
                             <td><?= $value->Actualizacion == '0000-00-00' ? $value->Emision : $value->Actualizacion ?></td>
                             <td><a href="<?= $value->Recuperacion ?>"><?= $value->Almacenamiento ?></a></td>
                             <td><?= $value->Proteccion ?></td>
-                            <td><?= $value->TiempoRetencion ?></td>
+                            <td width=2%><?= $value->TiempoRetencion ?></td>
                             <td><?= $value->DispFinal ?></td>
-                            <td><?= $value->Responsable ?></td>
+                            <!--<td><?= $value->Responsable ?></td>-->
                             <td>
-
                                 <!-- <a data-toggle="modal" href='#modal-id' type="button" onclick="Get('<?= $value->id ?>')" title="Ver datos del Documento">
-                                <i class="material-icons">visibility</i>-->
-                                </a>
+                                <i class="material-icons">visibility</i>
+                                </a>-->
                                 <?php if ($_SESSION['user']->rol_id == 4 or $_SESSION['user']->rol_id == 1) : ?>
                                     <a data-toggle="modal" href='#modal-id' type="button" onclick="Edit('<?= $value->id ?>')" type="button" title="Actualizar datos del Documento">
                                         <i class="material-icons">system_update</i>

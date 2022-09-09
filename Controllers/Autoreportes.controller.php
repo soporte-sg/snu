@@ -10,15 +10,12 @@ class AutoreportesController
     {
         $this->model = new Autoreporte();
     }
-
     public function Index()
     {
         require_once 'Views/Layout/default.php';
         require_once 'Views/Cliente/index.php';
         require_once 'Views/Layout/foot.php';
     }
-
-
     public function Add()
     {
         $proceso = new Proceso();
@@ -33,10 +30,9 @@ class AutoreportesController
     {
         $cargo = new Cargo();
         $cargos = $cargo->GetCargo($_REQUEST['proceso']);
-        // print_r($cargos);
+       //print_r($cargos);
 ?>
-
-        <div class="form-group">
+    <div class="form-group">
             <div class="form-line">
                 <label>Responsable</label>
                 <select name="cargo_id" id="cargo_id" class="form-control" required="required">
@@ -48,7 +44,6 @@ class AutoreportesController
                     <?php  } ?>
                 </select>
             </div>
-
         </div>
     <?php }
 
@@ -64,7 +59,6 @@ class AutoreportesController
                 <label>Responsable</label>
                 <select name="TbCondiciones_id" id="TbCondiciones_id" class="form-control" required="required">
                     <option value=" ">Seleccionar</option>;
-
                     <?php foreach ($condicions as $value) { ?>
                         <option value="<?php echo $value->id ?>"><?php echo $value->tipoIncidente ?> </option> ";
                     <?php  } ?>
@@ -142,7 +136,6 @@ class AutoreportesController
     {
 
         $autorepo =  $this->model->GetAutorep($_REQUEST['id']);
-
         $pro = $autorepo->proceso;
         $cond = $autorepo->TbCondiciones_id;
         $recur = $this->model->Recurrente($pro, $cond);
@@ -153,10 +146,8 @@ class AutoreportesController
     public function Gestion()
     {
         $data = new Autoreporte();
-
-        $data->id = $_REQUEST['id'];
-        
-        $data->estado = $_REQUEST['estado'];       
+        $data->id = $_REQUEST['id'];        
+        $data->estado = $_REQUEST['estado'];     
        
         $data->observacion1 = $_REQUEST['usuario'];
 
@@ -177,11 +168,7 @@ class AutoreportesController
                 $data->observacion1 = $_REQUEST['observacion1'];
                   
             }
-
-
-
-
-        $this->model->RespuestaEdit($data);
+                $this->model->RespuestaEdit($data);
     }
 
 

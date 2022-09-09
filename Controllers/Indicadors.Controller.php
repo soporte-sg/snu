@@ -25,9 +25,9 @@ class IndicadorsController
     $indicadors = $this->model->Index();
     $cargo = new Cargo();
     $cargos = $cargo->CargoIndex();
-    require_once 'Views/layout/default.php';
+    require_once 'Views/Layout/default.php';
     require_once 'Views/Indicadors/index.php';
-    require_once 'Views/layout/foot.php';
+    require_once 'Views/Layout/foot.php';
   }
 
   public function Add()
@@ -39,11 +39,11 @@ class IndicadorsController
     $formulas = $formula->GetFormula();
     $indicador = new Indicador();
     if (isset($_REQUEST['id'])) {
-      $indicador = $this->model->GetIndicador($_REQUEST['id']);
+      $indicador = $this->model->GetIndicador($_REQUEST['id']);print_r($indicador);
     }
-    require_once 'Views/layout/default.php';
+    require_once 'Views/Layout/default.php';
     require_once 'Views/Indicadors/add.php';
-    require_once 'Views/layout/foot.php';
+    require_once 'Views/Layout/foot.php';
   }
 
   public function Crud()
@@ -97,6 +97,7 @@ class IndicadorsController
   {
     $cargo = new Cargo();
     $cargos = $cargo->GetCargo($_REQUEST['proceso_id']);
+
     echo '<label>Responsable</label><select class="form-control"  id="cargo_id" name="cargo_id"> ';
     foreach ($cargos as $value) :
       echo '<option value="' . $value->id . '">' . $value->cargo . " " . $value->nombres . " " . $value->apellidos . '</option>';
@@ -111,7 +112,8 @@ class IndicadorsController
         if($metas){
           require_once 'Views/Indicadors/indexmeta.php';
 }else{
-  echo'<h3>No hay metas registradas</h3>';}
+  echo'<h3>No hay metas registradas</h3>';
+}
         
   }
 
@@ -131,9 +133,9 @@ public function Datos()
   $metas = new Meta();
   $metas = $metas->GetMetas($_REQUEST['id']);
  
-  require_once 'Views/layout/default.php';
+  require_once 'Views/Layout/default.php';
   require_once 'Views/Indicadors/datos.php'; 
-  require_once 'Views/layout/foot.php';
+  require_once 'Views/Layout/foot.php';
 }
 public function AddDatos()
 {
@@ -154,16 +156,14 @@ public function AddDatos()
 public function VerDatos ()
 {
 
-   $dato= new Dato();
+  $dato= new Dato();
   $datos=$dato->GetDatos($_REQUEST['indicador_id']);
   $accion = new Accion();
   $acciones= $accion->GetAccionInd($_REQUEST['indicador_id']);
   $indicador=$this->model->GetIndicador($_REQUEST['indicador_id']);
-
-
-  require_once 'Views/layout/default.php';
+  require_once 'Views/Layout/default.php';
   require_once 'Views/Indicadors/ver.php'; 
-  require_once 'Views/layout/foot.php';
+  require_once 'Views/Layout/foot.php';
 }
 
 

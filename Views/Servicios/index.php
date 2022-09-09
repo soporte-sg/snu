@@ -1,33 +1,31 @@
 <section>
-    <div class="panel panel-default">
-        <div class="panel-heading"><a data-toggle="modal" href='#modal-id' class="btn btn-success pull-right"> Registrar</a>
-            <h3 class="panel-title">Servicios</h3>            
+    <div class="panel">
+        <div class="panel-heading text-right">
+            <button  onclick="Ver1()" data-toggle="modal" href='#modal-id' class="neu  text-center"> Registrar</button>
         </div>
         <div class="panel-body">
             <div class="col-md-12">
                 <div class="row">
                     <div class="responsive">
-                        <table class="table table-bordered">
+                        <table class="table table-bordered" id="example1">
                             <thead>
                                 <tr>
-                                    <th>Servicio</th>
+                                    <th>Universo</th>
                                     <th>Cliente</th>
                                     <th>Fecha</th>
                                     <th>Menu</th>
                                 </tr>
                             </thead>
                             <tbody>
-
                                 <?php
-
                                 foreach ($servicios as $value) : ?>
                                     <tr>
                                         <td><?php echo $value->oferta ?></td>
                                         <td><?php echo  strtoupper($value->cliente)  ?></td>
                                         <td><?php echo $value->f_inicio ?></td>
                                         <td>
-                                            <a data-toggle="modal" href='#modal-id' class=""><i class="glyphicon glyphicon-edit"></i></a>
-                                            <a href="" class=""><i class="glyphicon glyphicon-trash"></i></a>                                        
+                                            <a onclick="Ver('<?= $value->servicios_id ?>')" data-toggle="modal" href='#modal-id' class="btn btn-default btn-circle waves-effect waves-circle waves-float"><i class="glyphicon glyphicon-edit"></i></a>
+                                            <a onclick="Borrar('<?= $value->servicios_id ?>')" class="btn btn-default btn-circle waves-effect waves-circle waves-float"><i class="glyphicon glyphicon-trash"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -47,79 +45,70 @@
         </div>
     </div>
 </section>
-
-
 <div class="modal fade" id="modal-id">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Agregar Servicio</h4>
+                <h4 class="modal-title text-center">Agregar Servicio</h4>
             </div>
-            <div class="modal-body">
-
-                <form action="" name="formdata" id="formdata" method="POST">
-                    <div class="form-group">
-                        <label for="">Cliente</label>
-                        <select name="cliente_id" id="cliente_id" class="form-control" required="required">
-                            <option value="">Seleccionar</option>
-                            <?php foreach ($clientes as $value) : ?>
-                                <option value="<?= $value->id ?>"><?= $value->id . $value->nombre ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                        <label for="">Servicios</label>
-                        <select name="servicio_id" id="servicio_id" class="form-control" required="required">
-                            <option value="">Seleccionar</option>
-                            <?php foreach ($ofertas as $value1) : ?>
-                                <option value="<?= $value1->id ?>"><?= $value1->oferta ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                        </select>
-                        <label for="">Fecha Inicio</label>
-                        <input type="date" class="form-control" id="f_inicio" name="f_inicio" placeholder="Input field">
-                        <input type="hidden" class="form-control" id="id" name="id" placeholder="Input field">
-                    </div>
-                </form>
-
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="botonenviar">Guardar</button>
-            </div>
+            <div class="modal-body" id="index"></div>
         </div>
     </div>
 </div>
 
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#botonenviar').click(function() {
-            if (($('#cliente_id').val() != "") && ($('#servicio_id').val() != "") && ($('#f_inicio').val() != "")) {
-                var datos = $('#formdata').serialize();
-                $.ajax({
-                    type: "POST",
-                    url: "?c=servicios&a=add",
-                    data: datos,
-                    success: function(r) {
-                        if (r == 1) {
-                            alert("Fallo al agregar");
-                        } else {
+<script>
+    function Ver(id) {
+        var val = id;
+        $.ajax({
+            type: "POST",
+            url: '?c=servicios&a=crud',
+            data: 'id=' + val,
+            success: function(resp) {
+                $('#index').html(resp);
+                $('#respuesta').html("");
+            }
+        });
+    }
+    function Ver1() {        
+        $.ajax({
+            type: "POST",
+            url: '?c=servicios&a=crud',           
+            success: function(resp) {
+                $('#index').html(resp);
+                $('#respuesta').html("");
+            }
+        });
+    }
+
+    function Borrar(val) {
+        Swal.fire({
+                title: "¿Estás seguro de eliminar este Servicio?",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+                showCancelButton: true,
+            })
+            .then((willDelete) => {
+                if (willDelete.value) {
+                    $.ajax({
+                        type: "POST",
+                        url: '?c=servicios&a=delete',
+                        data: 'id=' + val,
+                        success: function(datos) {
                             Swal.fire({
-                               
+                                icon: 'success',
                                 title: 'BIEN HECHO!!',
-                                timer: 1500
+                                timer: 2000
                             }, )
                             setTimeout(function() {
                                 //  window.location = '?c=solicitudes&a=index';
-                                window.location.reload(1);
+                                window.location.reload();
                             }, 2000)
                         }
-                    }
-                });
-            } else {
-                alert('campos vacíos');
-            }
-            return false;
-        });
-    });
+                    });
+                }
+            });
+
+    }
 </script>

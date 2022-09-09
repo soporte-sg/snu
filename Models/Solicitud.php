@@ -97,14 +97,12 @@ class Solicitud
     }
 
     //fin dashboard//
-
-
     //GESTION DE SOLICITUDES//
     public function Solicitudes()
     {
         try {
 
-            $stm = $this->pdo->prepare("SELECT * FROM solicitudes");
+            $stm = $this->pdo->prepare("SELECT * FROM solicitudes where Proceso!='so'");
             $stm->execute();
             return $stm->fetchAll(PDO::FETCH_OBJ);
         } catch (Exception $e) {

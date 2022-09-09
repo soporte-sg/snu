@@ -8,7 +8,7 @@ class ServiciosController
 {
     public function __CONSTRUCT()
     {
-        $this->model = new Autoreporte();
+        $this->model = new Producto();
     }
     /*crear los metodos necesarios*/
     public function Index()

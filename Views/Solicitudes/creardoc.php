@@ -35,7 +35,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="col-sm-2">
                         <div class="form-group">
                             <div class="form-line">
@@ -45,28 +44,26 @@
                         </div>
                     </div>
                 </div>
-
-                <?php if($solicitud->TipoSolicitud != 'creacion'):?>
-                <div class="col-sm-3">
-                    <div class="form-group">
-                        <div class="form-line">
-                            <label for="">Codigo</label>
-                            <?php $numCod = $separada[2] + 1; ?>
-                            <input type="text" name="CodDocumento" id="CodDocumento" class="form-control" value="<?= $separada[0] . '-' . $separada[1] . '-' . $numCod ?>">
-                        </div>
-                    </div>
-                </div>
-                <?php else:?>
+                <?php if ($solicitud->TipoSolicitud != 'creacion') : ?>
                     <div class="col-sm-3">
-                    <div class="form-group">
-                        <div class="form-line">
-                            <label for="">Codigo</label>                           
-                            <input type="text" name="CodDocumento" id="CodDocumento" class="form-control" value="">
+                        <div class="form-group">
+                            <div class="form-line">
+                                <label for="">Codigo</label>
+                                <?php $numCod = $separada[2] + 1; ?>
+                                <input type="text" name="CodDocumento" id="CodDocumento" class="form-control" value="<?= $separada[0] . '-' . $separada[1] . '-' . $numCod ?>">
+                            </div>
                         </div>
                     </div>
-                </div> 
-                <?php endif;?>
-
+                <?php else : ?>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <div class="form-line">
+                                <label for="">Codigo</label>
+                                <input type="text" name="CodDocumento" id="CodDocumento" class="form-control" value="">
+                            </div>
+                        </div>
+                    </div>
+                <?php endif; ?>
                 <div class="col-sm-3">
                     <div class="form-group">
                         <div class="form-line">
@@ -100,8 +97,6 @@
                         </div>
                     </div>
                 </div>
-
-
                 <div class="col-sm-3">
                     <div class="form-group">
                         <div class="form-line">
@@ -131,12 +126,11 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-12">
-                <input type="button" id="guardar" class="btn btn-default btn-block" value="Validar">
+                <div class="col-md-12">
+                    <input type="button" id="guardar" class="neu btn-block" value="Validar">
+                </div>
             </div>
         </form>
-
     </div>
 </div>
 </div>
@@ -144,8 +138,8 @@
 </div>
 <script>
     $(document).on('click', '#guardar', function(e) {
-       // var data = $("#formResponder").serialize();
-         var formData = new FormData($("#formResponder")[0]);         
+        // var data = $("#formResponder").serialize();
+        var formData = new FormData($("#formResponder")[0]);
         $.ajax({
             url: "?c=solicitudes&a=GestionDocumento",
             type: "POST",
@@ -160,7 +154,7 @@
                     timer: 1500
                 }, )
                 setTimeout(function() {
-                      window.location = '?c=solicitudes&a=index';
+                    window.location = '?c=solicitudes&a=index';
                     // window.location.reload(1);
                 }, 2000)
 

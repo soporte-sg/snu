@@ -30,7 +30,7 @@ class Seguridad
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             try {
                 $result = array();
-                $stm = $this->pdo->prepare("SELECT clientes.id as cliente_id, clientes.nombre as cliente, rols.rol,rols.id as rol_id, squemas.squema,  CONCAT(usuarios.nombres,' ',usuarios.apellidos) as FullName
+                $stm = $this->pdo->prepare("SELECT clientes.id as cliente_id, clientes.nombre as cliente, rols.rol,rols.id as rol_id, squemas.squema,  CONCAT(usuarios.nombres,' ',usuarios.apellidos) as FullName, usuarios.id as user_id
                                             FROM  usuarios  
                                             LEFT JOIN clientes ON usuarios.cliente_id = clientes.id 
                                             LEFT JOIN rols ON usuarios.rol_id = rols.id 

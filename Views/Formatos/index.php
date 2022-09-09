@@ -1,4 +1,4 @@
-<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
     <div class="button-demo">
         <?php foreach ($procesos as $value) : ?>
             <button type="button" onclick="Ver('<?= $value->Iniciales ?>')" class="btn btn-default btn-sm waves-effect"><strong><?= $value->Iniciales ?></strong><br><?= $value->NombreProceso ?></button>

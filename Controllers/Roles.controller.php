@@ -16,9 +16,9 @@ class RolesController
     {
         $roles=$this->model->Index();
         
-        require_once 'Views/layout/clientes.php';
+        require_once 'Views/Layout/clientes.php';
         require_once 'Views/Roles/index.php';
-        require_once 'Views/layout/foot.php';
+        require_once 'Views/Layout/foot.php';
         
     }
 
@@ -29,17 +29,17 @@ class RolesController
         $rols=$this->model->getRol($_REQUEST['id']);  
         //print_r($rols);
          }
-        require_once 'Views/layout/clientes.php';
+        require_once 'Views/Layout/clientes.php';
         require_once 'Views/Roles/crud.php';
-        require_once 'Views/layout/foot.php';
+        require_once 'Views/Layout/foot.php';
     }
 
     
     public function View()
     {
-        require_once 'Views/layout/default.php';
+        require_once 'Views/Layout/default.php';
         require_once 'Views/Solicitudes/View.php';
-        require_once 'Views/layout/foot.php';
+        require_once 'Views/Layout/foot.php';
     }
 
 public function Registrar(){
@@ -50,7 +50,7 @@ public function Registrar(){
 
     echo "
         <script>
-         window.location.href ='?c=roles&a=index&success';
+         window.location.href ='?c=permisos&a=index';
          </script>
     ";
 

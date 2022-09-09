@@ -16,9 +16,9 @@ class AccionesController
     {
         $cargo = new Cargo();
         $cargos = $cargo->CargoIndex();
-        require_once 'Views/layout/default.php';
+        require_once 'Views/Layout/default.php';
         require_once 'Views/Acciones/add.php';
-        require_once 'Views/layout/foot.php';
+        require_once 'Views/Layout/foot.php';
     }
 
     public function Crud()
@@ -32,7 +32,6 @@ class AccionesController
         $accion->accion = $_REQUEST['accion'];
         $accion->f_ejecucion = $_REQUEST['f_ejecucion'];
         $accion->cargo_id = $_REQUEST['cargo_id'];
-
         $accion->id > 0 ? $this->model->Update($accion) : $this->model->Add($accion);
     }
 }

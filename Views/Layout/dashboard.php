@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -103,6 +102,35 @@
                             <i class="material-icons">account_circle</i>
                             <span>Inicio</span>
                         </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">settings</i>
+                            <span>Configuración</span>
+                        </a>
+                        <ul class="ml-menu">
+                           <li>
+                                <a href="?c=usuarios&a=index2">usuarios</a>
+                            </li>
+                             <li>
+                                <a href="?c=categorias&a=index">Categorias</a>
+                            </li>
+                            <li>
+                                <a href="?c=fabricantes&a=index">Fabricantes</a>
+                            </li>
+                            <li>
+                                <a href="?c=estados&a=index">Estados</a>
+                            </li>
+                            <li>
+                                <a href="?c=ubicaciones&a=index">Ubicaciones</a>
+                            </li>
+                            <li>
+                                <a href="?c=sedes&a=index">Sedes</a>
+                            </li>
+                            <li>
+                                <a href="?c=depreciacions&a=index">Depreciación</a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">

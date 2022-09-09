@@ -6,27 +6,28 @@
         </h2>
 </div>
 <div class="body">
-<div class="responsive">
-    <table class="table table-bordered table-striped">
+
+<table id="example1" class="table table-bordered table-striped ">
             <thead>
                 <tr>
-                    <th>Codigo</th>
+                    <th>Código</th>
                     <th>Nombre</th>
                     <th>Responsable</th>
                     <th>Versión</th>
                     <th>Recuparación</th>
-                    <th>Emision</th>
+                    <th>Emisión</th>
                     <th>Actualización</th>
                     <th>Menu</th>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($documentos as $value) : 
+                <?php
+                foreach ($documentos as $value) : 
                     $dir='Assets/img/'.$_SESSION['datos_cliente']->nombre.'/'.$value->CodDocumento.'pdf';
                     ?>
                     <tr>
                         <td><?= $value->CodDocumento ?></td>
-                        <td><a  href="Assets/img/<?=$_SESSION['datos_cliente']->nombre.'/'.$value->CodDocumento?>.pdf" target="_blank">         <?= $value->NomDocumento ?></a>   </td>
+                        <td><a  href="Assets/img/<?=$_SESSION['datos_cliente']->nombre.'/'.$value->CodDocumento?>.pdf" target="_blank"><?= $value->NomDocumento ?></a>   </td>
                         <td><?= $value->proteccion ?></td>
                         <td><?= $value->Version ?></td>
                         <td><?= $value->preservacion ?></td>
@@ -34,29 +35,17 @@
                         <td><?= $value->Actualizacion ?></td>
                         <td>
                             <?php if ($_SESSION['user']->rol_id == 4 or $_SESSION['user']->rol_id == 1) : ?>
-                                <a data-toggle="modal" href='#modal-id' type="button" onclick="Edit('<?=$value->id ?>')" type="button" title="Actualizar datos del Documento">
+                                <a data-toggle="modal" href='#modal-id' type="button" onclick="Edit('<?php echo $value->id ?>')" type="button" title="Actualizar datos del Documento">
                                     <i class="material-icons">system_update</i>
                                 </a>
                             <?php endif; ?>
                         </td>
                     </tr>
                 <?php endforeach; ?>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <th>Codigo</th>
-                    <th>Nombre</th>
-                    <th>Responsable</th>
-                    <th>Versión</th>
-                    <th>Recuparación</th>
-                    <th>Emision</th>
-                    <th>Actualización</th>
-                    <th>Menu</th>
-                </tr>
-            </tfoot>
+            </tbody>            
         </table>
         </div>
-    </div>
+   
 </div>
 
 <div class="modal fade" id="modal-id">

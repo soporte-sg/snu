@@ -4,6 +4,7 @@ class Indicador
 {
     private $pdo;
     public $id;
+    public $indicador_id;
     public $proceso_id;
     public $formula_id;
     public $nombre;
@@ -15,6 +16,9 @@ class Indicador
     public $tipo;
     public $comparativo;
     public $valor;
+    public $meta;
+    public $num_meta;
+
 
 
     public function __CONSTRUCT()
@@ -62,7 +66,6 @@ class Indicador
             $stm = "INSERT INTO indicadors(proceso_id, formula_id,nombre,cargo_id,definicion,interpretacion,periodicidad,meta,num_meta,fecha_control, tipo)
             VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $this->pdo->prepare($stm)->execute(array(
-
                 $data->proceso_id,
                 $data->formula_id,
                 $data->nombre,
@@ -73,10 +76,9 @@ class Indicador
                 $data->meta,
                 $data->num_meta,
                 $data->fecha_control,
-                $data->tipo,
-                
+                $data->tipo,                
             ));
-            $id_cliente = $this->pdo->lastInsertId();
+            $id_indicador= $this->pdo->lastInsertId();
         } catch (Exception $e) {
             die($e->getMessage());
         }
@@ -84,8 +86,10 @@ class Indicador
 
     public function Update(Indicador $data)
     {
+          print_r($data);        
+        exit();
         try {
-            $sql = "UPDATE indicadors SET             
+             $sql = "UPDATE indicadors SET             
                             proceso_id='$data->proceso_id',
                             formula_id='$data->formula_id',
                             nombre='$data->nombre',
@@ -108,7 +112,7 @@ class Indicador
 
         try {
 
-            $stm = $this->pdo->prepare("SELECT indicadors.*,procesos.* , modelos.* 
+            $stm = $this->pdo->prepare("SELECT indicadors.*, indicadors.id as indicador_id,procesos.*, procesos.id as proceso_id , modelos.*, modelos.id as modelo_id
             FROM   indicadors, procesos, modelos 
             WHERE 
             indicadors.id='$id'

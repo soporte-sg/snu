@@ -1,13 +1,6 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
    
-
- <script>
-        $(document).ready(function() {
-            $('#table').DataTable();
-        });
-    </script>
-
 </div>
 </section>
 
@@ -31,41 +24,21 @@
 <script src="Assets/plugins/node-waves/waves.js"></script>
 
 <!-- Jquery DataTable Plugin Js -->
-    
+<!-- DataTables  & Plugins -->
+<script src="Assests/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="Assests/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="Assests/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="Assests/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="Assests/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="Assests/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="Assests/plugins/jszip/jszip.min.js"></script>
+<script src="Assests/plugins/pdfmake/pdfmake.min.js"></script>
+<script src="Assests/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="Assests/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="Assests/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="Assests/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/v/bs-3.3.7/dt-1.12.1/b-2.2.3/b-html5-2.2.3/datatables.min.js"></script>
-
-
-
-    
-
-
-
-    <!-- Jquery CountTo Plugin Js 
-    <script src="Assets/plugins/jquery-countto/jquery.countTo.js"></script>-->
-
-    <!-- Morris Plugin Js 
-    <script src="Assets/plugins/raphael/raphael.min.js"></script>
-    <script src="Assets/plugins/morrisjs/morris.js"></script>-->
-
-    <!-- ChartJs 
-    <script src="plugins/chartjs/Chart.bundle.js"></script>-->
-
-    <!-- Flot Charts Plugin Js 
-    <script src="Assets/plugins/flot-charts/jquery.flot.js"></script>
-    <script src="Assets/plugins/flot-charts/jquery.flot.resize.js"></script>
-    <script src="Assets/plugins/flot-charts/jquery.flot.pie.js"></script>
-    <script src="Assets/plugins/flot-charts/jquery.flot.categories.js"></script>
-    <script src="Assets/plugins/flot-charts/jquery.flot.time.js"></script>-->
-
-    <!-- Sparkline Chart Plugin Js 
-    <script src="Assets/plugins/jquery-sparkline/jquery.sparkline.js"></script>-->
-
-    <!-- Custom Js -->
+<!-- Custom Js -->
     <script src="Assets/js/admin.js"></script>
     <script src="Assets/js/pages/index.js"></script>
 
@@ -74,3 +47,24 @@
     </body>
 
     </html>
+
+    <!-- Page specific script -->
+<script>
+    $(function() {
+        $("#table").DataTable({
+
+            language: {
+                search: "Buscar:",
+                paginate: {
+            previous: '‹',
+            next:     '›'
+        },
+        
+            },
+            "responsive": true,
+            "lengthChange": false,
+            "autoWidth": true,
+            "buttons": ["copy", "csv", "excel", "pdf", "print"]
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    });
+</script>

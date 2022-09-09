@@ -66,7 +66,7 @@ class Documento
             $result = array();
             $stm = $this->pdo->prepare("SELECT documentos.*, procesos.* 
             FROM  documentos, procesos
-            WHERE documentos.Proceso = Procesos.id
+            WHERE documentos.Proceso = procesos.id
             AND   documentos.Proceso = '$proceso'
             ORDER BY CodDocumento");
             $stm->execute();
@@ -94,7 +94,7 @@ class Documento
 
         try {
 
-            $stm = $this->pdo->prepare("SELECT * FROM  Documentos WHERE id='$id'");
+            $stm = $this->pdo->prepare("SELECT * FROM  documentos WHERE id='$id'");
             $stm->execute();
             return $stm->fetch(PDO::FETCH_OBJ);
         } catch (Exception $e) {

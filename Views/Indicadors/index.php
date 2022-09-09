@@ -1,5 +1,3 @@
-<?php //print_r($cargos)
-?>
 <div class="row clearfix">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <div class="card">
@@ -11,14 +9,14 @@
                 </div>
                 <ul class="header-dropdown m-r--5">
                     <li class="dropdown">
-                        <a href="?c=indicadors&a=add" class="btn btn-success">Agregar Indicador</a>
+                        <a href="?c=indicadors&a=add" class="neu">Agregar Ficha </a>
                     </li>
                 </ul>
             </div>
             <div class="body">
                 <div class="sgcDocumentos index">
                     <div class="table-responsive">
-                        <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                        <table id="example1" class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th>No</th>

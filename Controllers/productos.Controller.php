@@ -1,0 +1,248 @@
+<?php
+// importar los modelos necesarios
+require_once 'Models/database.php';
+require_once 'Models/Producto.php';
+require_once 'Models/Fabricante.php';
+require_once 'Models/Categoria.php';
+require_once 'Models/Sede.php';
+require_once 'Models/Ubicacion.php';
+require_once 'Models/Mantenimiento.php';
+require_once 'Models/Prestamo.php';
+//nombre la clase
+class ProductosController
+{
+    public function __CONSTRUCT()
+    {
+        $this->model = new Producto();
+    }
+    /*crear los metodos necesarios*/
+    public function Index()
+    {
+        $productos = $this->model->Informe();
+        require_once 'Views/Layout/inventario.php';
+        require_once 'Views/Productos/index.php';
+        require_once 'Views/Layout/foot.php';
+    }
+
+
+    public function Consultar()
+    {
+        $sede = new Sede();
+        $sedes = $sede->Index();
+        require_once 'Views/Layout/inventario.php';
+        require_once 'Views/Productos/consulta.php';
+        require_once 'Views/Layout/foot.php';
+    }
+
+
+    public function ProductoxUbicacion()
+    {
+        $productos = $this->model->Xubicacion($_REQUEST['ubicacion_id']);
+        require_once 'Views/Productos/xubicacion.php';
+    }
+    public function ProductoxPrestamo()
+    {
+        $productos = $this->model->Xubicacion($_REQUEST['ubicacion_id']);
+        require_once 'Views/Productos/xubicacionPrestamo.php';
+    }
+
+    public function Crud()
+    {
+        $producto = new Producto();
+        $fabricante = new Fabricante();
+        $fabricantes = $fabricante->Index();
+        $categoria = new Categoria();
+        $categorias = $categoria->Index();
+        $sede = new Sede();
+        $sedes = $sede->Index();
+        $ubicacion = new Ubicacion();
+        $ubicacions = $ubicacion->Index();
+
+        if (isset($_REQUEST['id'])) {
+            $producto = $this->model->Producto($_REQUEST['id']);
+        }
+            
+        if (isset($_REQUEST['idproducto'])) {
+            $producto = $producto->Producto($_REQUEST['idproducto']);
+            require_once 'Views/Productos/crud.php';
+        } else {
+            require_once 'Views/Layout/inventario.php';
+            require_once 'Views/Productos/crud.php';
+            require_once 'Views/Layout/foot.php';
+        }
+    }
+
+
+    public function Estado()
+    {
+        $producto = new Producto();
+
+        if (isset($_REQUEST['id'])) {
+            $producto = $producto->Producto($_REQUEST['id']);
+        }
+
+        require_once 'Views/Productos/estado.php';
+    }
+
+    public function Reg_Estado()
+    {
+        $producto = new Producto();
+        $producto->id = $_REQUEST['id'];
+        $producto->estado_id = $_REQUEST['estado_id'];
+        $this->model->EditEstado($producto);
+    }
+
+
+    public function Registrar()
+    {
+        $producto = new Producto();
+        $producto->id = $_REQUEST['id'];
+        $producto->usuario_id = $_REQUEST['usuario_id'];
+        $producto->factura = $_REQUEST['factura'];
+        $producto->proveedor = $_REQUEST['proveedor'];
+        $producto->categoria_id = $_REQUEST['categoria_id'];
+        $producto->fabricante_id = $_REQUEST['fabricante_id'];
+        $producto->nombre = $_REQUEST['nombre'];
+        $producto->carateristicas = $_REQUEST['carateristicas'];
+        $producto->serie = $_REQUEST['serie'];
+        $producto->adquisicion = $_REQUEST['adquisicion'];
+        $producto->preciocosto = $_REQUEST['preciocosto'];
+        $producto->fechacompra = $_REQUEST['fechacompra'];
+        $producto->sede_id = $_REQUEST['sede_id'];
+        $producto->ubicacion_id = $_REQUEST['ubicacion_id'];
+        $producto->estado_id = $_REQUEST['estado_id'];
+        $producto->cantidad = 1;
+        $producto->created = date('Y-m-d');
+        $producto->modified = date('Y-m-d');
+        $producto->filename = $_FILES['filename']['name'];
+        $producto->dir = 'Assets/productos/' . $_SESSION['datos_cliente']->nombre . '/';
+
+        $producto->id > 0 ?
+            $this->model->Edit($producto)
+            : $this->model->Add($producto);
+        $this->model->SubirImg();
+    }
+
+    public function Descripcion()
+    {
+        $ubicacion = new Ubicacion();
+        $ubicacions = $ubicacion->UbicacionxSede($_REQUEST['sede_id']);
+      ?>
+        <select name="ubicacion_id" id="ubicacion_id" class="form-control" required="required">';
+            <option value="">Seleccionar</option>
+            <?php foreach ($ubicacions as $value) : ?>
+                <option value="<?= $value->id ?>"> <?= $value->nombre ?></option>
+            <?php endforeach; ?>
+        </select>
+
+        <script>
+            $('#ubicacion_id').on('change', function() {
+                var id = document.getElementById("ubicacion_id").value
+                $.ajax({
+                    type: "POST",
+                    url: '?c=productos&a=ProductoxUbicacion',
+                    data: {
+                        ubicacion_id: id
+                    },
+                    beforeSend: function() {
+                        $('#resultado').html("<h5 class='text-center'>Cargando Información</h5>");
+                    },
+                    success: function(resp) {
+                        $('#resultado').html(resp);
+                        $('#respuesta').html("");
+                    }
+                });
+            });
+        </script>
+<?php }
+
+    public function Ver()
+    {
+
+        if (isset($_SESSION['id_producto']) or isset($_GET['id'])) {
+            $id = $_SESSION['id_producto'];
+            require_once 'Views/Layout/inventario.php';
+        } else {
+            $id = $_REQUEST['id'];
+        }
+        $producto = $this->model->VerProducto($id);
+        $mantenimiento = new Mantenimiento();
+        $mantenimientos = $mantenimiento->Xproducto($id);
+        require_once 'Views/Productos/ver.php';
+        require_once 'Views/Layout/foot.php';
+    }
+
+    public function Xid()
+    {
+        if (isset($_REQUEST['id']) & $_REQUEST['id'] > 0) {
+            $producto = $this->model->VerProducto($_REQUEST['id']);
+            if ($producto) {
+                require_once 'Views/Productos/xid.php';
+            } else {
+                echo 'Sin resultado';
+            }
+        }
+    }
+
+
+    public function Prestamos()
+    {
+        $sedes =new Sede();
+        $sedes= $sedes->Index();
+        $prestamos= new Prestamo();
+        $prestados = $prestamos->Index();
+        
+        require_once 'Views/Layout/inventario.php';
+        require_once 'Views/Productos/prestamo.php';
+        require_once 'Views/Layout/foot.php';
+    }
+
+    public function Prestar()
+    {
+        require_once 'Views/Productos/prestar.php'; 
+    }
+    public function addPrestamo()
+    {
+   
+   $prestamo= new Prestamo();
+   $prestamo->id= $_REQUEST['id'];
+   $prestamo->cons= $_REQUEST['cons'];
+   $prestamo->fechaEntrega= $_REQUEST['fechaEntrega']; 
+   $prestamo->nombres= $_REQUEST['nombres']; 
+   $prestamo->apellidos= $_REQUEST['apellidos']; 
+   $prestamo->identificacion= $_REQUEST['identificacion']; 
+   $prestamo->contacto= $_REQUEST['contacto']; 
+   $prestamo->correo= $_REQUEST['correo']; 
+   $prestamo->beneficiario= $_REQUEST['beneficiario']; 
+   $prestamo->tramite= $_REQUEST['tramite']; 
+   $prestamo->barrio= $_REQUEST['barrio']; 
+   $prestamo->direccion= $_REQUEST['direccion'] ;
+   $prestamo->funcionario= $_REQUEST['funcionario']; 
+   $prestamo->observaciones= $_REQUEST['observaciones'];
+   $prestamo->id>0?$this->model->edit_Prestamo($prestamo):$this->model->reg_Prestamo($prestamo);
+    }
+    public function verPrestamo()
+    {
+        $prestamo = new Prestamo();
+        $prestamos = $prestamo->getPrestamo($_REQUEST['prestamoId']);
+        require_once 'Views/Productos/verprestamo.php'; 
+    }
+    public function Recibir()
+    {
+        $prestamo = new Prestamo();
+        $prestamos = $prestamo->getPrestamo($_REQUEST['prestamoId']);
+        require_once 'Views/Productos/recibir.php'; 
+    }
+    public function AddRecibir()
+    {
+        $prestamos = new Prestamo();
+        $prestamos->dellate_entrada=$_REQUEST['dellate_entrada'];
+        $prestamos->fecha_entrada=$_REQUEST['fecha_entrada'];
+        $prestamos->tipo=$_REQUEST['tipo'];
+        $prestamos->id=$_REQUEST['id'];
+
+        $prestamos->Devolucion($prestamos);
+
+
+    }
+}

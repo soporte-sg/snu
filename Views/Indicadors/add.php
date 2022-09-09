@@ -1,5 +1,3 @@
-<!-- Input -->
-<!--   <div class="row clearfix">-->
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <div class="card">
         <div class="header">
@@ -8,11 +6,7 @@
             </h2>
         </div>
         <div class="body">
-
             <form action="" name="formIndicador" id="formIndicador" method="POST">
-
-
-
                 <div class="row clearfix">
                     <div class="col-sm-12">
                         <div class="form-group">
@@ -23,37 +17,27 @@
                             </div>
                         </div>
                     </div>
-
-
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>Proceso Responsable</label>
                             <select name="proceso_id" id="proceso_id" class="form-control">
                                 <option value="NA">Seleccione</option>
                                 <?php foreach ($procesos as $pro) : ?>
-                                    <option value="<?php echo $pro->Iniciales; ?>" <?php echo $indicador->proceso_id == $pro->id ? 'selected' : ''   ?>><?php echo $pro->Iniciales . '-' . $pro->NombreProceso; ?></option>
+                                    <option value="<?php echo $pro->id; ?>" <?php echo $indicador->proceso_id == $pro->id ? 'selected' : ''   ?>><?php echo $pro->Iniciales . '-' . $pro->NombreProceso; ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
                     </div>
-
-                    <div class="col-sm-6" id="div_subcategorias_wrapper">
-
-
-                    </div>
+                    <div class="col-sm-6" id="div_subcategorias_wrapper"> </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
                         <div class="form-line">
                             <label>Fecha Control</label>
                             <input type="date" name="fecha_control" class='form-control' value="<?php echo date('Y-m-d', strtotime($indicador->fecha_control)); ?>">
-
                         </div>
                     </div>
                 </div>
-                <?php  //debug($formulas);
-                ?>
-
                 <div class="col-sm-6">
                     <div class="form-group">
                         <div class="form-line">
@@ -72,7 +56,6 @@
                         <div class="form-line">
                             <label>Fuente del recurso</label>
                             <textarea class="form-control" name="definicion" value="" required><?php echo $indicador->definicion; ?></textarea>
-
                         </div>
                     </div>
                 </div>
@@ -86,7 +69,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="col-sm-6">
                     <div class="form-group">
                         <div class="form-line">
@@ -99,12 +81,10 @@
                                 <option value="semestral" <?php echo $indicador->periodicidad == 'semestral' ? 'selected' : '' ?>>Semestral</option>
                                 <option value="anual" <?php echo $indicador->periodicidad == 'anual' ? 'selected' : '' ?>>Anual</option>
                             </select>
-
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
-
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>Operador</label>
@@ -121,7 +101,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>Meta</label>
@@ -131,14 +110,10 @@
                         </div>
                     </div>
                 </div>
-                <input name="id" id="id" type="hidden" value="<?php echo $indicador->id; ?>">
+                <input name="id" id="id" type="hidden" value="<?php echo $indicador->indicador_id; ?>">
                 <input type="button" id="guardar" class="btn btn-default btn-block" value="Registrar">
-
-
             </form>
         </div>
-
-
     </div>
 </div>
 </div>
@@ -163,16 +138,18 @@
 
         })
     });
-    $('#proceso_id').on('change', function(e){       
+    $('#proceso_id').on('change', function(e) {
         var proceso_id = document.getElementById("proceso_id").value
         $.ajax({
-            data: {proceso_id:proceso_id},
+            data: {
+                proceso_id: proceso_id
+            },
             type: "post",
             url: "?c=indicadors&a=Cargos",
 
             success: function(resp) {
                 $('#div_subcategorias_wrapper').html(resp);
-               
+
             }
 
 

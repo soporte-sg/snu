@@ -1,7 +1,7 @@
 <?php
 class Usuario
 {
-    public $id; 
+    public $id;
     public $nombres;
     public $apellidos;
     public $correos;
@@ -34,7 +34,7 @@ class Usuario
              LEFT JOIN clientes ON clientes.id = usuarios.cliente_id
              JOIN rols ON usuarios.rol_id=rols.id");
             $stm->execute();
-            return $stm->fetchAll(PDO::FETCH_OBJ);
+            return $stm->fetch(PDO::FETCH_OBJ);
         } catch (Exception $e) {
             die($e->getMessage());
         }
@@ -45,9 +45,44 @@ class Usuario
 
         try {
             $id = $_REQUEST['id'];
-            $stm = $this->pdo->prepare("SELECT * FROM  usuarios WHERE id='$id'");
+            $stm = $this->pdo->prepare("SELECT * FROM  normalizacion_snu.usuarios WHERE id='$id'");
             $stm->execute();
             return $stm->fetch(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+    public function Validar(Usuario $data)
+    {    
+        try {
+            
+            $stm = $this->pdo->prepare("SELECT * FROM  normalizacion_snu.usuarios WHERE identificacion='$data->identificacion' AND email='$data->email'");
+            $stm->execute();
+            return $stm->fetch(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+    public function getProveedor()
+    {
+
+        try {
+            $cliente_id= $_SESSION['datos_cliente']->id;
+            $stm = $this->pdo->prepare("SELECT * FROM  normalizacion_snu.usuarios WHERE rol_id=4 AND cliente_id='$cliente_id' ");
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+    public function getFuncionario()
+    {
+
+        try {
+            $cliente_id= $_SESSION['datos_cliente']->id;
+            $stm = $this->pdo->prepare("SELECT * FROM  normalizacion_snu.usuarios WHERE rol_id=3 AND cliente_id='$cliente_id'");
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
         } catch (Exception $e) {
             die($e->getMessage());
         }
@@ -57,7 +92,7 @@ class Usuario
     {
 
         try {
-            $sql = "UPDATE usuarios SET username='$data->username' , password='$data->password' WHERE id = '$data->id";
+            $sql = "UPDATE normalizacion_snu.usuarios SET username='$data->username' , password='$data->password' WHERE id = '$data->id'";
             $this->pdo->prepare($sql)->execute();
         } catch (Exception $e) {
             die($e->getMessage());
@@ -67,8 +102,8 @@ class Usuario
     public function Registrar(Usuario $data)
     {
         try {
-            $sql = "INSERT INTO usuarios (nombres, apellidos, identificacion, cliente_id, rol_id, squema_id,username, password,estado,  created, modified) 
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO normalizacion_snu.usuarios (nombres, apellidos, identificacion, cliente_id, cargo_id, email, rol_id, squema_id,username, password,estado,  created, modified) 
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
 
             $this->pdo->prepare($sql)
                 ->execute(
@@ -77,13 +112,15 @@ class Usuario
                         $data->apellidos,
                         $data->identificacion,
                         $data->cliente_id,
+                        $data->cargo_id,
+                        $data->email,
                         $data->rol_id,
-                        $data->squema_id=0,
+                        $data->squema_id = 0,
                         $data->username = $data->identificacion,
-                        $data->password=md5($data->identificacion),
+                        $data->password = md5($data->identificacion),
                         $data->estado,
                         $data->created = date('Y-m-d'),
-                        $data->modified=date('Y-m-d')
+                        $data->modified = date('Y-m-d')
                     )
                 );
         } catch (Exception $e) {
@@ -94,7 +131,7 @@ class Usuario
     public function Actualizar(Usuario $data)
     {
         try {
-            $sql = "UPDATE usuarios SET nombres='$data->nombres' , apellidos='$data->apellidos',  identificacion='$data->identificacion' , cliente_id='$data->cliente_id', rol_id='$data->rol_id', estado='$data->estado' WHERE id = '$data->id'";
+            $sql = "UPDATE normalizacion_snu.usuarios SET nombres='$data->nombres' , apellidos='$data->apellidos',  identificacion='$data->identificacion' , cliente_id='$data->cliente_id', email='$data->email', rol_id='$data->rol_id', cargo_id='$data->cargo_id', estado='$data->estado' WHERE id = '$data->id'";
             $this->pdo->prepare($sql)->execute();
         } catch (Exception $e) {
             die($e->getMessage());

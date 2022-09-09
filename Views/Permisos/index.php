@@ -1,13 +1,13 @@
 <div class="row clearfix" >
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <div class="card">
-            <div class="header">
+        <div class="panel">
+            <div class="header text-center">
                 <h2>
-                    Configurar Permisos
-                    <small>Asigna los permisos del rol a cada modulo </small>
+                    Configurar Privilegios<br>
+                    <small>Asigna los privilegios del rol a cada módulo </small>
                 </h2>
             </div>
-            <div class="body">
+            <div class="panel-body">
                 <div class="row clearfix">
                     <div class="col-md-6">
                         <label for="tipo_usuario">Tipo de usuario</label>
@@ -17,10 +17,10 @@
                                 <option value="<?php echo  $value->id ?>"><?php echo  ucwords($value->rol)  ?></option>
                             <?php endforeach; ?>
                         </select>
+                        <br><br>
                     </div>
                     <div id="resultado" class="col-md-12"></div>
-                    <div id="resultado1" class="col-md-12"></div>
-                   
+                    <div id="resultado1" class="col-md-12"></div>                   
                 </div>
             </div>
         </div>
@@ -29,8 +29,6 @@
 </div>
 </div>
 </div>
-
-
 <script>
     function Permisos() {
         var id = document.getElementById('tipousuario').value;

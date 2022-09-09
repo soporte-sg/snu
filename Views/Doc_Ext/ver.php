@@ -6,10 +6,10 @@
         </h2>
     </div>
     <div class="body">
-    <table id="table" class="table table-bordered table-striped">
+    <table id="example1" class="table table-bordered">
             <thead>
                 <tr>
-                    <th>Codigo</th>
+                    <th>Código</th>
                     <th>Nombre</th>
                     <th>Expedición</th>
                     <th>Descripción</th>                    

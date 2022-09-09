@@ -17,9 +17,9 @@ class FormatosController
         $proceso = new Proceso();
         $procesos = $proceso->getProceso();
 
-        require_once 'Views/layout/default.php';
+        require_once 'Views/Layout/default.php';
         require_once 'Views/Formatos/index.php';
-        require_once 'Views/layout/foot.php';
+        require_once 'Views/Layout/foot.php';
     }
 
     public function AddEdit()
@@ -29,9 +29,9 @@ class FormatosController
             $rols = $this->model->getRol($_REQUEST['id']);
            // print_r($rols);
         }
-        require_once 'Views/layout/clientes.php';
+        require_once 'Views/Layout/clientes.php';
         require_once 'Views/Roles/crud.php';
-        require_once 'Views/layout/foot.php';
+        require_once 'Views/Layout/foot.php';
     }
 
 
@@ -39,27 +39,27 @@ class FormatosController
     {
 
         $documentos = $this->model->getDocs($_REQUEST['id']);
-        //equire_once 'Views/layout/default.php';
+        require_once 'Views/Layout/tablas0.php';
         require_once 'Views/Formatos/ver.php';
-        // require_once 'Views/layout/foot.php';
+        require_once 'Views/Layout/tablas.php';
     }
 
     public function Getdoc()
     {
 
         $documentos = $this->model->getDoc($_REQUEST['doc_id']);
-        //equire_once 'Views/layout/default.php';
+        //equire_once 'Views/Layout/default.php';
         require_once 'Views/Formatos/getdoc.php';
-        // require_once 'Views/layout/foot.php';
+        // require_once 'Views/Layout/foot.php';
     }
 
     public function Edit()
     {
 
         $documentos = $this->model->getDoc($_REQUEST['doc_id']);
-        //equire_once 'Views/layout/default.php';
+        //equire_once 'Views/Layout/default.php';
         require_once 'Views/Formatos/editdoc.php';
-        // require_once 'Views/layout/foot.php';
+        // require_once 'Views/Layout/foot.php';
     }
 
     public function Registrar()

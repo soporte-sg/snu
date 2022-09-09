@@ -39,9 +39,9 @@ class SolicitudesController
         $val = $seguridad->Validar($modulo, $tipo);
         $solicitud = new Solicitud();
         $solicitudes = $solicitud->Solicitudes();
-        require_once 'Views/layout/default.php';
+        require_once 'Views/Layout/default.php';
         $val->leer == 1  ? require_once 'Views/Solicitudes/index.php' : require_once 'Views/seguridad/error.php';
-        require_once 'Views/layout/footer.php';
+        require_once 'Views/Layout/footer.php';
     }
 
     public function Add()
@@ -51,13 +51,12 @@ class SolicitudesController
         $modulo = 'solicitudes';
         $tipo = $_SESSION['rol_id'];
         $val = $seguridad->Validar($modulo, $tipo);
-
         $proceso = new Proceso();
         $procesos = $proceso->getProceso();
         $ultima_solicitud = $this->model->SolicitudesMax();
-        require_once 'Views/layout/default.php';
+        require_once 'Views/Layout/default.php';
         $val->crear == 1  ? require_once 'Views/Solicitudes/add.php' : require_once 'Views/seguridad/error.php';
-        require_once 'Views/layout/footer.php';
+        require_once 'Views/Layout/footer.php';
     }
 
     public function Edit()
@@ -69,9 +68,9 @@ class SolicitudesController
         $tipo = $_SESSION['rol_id'];
         $val = $seguridad->Validar($modulo, $tipo);
 
-        require_once 'Views/layout/default.php';
-        $val->crear == 1  ? require_once 'Views/Solicitudes/Edit.php' : require_once 'Views/seguridad/error.php';
-        require_once 'Views/layout/footer.php';
+        require_once 'Views/Layout/default.php';
+        $val->crear == 1  ? require_once 'Views/Solicitudes/edit.php' : require_once 'Views/seguridad/error.php';
+        require_once 'Views/Layout/footer.php';
     }
 
     public function Registrar()
@@ -103,14 +102,16 @@ class SolicitudesController
     }
 
 
-    public function View()
+    public function Ver()
     {
         $solicitudes =  $this->model->GetSolicitud($_REQUEST['id']);
         $seguridad = new Permiso();
         $modulo = 'solicitudes';
         $tipo = $_SESSION['rol_id'];
         $val = $seguridad->Validar($modulo, $tipo);
-        $val->crear == 1  ?  require_once 'Views/Solicitudes/View.php' : require_once 'Views/seguridad/error.php';
+        require_once 'Views/Layout/clientes.php';
+        $val->crear == 1  ?  require_once 'Views/Solicitudes/view.php' : require_once 'Views/seguridad/error.php';
+        require_once 'Views/Layout/foot.php';
     }
 
     public function Descripcion()
@@ -140,7 +141,7 @@ class SolicitudesController
             $formato = new Formato();
             $ext = new Doc_ext();
             $docProceso = $documento->getDocProceso($solicitud->Proceso);
-            require_once 'Views/layout/default.php';
+            require_once 'Views/Layout/default.php';
             require_once 'Views/Solicitudes/responder.php';
 
             /*creaciones*/
@@ -178,7 +179,7 @@ class SolicitudesController
                 require_once 'Views/Solicitudes/actformato.php';
             }
             /*actualizaciones*/
-            require_once 'Views/layout/footer.php';
+            require_once 'Views/Layout/footer.php';
         }
     }
 
