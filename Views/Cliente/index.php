@@ -1,4 +1,4 @@
-
+<!-- <?php print_r($clientes)?> -->
 <div  class="panel panel-primary panel-outline">
     <!-- Default panel contents -->
     <div class="panel-heading text-right">       
@@ -17,8 +17,21 @@
             <tbody>
             <?php foreach ($clientes as $cliente) : ?>
                 <tr>
-                    <td class="text-center"><img src="Assets/img/uploads/colegio/<?php echo  $cliente->filename ?>" alt="Profile Image"  width='100' height='90' class="bg-white" /></td>
-                    <td><a href="?c=clientes&a=verificar&id=<?php echo $cliente->cliente_id ?>" class="neu btn-block text-center"><strong><?php echo strtoupper($cliente->nombre); ?></strong></a></td>
+                    <td class="text-center"><img src="Assets/img/uploads/colegio/<?php echo  $cliente->filename ?>" alt="Profile Image"  width='100' height='90' class="bg-white" />
+                        <br>
+                        <a href="?c=clientes&a=verificar&id=<?php echo $cliente->cliente_id ?>" class="neu btn text-center"><strong><?php echo strtoupper($cliente->nombre); ?></strong></a>
+                    </td>
+                    <td> <ul style="list-style: none;">
+                        
+                    <li><?php echo $cliente->nombre ?></li>
+                    <li><?php echo $cliente->telefono ?></li>
+                    <li><?php echo $cliente->direccion?></li>
+                    <li><?php echo $cliente->correos ?></li>
+                
+                    </ul>
+                    
+
+                    </td>
                     <td class="text-center"><span><a onclick="Clientes_Edit('<?php echo $cliente->cliente_id ?>')" class="btn btn-primary btn-block" text-center" data-toggle="modal" data-target="#modelId">Editar</a></span></td>
                 </tr>
                 <?php endforeach; ?>    

@@ -172,3 +172,14 @@ main {
 .texto-politica{
 	color: rgb(43, 42, 42);
 }
+.ver-politica{
+	cursor:pointer;
+	color:#dadbe2;
+}
+.ver-politica:hover {
+	cursor:pointer;
+	color:#fd7a0e;
+}
+.modal-title{
+	color: #000;
+}

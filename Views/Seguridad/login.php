@@ -1,4 +1,7 @@
 <?php
+$disable = 0;
+$mensaje0='';
+$dir="";
 if (isset($_REQUEST['error'])) {
     if (isset($_COOKIE['visitas'])) {
         setcookie('visitas', $_COOKIE['visitas'] + 1, time() + 3600 * 24);
@@ -79,13 +82,14 @@ session_destroy();?>
                             </div>
                             <p class="formulario__input-error">La contraseña tiene que ser de minimo 6 maximo 12 digitos.</p>
                         </div>
-                        <br><a type="button" class="" data-toggle="modal" data-target="#myModal">Ver Politica</a>
+                        <br><a type="button" class="ver-politica" data-toggle="modal" data-target="#myModal" >Ver Politica</a>
                         <br>
 
                         <label for="">
                             <input type="checkbox" name="tdatos" id="tdatos">
-                            He leido y Acepto la politica y tratamiento de datos
+                            He leido y aceptó la politica y tratamiento de datos
                         </label>
+                        <br></br>
                         <div align="center" class="form-check">
                             <button id="login" class="btn btn-login waves-effect" <?= $disable ?>>Iniciar Sesión</button>
                             <span>
