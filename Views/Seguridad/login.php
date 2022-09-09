@@ -119,7 +119,7 @@ session_destroy();?>
                 <h5 class="modal-title">AUTORIZACION PARA EL TRATAMIENTO DE DATOS PERSONALES</h5>
             </div>
             <div class="modal-body">
-                <p align="justify">De conformidad con la normatividad legal vigente aplicable en el país cliente y
+                <p align="justify" class="texto-politica">De conformidad con la normatividad legal vigente aplicable en el país cliente y
                     en concordancia con la Política de Tratamiento de Datos
                     Personales adoptada <strong><a href="https://documental.calidadsg.com/documental/img/FIRMA%20CALIDADSG/GD-DC-010.pdf" target="_blank">Ver</a></strong> y la Política de Seguridad
                     y Privacidad de la Información definida por FIRMA CALIDADSG <strong><a href="https://documental.calidadsg.com/documental/img/FIRMA%20CALIDADSG/GD-DC-016.pdf" target="_blank">Ver</a></strong>
@@ -130,7 +130,7 @@ session_destroy();?>
                     administrar la información suministrada</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button> -->
             </div>
         </div>
 
