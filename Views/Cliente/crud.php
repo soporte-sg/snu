@@ -1,13 +1,12 @@
 <?php $mail = explode('~', $clientes->correos); ?>
 <!-- Basic Validation -->
 
-<div class="card">
-    <div class="card-body">
+
         <form action="?c=clientes&a=Registrar" method="POST" enctype="multipart/form-data">
-            <div class="row">
-                <div class="col-6">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
                     <div class="form-group">
-                        <div class="form-line">
+                        <div class="form-line campos">
                             <label>Nombre Empresa</label>
                             <input type="text" id="nombre" name="nombre" class="form-control is-valid" placeholder="" required value="<?php echo $clientes->nombre ?>">
                         </div>
@@ -15,11 +14,11 @@
                     <div class="form-group">
                         <div class="form-line">
                             <label>Telefono</label>
-                            <input type="number" id="telefono" name="telefono" class="form-control" placeholder="" required value="<?php echo $clientes->telefono ?>">
+                            <input type="number" id="telefono" name="telefono" minlength="10" class="form-control" placeholder="" required value="<?php echo $clientes->telefono ?>">
                         </div>
                     </div>
                 </div>
-                <div class="col-6">
+                <div class="col-md-6">
                     <div class="form-group">
                         <div class="form-line">
                             <label>Dirección</label>
@@ -37,7 +36,7 @@
                     <div class="form-group">
                         <div class="form-line">
                             <label>Telefono del representante</label>
-                            <input type="text" id="rect_telefono" name="rect_telefono" required value="<?php echo $clientes->rect_telefono ?>" class="form-control">
+                            <input type="tel" id="rect_telefono" name="rect_telefono" minlength="10" required value="<?php echo $clientes->rect_telefono ?>" class="form-control">
                         </div>
                     </div>
                     <div class="form-group">
@@ -48,7 +47,7 @@
                     </div>
                     <div class="form-group">
                         <div class="form-line">
-                            <label>Correo Secretaria</label>
+                            <label>Correo institucional</label>
                             <input type="email" id="correos1" name="correos1" required value="<?php echo @$mail[1] ?>" class="form-control">
                         </div>
                     </div>
@@ -60,12 +59,12 @@
                             <input type="email" id="correos2" name="correos2"  required value="<?php echo @$mail[2] ?>" class="form-control">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <div class="form-line">
                             <label>Salario Minimo Vigente</label>
                             <input type="number" id="salario" name="salario" required value="<?php echo $clientes->salario ?>" class="form-control">
                         </div>
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <div class="form-line">
                             <label>Logo</label>
@@ -76,9 +75,8 @@
                 </div>
                 <input type="hidden" id="id" name="id"  value="<?php echo $clientes->id ?>" class="form-control">
             </div>
-            <button class="btn btn-default btn-block" id="guardar" type="submit">GUARDAR</button>
+            <button class="btn btn-success btn-guardar" id="guardar" type="submit">GUARDAR</button>
     </div>
     </form>
-</div>
-</div>
+
 <!-- #END# Basic Validation -->

@@ -152,6 +152,9 @@ main {
 	border: 3px solid #bb2929;
 }
 
+.btn-guardar{
+	margin-left: 12px;
+}
 
 /* ----- -----  Mediaqueries ----- ----- */
 @media screen and (max-width: 800px) {

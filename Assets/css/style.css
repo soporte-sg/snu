@@ -2526,7 +2526,15 @@ section.content {
 .btn-success:hover,
 .btn-success:active,
 .btn-success:focus {
-  background-color: #2b982b !important; }
+  background-color: #2b8b98 !important; 
+  position: relative;
+  margin: auto;
+  /* margin-right: 100px; */
+    width: 150px;
+    /* margin-left: auto; */
+  justify-content: right;
+  display: block;
+}
 
 .btn-primary,
 .btn-primary:hover,
@@ -6722,7 +6730,7 @@ fieldset[disabled] .form-control {
     float: right; }
   .navbar .navbar-toggle {
     text-decoration: none;
-    color: #fff;
+    color: #2351b7;
     width: 20px;
     height: 20px;
     margin-top: -4px;

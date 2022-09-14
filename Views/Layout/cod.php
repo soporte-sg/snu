@@ -321,10 +321,10 @@ $path3 = "Assets/js/";
             <!-- Footer -->
             <div class="legal">
                 <div class="copyright">
-                    &copy; 2016 - 2020 <a href="javascript:void(0);">Control De Cambios</a>.
+                    &copy; 2016 - 2022 <a href="javascript:void(0);">Firma - Calidadsg</a>.
                 </div>
                 <div class="version">
-                    <b>Version: </b> 1.0.1
+                    <b>Version: </b> 1.0.2
                 </div>
             </div>
             <!-- #Footer -->

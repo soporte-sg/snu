@@ -47,7 +47,7 @@ header('Content-type: text/html; charset=utf-8');
     gtag('config', 'G-C1M8CKX4E1');
 </script>
 
-<body class="theme-red">
+<body class="theme">
     <!-- Page Loader  -->
     <!-- <div class="page-loader-wrapper">
         <div class="loader">
@@ -67,6 +67,30 @@ header('Content-type: text/html; charset=utf-8');
     <!-- #END# Page Loader -->
     <!-- Overlay For Sidebars -->
     <div class="overlay"></div>
+
+    <!-- Top Bar -->
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
+                <a href="javascript:void(0);" class="bars"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-left">
+                    <!-- Call Search 
+                    <li><img src="Assets/img/uploads/colegio/<?php echo $_SESSION['datos_cliente']->filename ?>" alt="User" class="imgbrand" /></li>
+                     #END# Call Search -->
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- Call Search -->
+                    <a href="?c=seguridad&a=Logout" class="navbar-brand btn btn-circle " href="index.html"><i class="glyphicon glyphicon-off"></i></a>
+                    <!-- #END# Call Search -->
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+    <!-- #Top Bar -->
     <!-- #END# Overlay For Sidebars -->
     <section>
         <!-- Left Sidebar -->
@@ -149,7 +173,7 @@ header('Content-type: text/html; charset=utf-8');
             <!-- Footer -->
             <div class="legal">
                 <div class="copyright">
-                    &copy; 2016 - 2020 <a href="javascript:void(0);">Control De Cambios</a>.
+                    &copy; 2016 - 2022 <a href="javascript:void(0);">Firma - Calidadsg</a>.
                 </div>
                 <div class="version">
                     <b>Version: </b> 1.0.2

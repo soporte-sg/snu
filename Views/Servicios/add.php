@@ -20,11 +20,11 @@
         </div>
         <div class="col-md-4">
             <label for="">Fecha Inicio</label>
-            <input type="date" class="form-control" id="f_inicio" name="f_inicio" placeholder="Input field" value="<?= date('Y-m-d', strtotime($servicio->f_inicio)) ?>">
+            <input type="date" class="form-control" id="f_inicio" name="f_inicio" placeholder="Input field" value="<?=$servicio->f_inicio?>">
             <input type="hidden" class="form-control" id="id" name="id" placeholder="Input field" value="<?=$servicio->id?>"><br>
         </div>
         <div class="col-md-12">
-            <button type="button" class="neu btn-block" id="botonenviar">Guardar</button>
+            <button type="button" class="neu btn-success" id="botonenviar">Guardar</button>
         </div>
     </form>
 </div>
