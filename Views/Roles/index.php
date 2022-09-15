@@ -1,7 +1,7 @@
 <div class="panel">
 <div class="panel-heading">
             <h3 class="panel-title"></h3>
-            <a href="?c=roles&a=addedit" type="botton"  class="neu text-center pull-right">Registrar</a>
+            <!-- <a href="?c=roles&a=addedit" type="botton"  class="neu text-center pull-right">Registrar</a> -->
       </div>
         <div class="panel-body">
             <br>

@@ -1,6 +1,6 @@
 <style>
   .contenedor{
-  width:70%;
+  width:80%;
   height:auto;
   align-content: center;
 }
@@ -13,7 +13,7 @@
 </style>
 <div class="body">          
                     <!-- Widgets -->
-                    <div class="row clearfix">
+                    <!-- <div class="row clearfix">
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                             <div class="info-box bg-pink hover-expand-effect">
                                 <div class="icon">
@@ -61,10 +61,10 @@
                                     <?php echo $rev->total ?></div>
                                 </div>
                             </div>
-                        </div>                        
+                        </div>                         -->
                     <!-- #END# Widgets -->
                     <div class="col-md-12 text-center">
-                    <div class="col-md-12 col-md-offset-2 contenedor">                        
+                    <div class="col-md-12 col-md-offset-1 contenedor">                        
                         <img src="Assets/img/snu.png" class="img-responsive img0" alt="Image">                        
                     </div>
                     </div>

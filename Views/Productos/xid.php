@@ -1,16 +1,17 @@
+
+
+<?php //print_r($producto);?>
 <div class="panel panel-default panel-post">
     <div class="panel-heading">
         <div class="media">
-            <div class="media-left">
-                <a href="#">
-                    <img src=<?= $producto->dir . '/' . $producto->filename ?> />
-                </a>
-            </div>
+                 
+                    <img src="" />    
+         
             <div class="media-body">
                 <h4 class="media-heading">
-                    <a href="#"><?= $producto->nombre ?></a>
+                    <a href="#"><?=$producto->nombre ?></a>
                 </h4>
-                Fecha Adquisicion - <?= $producto->fechacompra ?>
+                Fecha Adquisicion - <?=$producto->fechacompra ?>
             </div>
         </div>
     </div>
@@ -26,16 +27,10 @@
                     <br> <strong>Sede:</strong> <?= $producto->sede ?> <?= $producto->ubicacion ?>
                 </p>
             </div>
-            <div class="post-content">
-
-            </div>
+            <div class="post-content"></div>
         </div>
-    </div>
-    <div class="media-body">
-        <div id="result1">
-
-        </div>
-    </div>
+    </div> 
+    <div class="media-body"><div id="result1"></div></div>
     <div class="panel-footer">
         <ul>
             <li>
@@ -59,7 +54,6 @@
         </ul>
     </div>
 </div>
-
 <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content modal-lg">
@@ -75,8 +69,7 @@
         </div>
     </div>
 </div>
-
-<script>
+ <script>
     function Editar(id) {
         var id = id
         $.ajax({
@@ -90,9 +83,7 @@
 
             }
         });
-
     }
-
     function Cambio(id) {
         var id = id
         $.ajax({
@@ -103,12 +94,9 @@
             },
             success: function(resp) {
                 $('#result').html(resp);
-
             }
         });
-
     }
-
     function Traslado(id) {
         var producto_id = id
         $.ajax({
@@ -122,6 +110,5 @@
 
             }
         });
-
     }
 </script>

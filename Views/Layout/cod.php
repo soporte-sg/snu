@@ -55,7 +55,7 @@ $path3 = "Assets/js/";
 </head>
 
 <body class="theme-red">
-    <!-- Top Bar -->
+    <!-- Top Bar :)-->
     <nav class="navbar">
         <div class="container-fluid">
             <div class="navbar-header">

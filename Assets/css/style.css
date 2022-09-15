@@ -2523,7 +2523,7 @@ section.content {
   background-color: #00b0e4 !important; }
 
 .btn-success,
-.btn-success:hover,
+/* .btn-success:hover, */
 .btn-success:active,
 .btn-success:focus {
   background-color: #2b8b98 !important; 
@@ -2534,6 +2534,9 @@ section.content {
     /* margin-left: auto; */
   justify-content: right;
   display: block;
+}
+.btn-success:hover{
+  background-color: #47b5c4 !important
 }
 
 .btn-primary,
@@ -5113,6 +5116,9 @@ section.content {
     -ms-border-radius: 0;
     border-radius: 0;
     padding-left: 0; }
+    .form-group .form-control:focus{
+      border-bottom: 2px solid #00b0e4;
+    }
   .form-group .help-info {
     float: right;
     font-size: 12px;
@@ -5128,6 +5134,10 @@ section.content {
     width: 100%;
     position: relative;
     border-bottom: 1px solid #ddd; }
+
+    /* .form-group .form-line:focus{
+      border-bottom: 1px solid #000;
+    } */
     .form-group .form-line:after {
       content: '';
       position: absolute;

@@ -93,7 +93,7 @@
 
                     <div class="col-md-12">
                         <input type="hidden" id="id" name="id" value="<?php echo $_REQUEST['id'] ?>" class="form-control">
-                        <input type="button" id="guardar" value="Guardar" class="neu btn-success">
+                        <input type="button" id="guardar" value="Guardar" class="btn btn-success">
                     </div>
             </form>
         </div>
@@ -112,8 +112,8 @@
                     timer: 1500
                 }, )
                 setTimeout(function() {
-                    window.location = '?c=usuarios&a=index2';
-                    // window.location.reload(1);
+                    // window.location = '?c=usuarios&a=index2';
+                    // window.location.reload();
                 }, 1500)
             }
 

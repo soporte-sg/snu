@@ -40,7 +40,7 @@
                     <input type="hidden" id="id" name='id' value=" <?php echo $update->id ?>">
                     <input type="hidden" id="tipo_usuarios" name='tipo_usuarios' value=" <?php echo $update->tipo_usuarios ?>">
 
-                    <input type="button" id="guardar" class="btn btn-default btn-block" value="Actualizar">
+                    <input type="button" id="guardar" class="btn btn-success" value="Guardar">
                 </div>
             </div>
     </div>

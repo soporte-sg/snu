@@ -34,7 +34,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
 </head>
 
-<body class="theme-red">
+<body class="theme">
   <!--  Page Loader
     <div class="page-loader-wrapper">
         <div class="loader">
@@ -57,13 +57,34 @@
     <!-- #END# Overlay For Sidebars -->
 
     <!-- Top Bar -->
-    <nav class="navbar">
+    <!-- <nav class="navbar">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
                 <a class="navbar-brand" href="index.html"><?php echo  strtoupper($_SESSION['user']->cliente)  ?></a>
             </div>
+        </div>
+    </nav>  -->
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
+                <a href="javascript:void(0);" class="bars"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-left">
+                    <!-- Call Search 
+                    <li><img src="Assets/img/uploads/colegio/<?php echo $_SESSION['datos_cliente']->filename ?>" alt="User" class="imgbrand" /></li>
+                     #END# Call Search -->
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- Call Search -->
+                    <a href="?c=seguridad&a=Logout" class="navbar-brand btn btn-circle " href="index.html"><i class="glyphicon glyphicon-off"></i></a>
+                    <!-- #END# Call Search -->
+                </ul>
+            </div>
+
         </div>
     </nav>
     <!-- #Top Bar -->

@@ -42,6 +42,18 @@ $servicios=$servicio->Servicio();
     <link href="Assets/css/themes/all-themes.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        $(document).ready(function() {
+            function disableBack() {
+                window.history.forward()
+            }
+            window.onload = disableBack();
+            window.onpageshow = function(e) {
+                if (e.persisted)
+                    disableBack();
+            }
+        });
+    </script>
     <style>
         .imgbrand {
             padding: 10px;
@@ -68,7 +80,6 @@ $servicios=$servicio->Servicio();
   gtag('js', new Date());
   gtag('config', 'G-2KNSD09LYH');
 </script>
-
 <body class="theme">
     <!-- Page Loader 
     <div class="page-loader-wrapper">
@@ -90,7 +101,6 @@ $servicios=$servicio->Servicio();
     <!-- Overlay For Sidebars -->
     <div class="overlay"></div>
     <!-- #END# Overlay For Sidebars -->
-
     <!-- Top Bar -->
     <nav class="navbar">
         <div class="container-fluid">
@@ -105,12 +115,14 @@ $servicios=$servicio->Servicio();
                      #END# Call Search -->
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+                <?php foreach($servicios as $value): ?>
+                     <li><a href="<?=$value->dir?>" class="btn"><span><?=$value->oferta?></span></a></li>   
+                <?php endforeach;?>                                          
                     <!-- Call Search -->
-                    <a href="?c=seguridad&a=Logout" class="navbar-brand btn btn-circle " href="index.html"><i class="glyphicon glyphicon-off"></i></a>
+                   <li><a href="?c=seguridad&a=Logout" class="btn-circle"><span><i class="glyphicon glyphicon-off"></i></span></a></li> 
                     <!-- #END# Call Search -->
-                </ul>
+                </ul>                
             </div>
-
         </div>
     </nav>
     <!-- #Top Bar -->
@@ -206,14 +218,14 @@ $servicios=$servicio->Servicio();
             </div>
             <!-- #Menu -->
             <!-- Footer -->
-            <div class="legal">
+            <!-- <div class="legal">
                 <div class="copyright">
                     &copy; 2016 - 2022 <a href="javascript:void(0);">Firma - Calidadsg</a>.
                 </div>
                 <div class="version">
                     <b>Version: </b> 1.0.2
                 </div>
-            </div>
+            </div> -->
             <!-- #Footer -->
         </aside>
         <!-- #END# Left Sidebar -->

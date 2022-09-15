@@ -121,7 +121,7 @@
 					timer: 1500
 				}, )
 				setTimeout(function() {
-				   window.location = '?c=autoreportes&a=buscarIndex';
+				  // window.location = '?c=autoreportes&a=buscarIndex';
 					// window.location.reload(1);
 				}, 2000)
 

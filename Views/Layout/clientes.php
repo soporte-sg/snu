@@ -33,6 +33,18 @@ header('Content-type: text/html; charset=utf-8');
     <!--alertas-->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!--alertas-->
+    <script>
+        $(document).ready(function() {
+            function disableBack() {
+                window.history.forward()
+            }
+            window.onload = disableBack();
+            window.onpageshow = function(e) {
+                if (e.persisted)
+                    disableBack();
+            }
+        });
+    </script>
 
 </head>
 <!-- Google tag (gtag.js) -->
@@ -48,7 +60,7 @@ header('Content-type: text/html; charset=utf-8');
 </script>
 
 <body class="theme">
-    <!-- Page Loader  -->
+    <!-- Page Loader  :)-->
     <!-- <div class="page-loader-wrapper">
         <div class="loader">
             <div class="preloader">
@@ -67,7 +79,7 @@ header('Content-type: text/html; charset=utf-8');
     <!-- #END# Page Loader -->
     <!-- Overlay For Sidebars -->
     <div class="overlay"></div>
-
+    <!-- #END# Overlay For Sidebars -->
     <!-- Top Bar -->
     <nav class="navbar">
         <div class="container-fluid">
@@ -86,12 +98,13 @@ header('Content-type: text/html; charset=utf-8');
                     <a href="?c=seguridad&a=Logout" class="navbar-brand btn btn-circle " href="index.html"><i class="glyphicon glyphicon-off"></i></a>
                     <!-- #END# Call Search -->
                 </ul>
+                <!--  -->
             </div>
 
         </div>
     </nav>
     <!-- #Top Bar -->
-    <!-- #END# Overlay For Sidebars -->
+
     <section>
         <!-- Left Sidebar -->
         <aside id="leftsidebar" class="sidebar">
@@ -102,19 +115,7 @@ header('Content-type: text/html; charset=utf-8');
                 </div>
                 <div class="info-container">
                     <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo ucwords($_SESSION['user']->FullName) ?></div>
-                    <div class="email">john.doe@example.com</div>
-                    <!-- <div class="btn-group user-helper-dropdown">
-                        <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
-                        <ul class="dropdown-menu pull-right">
-                            <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">group</i>Followers</a></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">favorite</i>Likes</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sign Out</a></li>
-                        </ul>
-                    </div> -->
+                    <!-- <div class="email">john.doe@example.com</div> -->
                 </div>
             </div>
             <!-- #User Info -->
@@ -173,7 +174,7 @@ header('Content-type: text/html; charset=utf-8');
             <!-- Footer -->
             <div class="legal">
                 <div class="copyright">
-                    &copy; 2016 - 2022 <a href="javascript:void(0);">Firma - Calidadsg</a>.
+                    &copy; 2016 - 2020 <a href="javascript:void(0);">Control De Cambios</a>.
                 </div>
                 <div class="version">
                     <b>Version: </b> 1.0.2

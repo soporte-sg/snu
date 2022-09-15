@@ -1,7 +1,5 @@
 <?php
-$disable = 0;
-$mensaje0='';
-$dir="";
+
 if (isset($_REQUEST['error'])) {
     if (isset($_COOKIE['visitas'])) {
         setcookie('visitas', $_COOKIE['visitas'] + 1, time() + 3600 * 24);
@@ -13,7 +11,11 @@ if (isset($_REQUEST['error'])) {
 } else {
     setcookie("visitas", 1);
 }
-session_destroy();?>
+session_destroy();
+$disable = 0;
+$mensaje0='';
+$dir="";
+?>
 <html lang="es">
 <head>
     <meta charset="UTF-8">

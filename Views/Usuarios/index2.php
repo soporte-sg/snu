@@ -3,10 +3,10 @@
     <div class="panel-heading">
         <div class="row">
             <div class="col-md-10 text-center">
-                Administración de Usuarios
+                <h4>ADMINISTRACIÓN DE USUARIOS</h4>
             </div>
             <div class="col-md-2">
-                <button onclick="Registrar()" data-toggle="modal" href='#modal-id' class="neu pull-right"><i class="glyphicon glyphicon-plus"></i> Registrar</button>
+                <button onclick="Registrar()" data-toggle="modal" href='#modal-id' class="neu pull-right"> Registrar Usuario</button>
             </div>
         </div>
     </div>
@@ -48,17 +48,17 @@
     </div>
 </div>
 <div class="modal fade" id="modal-id">
-    <div class="modal-dialog">
-        <div class="modal-content modal-lg">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title"></h4>
             </div>
             <div class="modal-body" id="index">
             </div>
-            <div class="modal-footer">
+            <!-- <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

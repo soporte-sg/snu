@@ -1,4 +1,4 @@
-<a href='?c=solicitudes&a=add' class="neu"><i class="glyphicon glyphicon-plus"></i> Registrar</a>
+<a href='?c=solicitudes&a=add' class="neu">Registrar Solicitud</a>
 <div class="card">
     <div class="header text-center">
         <h2>LISTADO DE SOLICITUDES PARA EL CONTROL DE CAMBIOS</h2>
@@ -46,7 +46,8 @@
                                 <td class="actions">
                                     <?php
                                     if ($sgcManejoDocumental->Aprobado == 'si') : ?>
-                                        <a onclick="Ver('<?php echo $sgcManejoDocumental->id ?>')" data-toggle="modal" href='#modal-id' type="button" title="Ver datos de la Solicitud">
+                                 
+                                 <a onclick="Ver('<?php echo $sgcManejoDocumental->id ?>')" data-toggle="modal" href='#modal-id' type="button" title="Ver datos de la Solicitud">
                                             <i class="material-icons">visibility</i>
                                         </a>
                                         <?php if ($_SESSION['user']->rol_id == 4 or $_SESSION['user']->rol_id == 1) : ?>

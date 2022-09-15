@@ -2,9 +2,9 @@
 require_once 'Models/Estadistica.php';
 require_once 'Models/Servicio.php';
 $data = new Estadistica();
-$entrada = $data->Get(); 
-$servicio =new Servicio();
-$servicios=$servicio->Servicio();
+$entrada = $data->Get();
+$servicio = new Servicio();
+$servicios = $servicio->Servicio();
 //print_r($servicios);
 ?>
 <!DOCTYPE html>
@@ -43,6 +43,18 @@ $servicios=$servicio->Servicio();
     <link href="Assets/css/themes/all-themes.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        $(document).ready(function() {
+            function disableBack() {
+                window.history.forward()
+            }
+            window.onload = disableBack();
+            window.onpageshow = function(e) {
+                if (e.persisted)
+                    disableBack();
+            }
+        });
+    </script>
     <style>
         .imgbrand {
             padding: 10px;
@@ -61,13 +73,16 @@ $servicios=$servicio->Servicio();
         }
     </style>
 </head>
- <!-- Google tag (gtag.js) -->
- <script async src="https://www.googletagmanager.com/gtag/js?id=G-2KNSD09LYH"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2KNSD09LYH"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-2KNSD09LYH');
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'G-2KNSD09LYH');
 </script>
 
 <body class="theme">
@@ -105,10 +120,16 @@ $servicios=$servicio->Servicio();
                     <li><img src="Assets/img/uploads/colegio/<?php echo $_SESSION['datos_cliente']->filename ?>" alt="User" class="imgbrand" /></li>
                      #END# Call Search -->
                 </ul>
+                <!-- Call Search -->
                 <ul class="nav navbar-nav navbar-right">
+                    <?php foreach ($servicios as $value) : ?>
+                        <li><a href="<?= $value->dir ?>" class="btn"><span><?= $value->oferta ?></span></a></li>
+                    <?php endforeach; ?>
                     <!-- Call Search -->
-                    <a href="?c=seguridad&a=Logout" class="navbar-brand btn btn-circle " href="index.html"><i class="glyphicon glyphicon-off"></i></a>
+                    <li><a href="?c=seguridad&a=Logout" class="btn-circle"><span><i class="glyphicon glyphicon-off"></i></span></a></li>
                     <!-- #END# Call Search -->
+                </ul>
+                <!-- #END# Call Search -->
                 </ul>
             </div>
 
@@ -124,8 +145,6 @@ $servicios=$servicio->Servicio();
                     <img src="Assets/img/uploads/colegio/<?php echo $_SESSION['datos_cliente']->filename ?>" width="90" height="90" alt="">
                 </div>
                 <div class="info-container">
-
-
                 </div>
             </div>
             <!-- #User Info -->
@@ -150,10 +169,10 @@ $servicios=$servicio->Servicio();
                             <span>Configuración</span>
                         </a>
                         <ul class="ml-menu">
-                           <li>
+                            <li>
                                 <a href="?c=usuarios&a=index2">usuarios</a>
                             </li>
-                             <li>
+                            <li>
                                 <a href="?c=cargos&a=index">Cargos</a>
                             </li>
                             <li>
@@ -162,7 +181,7 @@ $servicios=$servicio->Servicio();
                             <li>
                                 <a href="?c=permisos&aindex">Permisos</a>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <a href="?c=ubicaciones&a=index">Ubicaciones</a>
                             </li>
                             <li>
@@ -170,7 +189,7 @@ $servicios=$servicio->Servicio();
                             </li>
                             <li>
                                 <a href="?c=depreciacions&a=index">Depreciación</a>
-                            </li>
+                            </li> -->
                         </ul>
                     </li>
                     <li>
@@ -199,13 +218,12 @@ $servicios=$servicio->Servicio();
                             <li>
                                 <a href="?c=autoreportes&a=buscarIndex">Consulta del evento</a>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <a href="pages/ui/badges.html">Consolidado de eventos</a>
-                            </li>
-
+                            </li> 
                             <li>
                                 <a href="pages/ui/breadcrumbs.html">Clasificacion de eventos</a>
-                            </li>
+                            </li>-->
                         </ul>
                     </li>
                     <li>
@@ -219,7 +237,7 @@ $servicios=$servicio->Servicio();
                             </li>
                             <?php if ($_SESSION['user']->rol_id == 1) : ?>
                                 <li>
-                                    <a href="pages/forms/advanced-form-elements.html">Subir</a>
+                                    <!-- <a href="pages/forms/advanced-form-elements.html">Subir</a> -->
                                 </li>
                             <?php endif; ?>
                         </ul>
@@ -258,10 +276,10 @@ $servicios=$servicio->Servicio();
                             </li>
                             <li>
                                 <a href="?c=indicadors&a=add">Crear Ficha</a>
-                            </li>                            
+                            </li>
                         </ul>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">content_copy</i>
                             <span>Acciones</span>
@@ -271,14 +289,14 @@ $servicios=$servicio->Servicio();
                                 <a href="pages/examples/profile.html">Gestionar</a>
                             </li>
                         </ul>
-                    </li>                    
-                    <li>
+                    </li> -->
+                    <!-- <li>
                         <a href="">
                             <i class="material-icons">trending_down</i>
                             <span>PQRSF</span>
                         </a>
-                    </li>
-                   <li class="header">Servicios</li>
+                    </li> -->
+                    <li class="header">Servicios</li>
                     <?php if ($_SESSION['user']->rol_id == 1) : ?>
                         <li>
                             <a href="?c=clientes&a=index">
@@ -287,28 +305,28 @@ $servicios=$servicio->Servicio();
                             </a>
                         </li>
                     <?php endif; ?>
-                    
-                    <li>
-                       <?php foreach($servicios as $value): ?>
-                        <a href="<?=$value->dir?>">
-                            <i class="material-icons">update</i>
-                            <span><?=$value->oferta?></span>
-                        </a>
-                        <?php endforeach;?>
-                    </li>
+
+                    <!-- <li>
+                        <?php foreach ($servicios as $value) : ?>
+                            <a href="<?= $value->dir ?>">
+                                <i class="material-icons">update</i>
+                                <span><?= $value->oferta ?></span>
+                            </a>
+                        <?php endforeach; ?>
+                    </li> -->
 
                 </ul>
             </div>
             <!-- #Menu -->
             <!-- Footer -->
-            <div class="legal">
+            <!-- <div class="legal">
                 <div class="copyright">
                     &copy; 2016 - 2022 <a href="javascript:void(0);">Firma - Calidadsg</a>.
                 </div>
                 <div class="version">
                     <b>Version: </b> 1.0.2
                 </div>
-            </div>
+            </div> -->
             <!-- #Footer -->
         </aside>
         <!-- #END# Left Sidebar -->
@@ -316,4 +334,3 @@ $servicios=$servicio->Servicio();
 
     <section class="content">
         <div class="container-fluid">
-            

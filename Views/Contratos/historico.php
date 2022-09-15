@@ -7,7 +7,7 @@
         </div>
         <div class="body">
             <div class="table-responsive">
-                <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th>CARGO</th>
@@ -48,7 +48,7 @@
                                     <a onClick="editar('<?php echo $historia->id ?>')"><i class="glyphicon glyphicon-edit" title="Editar"></i></a>
                                     <a href="#deleteProductModal" class="delete" data-toggle="modal" data-id="<?php echo $historia->id; ?>"><i class="glyphicon glyphicon-trash" title="Eliminar"></i></a>
 
-                                    <!-- <a href="?c=contrato&a=contrato-editar&id=<?php echo $historia->id ?>" title="EDITAR DATOS"><i class="glyphicon glyphicon-edit"></i></a>
+                                <!-- <a href="?c=contrato&a=contrato-editar&id=<?php echo $historia->id ?>" title="EDITAR DATOS"><i class="glyphicon glyphicon-edit"></i></a>
                                 <a href="?c=contrato&a=contrato-editar&id=<?php echo $historia->id ?>"title="ELIMINAR"><i class="glyphicon glyphicon-trash"></i></a>-->
                                 </td>
                             </tr>
@@ -89,7 +89,6 @@
             });
         });
     }
-
     function ver(modal) {
         var options = {
             modal: true,
@@ -168,10 +167,7 @@
     </div>
 </div>
 <script type="text/javascript">
-    $(function() {
-
-    });
-
+    $(function() {});
     $('#editProductModal').on('show.bs.modal', function(event) {
         var button = $(event.relatedTarget) // Button that triggered the modal
         var code = button.data('code')

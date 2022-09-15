@@ -2,11 +2,11 @@
     <!-- Default panel contents -->
     <div class="panel-heading">
         <div class="row">
-            <div class="col-md-10">
-                Administración de Procesos
+            <div class="col-md-10 text-center">
+                <h4>ADMINISTRACIÓN DE PROCESOS</h4>
             </div>
             <div class="col-md-2">
-                <button onclick="Add()" data-toggle="modal" href='#modal-id' class="neu pull-right"><i class="glyphicon glyphicon-plus"></i> Registrar</button>
+                <button onclick="Add()" data-toggle="modal" href='#modal-id' class="neu pull-right"><i class="glyphicon glyphicon-plus"></i> Registrar Proceso</button>
             </div>
         </div>
     </div>
@@ -55,9 +55,9 @@
             <div class="modal-body" id="index">
 
             </div>
-            <div class="modal-footer">
+            <!-- <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

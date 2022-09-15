@@ -6,7 +6,7 @@
                <h2>Categorias</h2> 
             </div>
             <div class="col-md-2">
-                <button onclick="Add()" data-toggle="modal" href='#modal-id' class="neu pull-right"><i class="glyphicon glyphicon-plus"></i> Registrar</button>
+                <button onclick="Add()" data-toggle="modal" href='#modal-id' class="neu pull-right"> Registrar categoría</button>
             </div>
         </div>
     </div>

@@ -22,7 +22,14 @@ class Roles
     public function Index()
     {
         try {
-        $stm = $this->pdo->prepare("SELECT * FROM rols WHERE id != 1");
+        if( $_SESSION['rol_id'] == 1 ){
+           $stm = $this->pdo->prepare("SELECT * FROM rols");  
+        }
+        else{
+            $stm = $this->pdo->prepare("SELECT * FROM rols WHERE id != 1");
+        }
+        
+
             $stm->execute();
             return $stm->fetchAll(PDO::FETCH_OBJ);
         } catch (Exception $e) {

@@ -3,24 +3,26 @@
             <form id="formCrud" name="formCrud">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="">Iniciales</label>
-                        <input type="text" id="Iniciales" name="Iniciales" value="<?php echo $proceso->Iniciales ?>" class="form-control">
+                        <div class="form-line">
+                            <label for="">Iniciales</label>
+                            <input type="text" id="Iniciales" name="Iniciales" value="<?php echo $proceso->Iniciales ?>" class="form-control">
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="">Nombre</label>
-                        <input type="text" id="	NombreProceso" name="NombreProceso" value="<?php echo $proceso->NombreProceso ?>" class="form-control">
+                        <div class="form-line">
+                            <label for="">Nombre</label>
+                            <input type="text" id="	NombreProceso" name="NombreProceso" value="<?php echo $proceso->NombreProceso ?>" class="form-control">
+                        </div>
                     </div>
                 </div>                
                 <div class="col-md-12">
                     <input type="hidden" id="id" name="id" value="<?php echo $proceso->id ?>" class="form-control">
-                    <input type="button" id="guardar" value="Guardar" class="neu btn-block">
+                    <input type="button" id="guardar" value="Guardar" class="btn btn-success">
                 </div>
             </form>
         </div>
-
-
 <script>
     $(document).on('click', '#guardar', function(e) {
         var data = $("#formCrud").serialize();
@@ -36,7 +38,7 @@
                 }, )
                 setTimeout(function() {
                     //  window.location = '?c=solicitudes&a=index';
-                   // window.location.reload();
+                    window.location.reload();
                 }, 2000)
             }
 

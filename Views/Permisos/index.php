@@ -2,10 +2,10 @@
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="panel">
             <div class="header text-center">
-                <h2>
-                    Configurar Privilegios<br>
+                <h3>
+                    CONFIGURAR LOS PRIVILEGIOS<br>
                     <small>Asigna los privilegios del rol a cada módulo </small>
-                </h2>
+                </h3>
             </div>
             <div class="panel-body">
                 <div class="row clearfix">
@@ -39,7 +39,7 @@
             type: "post",
             url: "?c=permisos&a=crud",
             beforeSend: function() {
-                $('#index').html("<h5 class='text-center'> <img src='View/img/gifs/cargando-loading-009.gif'> Cargando Información</h5>");
+                $('#index').html("<h5 class='text-center'> <img src='Assets/images/gifs/cargando-loading-026.gif'> Cargando Información</h5>");
             },
             success: function(resp) {
                 $('#resultado1').html(resp);

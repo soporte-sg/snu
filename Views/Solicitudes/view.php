@@ -89,13 +89,13 @@
 
                         <label>Descripción</label> <br>
 
-                        <?php echo $solicitudes->Descripcion; ?>
+                        <?php echo  utf8_encode($solicitudes->Descripcion); ?>
                         &nbsp;
 
                     </div>
                     <div class="col-sm-12">
                         <label>Observaciones</label><br>
-                        <?php echo $solicitudes->Observaciones; ?>&nbsp;
+                        <?php echo utf8_encode($solicitudes->Observaciones); ?>&nbsp;
 
                     </div>
 

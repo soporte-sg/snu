@@ -6,7 +6,7 @@
                     Datos de la Solicitud
                     <small>Solicitud Para el control de cambios</small>
                 </h2>
-                <ul class="header-dropdown m-r--5">
+                <!-- <ul class="header-dropdown m-r--5">
                     <li class="dropdown">
                         <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             <i class="material-icons">more_vert</i>
@@ -17,109 +17,106 @@
                             <li><a href="javascript:void(0);">Something else here</a></li>
                         </ul>
                     </li>
-                </ul>
+                </ul> -->
             </div>
             <div class="body">
                 <div class="row clearfix">
-                            <form method="post"  name="formSolicitud" id="formSolicitud" enctype="multipart/form-data" >
+                    <form method="post" name="formSolicitud" id="formSolicitud" enctype="multipart/form-data">
 
-                    <div class="col-md-12">
-                        <div class="col-sm-3">
-                            <div class="form-group">
-                                <div class="form-line">
-                                    <label>Proceso Solicitante</label>
-                                    <select class="form-control show-tick" name="Proceso" id='Proceso' required>
-                                        <option value="">-- Seleccionar --</option>
-
-                                        <?php foreach ($procesos as $sgc) : ?>
-                                            <option value="<?php echo $sgc->Iniciales ?>"><?php echo $sgc->NombreProceso ?> </option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="form-group">
-                                <div class="form-line">
-                                    <label>Tipo de Información</label>
-                                    <select class="form-control show-tick" name="TipoDocumento" id="TipoDocumento" required>
-                                        <option value="">-- Seleccionar --</option>
-                                        <option value="documento">Documento</option>
-                                        <option value="formato">Formato</option>
-                                        <option value="software">Software</option>
-                                        <option value="externo">Externo</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-3">
-                            <div class="form-group">
-                                <div class="form-line">
-                                    <label>Tipo Solicitud</label>
-                                    <select class="form-control show-tick" name="TipoSolicitud" id="TipoSolicitud" required>
-                                        <option value="">-- Seleccionar --</option>
-                                        <option value="creacion">Creación</option>
-                                        <option value="actualizacion">Actualización</option>
-                                        <option value="eliminacion">Eliminación</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="index" id="index"></div>
-                        <div class="col-sm-3">
-                            <div class="form-group">
-                                <div class="form-line">
-                                    <label>Numero Solicitud</label>
-                                    <input type="text" name="id" value="<?php echo $ultima_solicitud->ULTIMA + 1 ?>" class="form-control" disabled>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="form-group">
-                                <div class="form-line">
-                                    <label>Nombre Solicitante</label>
-                                    <input type="text" name="NombreSolicitante" id="NombreSolicitante" value="<?php echo ucwords($_SESSION['user']->FullName) ?>" class="form-control" readonly>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="form-group">
-                                <div class="form-line">
-                                    <label>Fecha Solicitud</label>
-                                    <input type="date" name="FechaSolicitud" class='form-control' value="<?php echo date('Y-m-d') ?>" readonly>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="form-group">
-                                <div class="form-line">
-                                    <label>Adjuntar Archivo</label>
-                                    <input type="file" name="filename" class='form-control' value="">
-                                    <input type="hidden" name="dir" class='form-control' value="">
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 text-center">
-                            <div class="form-group">
-                                <div class="form-line">
-                                    <label>Justificación</label>
-                                    <textarea name="Descripcion" id="Descripcion" cols="50" rows="5" class="form-control"></textarea>
-                                </div>
-                            </div>
-                        </div>
                         <div class="col-md-12">
-                        <input type="button" id="guardar" class="neu btn-block" value="Solicitar">              
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <label>Proceso Solicitante</label>
+                                        <select class="form-control show-tick" name="Proceso" id='Proceso' required>
+                                            <option value="">-- Seleccionar --</option>
+
+                                            <?php foreach ($procesos as $sgc) : ?>
+                                                <option value="<?php echo $sgc->Iniciales ?>"><?php echo $sgc->NombreProceso ?> </option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <label>Tipo de Información</label>
+                                        <select class="form-control show-tick" name="TipoDocumento" id="TipoDocumento" required>
+                                            <option value="">-- Seleccionar --</option>
+                                            <option value="documento">Documento</option>
+                                            <option value="formato">Formato</option>
+                                            <option value="software">Software</option>
+                                            <option value="externo">Externo</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <label>Tipo Solicitud</label>
+                                        <select class="form-control show-tick" name="TipoSolicitud" id="TipoSolicitud" required>
+                                            <option value="">-- Seleccionar --</option>
+                                            <option value="creacion">Creación</option>
+                                            <option value="actualizacion">Actualización</option>
+                                            <option value="eliminacion">Eliminación</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="index" id="index"></div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <label>Numero Solicitud</label>
+                                        <input type="text" name="id" value="<?php echo $ultima_solicitud->ULTIMA + 1 ?>" class="form-control" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <label>Nombre Solicitante</label>
+                                        <input type="text" name="NombreSolicitante" id="NombreSolicitante" value="<?php echo ucwords($_SESSION['user']->FullName) ?>" class="form-control" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <label>Fecha Solicitud</label>
+                                        <input type="date" name="FechaSolicitud" class='form-control' value="<?php echo date('Y-m-d') ?>" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <label>Adjuntar Archivo</label>
+                                        <input type="file" name="filename" class='form-control' value="">
+                                        <input type="hidden" name="dir" class='form-control' value="">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 text-center">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <label>Justificación</label>
+                                        <textarea name="Descripcion" id="Descripcion" cols="50" rows="5" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <input type="button" id="guardar" class="neu btn-block" value="Solicitar">
+                            </div>
                         </div>
-                    </div>
                 </div>
                 </form>
             </div>
         </div>
     </div>
-</div>
-
 </div>
 
 <script>
@@ -131,11 +128,11 @@
             type: "POST",
             url: '?c=solicitudes&a=descripcion',
             data: {
-                TipoDocumento:TipoDocumento,
-                Proceso:Proceso,
-                TipoSolicitud:TipoSolicitud
+                TipoDocumento: TipoDocumento,
+                Proceso: Proceso,
+                TipoSolicitud: TipoSolicitud
             },
-           beforeSend: function() {
+            beforeSend: function() {
                 $('#index').html("<h5 class='text-center'> <img src='View/img/gifs/cargando-loading-009.gif'> Cargando Información</h5>");
             },
             success: function(resp) {
@@ -148,9 +145,9 @@
 
 
     $(document).on('click', '#guardar', function(e) {
-       // var data = $("#formResponder").serialize();
-         var formData = new FormData($("#formSolicitud")[0]);
-         
+        // var data = $("#formResponder").serialize();
+        var formData = new FormData($("#formSolicitud")[0]);
+
         $.ajax({
             url: "?c=solicitudes&a=Registrar",
             type: "POST",
@@ -165,11 +162,11 @@
                     timer: 1500
                 }, )
                 setTimeout(function() {
-                   // window.location = '?c=solicitudes&a=index';
-                    // window.location.reload(1);
+                     window.location = '?c=solicitudes&a=index';
+                       window.location.reload(1);
                 }, 2000)
 
             }
         });
-    });    
+    });
 </script>

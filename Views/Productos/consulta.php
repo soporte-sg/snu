@@ -1,7 +1,7 @@
 <div class="col-md-4">
     <div class="card">
         <div class="panel-heading">
-            <h3 class="panel-title">Panel De Busqueda</h3>
+            <h3 class="panel-title">Panel de Busqueda</h3>
         </div>
         <div class="panel-body">
             <div class=" col-md-12">
@@ -17,7 +17,7 @@
                     <div class="form-line">
                         <label for="">Elige la sede</label>
                         <select name="ubicacion" id="ubicacion" class="form-control">
-                        <option value=" ">Seleccionar</option>
+                            <option value=" ">Seleccionar</option>
                             <?php foreach ($sedes as $sede) : ?>
                                 <option value="<?= $sede->id ?>"><?= $sede->nombre ?></option>
                             <?php endforeach; ?>
@@ -35,53 +35,54 @@
         </div>
     </div>
 </div>
-<div class="col-md-8" >
-<div class="col-md-12" id="contenedor">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">Panel De Resultados</h3>
-        </div>
-        <div class="panel-body" id="resultado">
+<div class="col-md-8">
+    <div class="col-md-12" id="contenedor">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Panel de Resultados</h3>
+            </div>
+            <div class="panel-body" id="resultado">
 
+            </div>
         </div>
     </div>
 </div>
-</div>
-
 <script>
     $('#numero').on('keyup', function() {
         var id = document.getElementById("numero").value
-        $.ajax({
-            type: "POST",
-            url: '?c=productos&a=xid',
-            data: {
-                id: id
-            },
-            beforeSend: function() {
-                $('#resultado').html("<h5 class='text-center'>Cargando Información</h5>");
-            },
-            success: function(resp) {
-                $('#resultado').html(resp);
-                $('#respuesta').html("");
-            }
-        });
+        try {
+            $.ajax({
+                url: '?c=productos&a=xid',
+                data: {
+                    id: id
+                },
+                success: function(resp) {
+                    $('#resultado').html(resp);
+                    $('#respuesta').html("");
+                }
+            });
+        } catch (error) {
+            console.error(error)
+        }
     });
+
     $('#ubicacion').on('change', function() {
         var id = document.getElementById("ubicacion").value
-        $.ajax({
-            type: "POST",
-            url: '?c=productos&a=descripcion',
-            data: {
-                sede_id: id
-            },
-            beforeSend: function() {
-                $('#sede').html("<h5 class='text-center'>Cargando Información</h5>");
-            },
-            success: function(resp) {
-                $('#sede').html(resp);
-                $('#respuesta').html("");
-            }
-        });
+        if (id > 0) {
+            $.ajax({
+                type: "POST",
+                url: '?c=productos&a=descripcion',
+                data: {
+                    sede_id: id
+                },
+                beforeSend: function() {
+                    $('#sede').html("<h5 class='text-center'>Cargando Información</h5>");
+                },
+                success: function(resp) {
+                    $('#sede').html(resp);
+                    $('#respuesta').html("");
+                }
+            });
+        }
     });
-    
 </script>

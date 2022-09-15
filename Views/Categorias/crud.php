@@ -42,7 +42,7 @@
                     timer: 2000
                 }, )
                 setTimeout(function() {                  
-                  // window.location.reload();
+                    window.location = '?c=categorias&a=index';
                 }, 2000)
             }
 
