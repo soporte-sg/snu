@@ -122,84 +122,82 @@ $path3 = "Assets/js/";
                         </a>
                         <ul class="ml-menu">
                             <li>
-                            <li>
-                                <a href="<?php echo $APP_WWW . 'solicitudes/datossolicitud' ?>">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="<?php echo $APP_WWW . 'solicitudes/indexes' ?>">Consultar</a>
-                            </li>
+                                <li>
+                                    <a href="<?php echo $APP_WWW . 'solicitudes/datossolicitud' ?>">Registrar</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo $APP_WWW . 'solicitudes/indexes' ?>">Consultar</a>
+                                </li>
 
+                            </li>
+                        </ul>
                     </li>
-                </ul>
-                </li>
 
-                <li>
-                    <a href="javascript:void(0);" class="menu-toggle">
-                        <!--<a href="<?php echo $APP_WWW . 'productos/buscarindsede/' ?>">-->
-                        <i class="material-icons">devices_other</i>
-                        <span>Autoreporte</span>
-                    </a>
-                    <ul class="ml-menu">
-                        <li>
-                        <li>
-                            <a href="https://api.calidadsg.com/documental/TbProcesoNoconformes/add">Registro de evento</a>
-                        </li>
-                        <li>
-                            <a href="https://api.calidadsg.com/documental/TbProcesoNoconformes/buscar">Consulta de eventos</a>
-                        </li>
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <!--<a href="<?php echo $APP_WWW . 'productos/buscarindsede/' ?>">-->
+                            <i class="material-icons">devices_other</i>
+                            <span>Autoreporte</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <li>
+                                    <a href="https://api.calidadsg.com/documental/TbProcesoNoconformes/add">Registro de evento</a>
+                                </li>
+                                <li>
+                                    <a href="https://api.calidadsg.com/documental/TbProcesoNoconformes/buscar">Consulta de eventos</a>
+                                </li>
 
-                        <li>
-                            <a href="https://api.calidadsg.com/documental/tb_condiciones/indexes">Consolidado de eventos</a>
-                        </li>
-                        <li>
-                            <a href="https://api.calidadsg.com/documental/categoriaeventos/index1">Clasificación de eventos</a>
-                        </li>
+                                <li>
+                                    <a href="https://api.calidadsg.com/documental/tb_condiciones/indexes">Consolidado de eventos</a>
+                                </li>
+                                <li>
+                                    <a href="https://api.calidadsg.com/documental/categoriaeventos/index1">Clasificación de eventos</a>
+                                </li>
+                        
 
-                </li>
-                </ul>
-
-
-
-                </li>
+                            </li>
+                        </ul>
+                    </li>
 
 
-                <li>
-                    <a href="javascript:void(0);" class="menu-toggle">
-                        <!--<a href="<?php echo $APP_WWW . 'productos/buscarindsede/' ?>">-->
-                        <i class="material-icons">devices_other</i>
-                        <span>Documentos</span>
-                    </a>
-                    <ul class="ml-menu">
-                        <li>
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <!--<a href="<?php echo $APP_WWW . 'productos/buscarindsede/' ?>">-->
+                            <i class="material-icons">devices_other</i>
+                            <span>Documentos</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
 
-                        <li>
-                            <a href="<?php echo $APP_WWW . 'documentos/index1' ?>">Consultar</a>
-                        </li>
-                        <li>
-                            <a href="https://api.calidadsg.com/upload/?emp=<?php echo $datos['Colegio']['nombre'] ?>">Subir</a>
-                        </li>
+                                <li>
+                                    <a href="<?php echo $APP_WWW . 'documentos/index1' ?>">Consultar</a>
+                                </li>
+                                <li>
+                                    <a href="https://api.calidadsg.com/upload/?emp=<?php echo $datos['Colegio']['nombre'] ?>">Subir</a>
+                                </li>
 
-                </li>
-                </ul>
-                </li>
-                <li>
-                    <a href="javascript:void(0);" class="menu-toggle">
-                        <!--<a href="<?php echo $APP_WWW . 'productos/buscarindsede/' ?>">-->
-                        <i class="material-icons">devices_other</i>
-                        <span>Documentos Externos</span>
-                    </a>
-                    <ul class="ml-menu">
-                        <li>
-                            <!--<li>
-                                    <a href="<?php echo $APP_WWW . 'SgcDocumentos/add' ?>">Registrar</a>
-                                </li>-->
-                        <li>
-                            <a href="<?php echo $APP_WWW . 'sgcexternos/index1' ?>">Consultar</a>
-                        </li>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <!--<a href="<?php echo $APP_WWW . 'productos/buscarindsede/' ?>">-->
+                            <i class="material-icons">devices_other</i>
+                            <span>Documentos Externos</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <!--<li>
+                                        <a href="<?php echo $APP_WWW . 'SgcDocumentos/add' ?>">Registrar</a>
+                                    </li>-->
+                                <li>
+                                    <a href="<?php echo $APP_WWW . 'sgcexternos/index1' ?>">Consultar</a>
+                                </li>
 
-                </li>
-                </ul>
-                </li>
+                            </li>
+                        </ul>
+                    </li>
                 <li>
                     <a href="javascript:void(0);" class="menu-toggle">
                         <!--<a href="<?php echo $APP_WWW . 'productos/buscarindsede/' ?>">-->

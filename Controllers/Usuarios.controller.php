@@ -73,8 +73,8 @@ class UsuariosController
         $usuario->apellidos = $_REQUEST['apellidos'];
         $usuario->email = $_REQUEST['email'];
         $usuario->identificacion = $_REQUEST['identificacion'];
-        // $usuario->cliente_id = $_REQUEST['cliente_id'];       
-        $usuario->cargo_id = $_REQUEST['cargo_id'];
+        $usuario->cliente_id = $_REQUEST['cliente_id'];       
+        // $usuario->cargo_id = $_REQUEST['cargo_id'];
        
         $usuario->rol_id = $_REQUEST['rol_id'];
         $usuario->estado = $_REQUEST['estado'];

@@ -95,14 +95,14 @@
                     <div class="form-group">
                         <div class="form-line">
                             <label>Documento .pdf</label>
-                            <input type="file" name="filename" id="filename" class="form-control">
+                            <input type="file" name="filename" id="filename" class="form-control" data-toggle="tooltip" data-placement="right" title="El peso maximo del archivo es de 2MB y debe ser en formato PDF">
                             <input type="hidden" name="dir" id="dir" class="form-control">
                             <input type="hidden" name="proceso" id="proceso" class="form-control" value="<?= $solicitud->Proceso ?>">
                         </div>
                     </div>
                 </div>            
             <div class="col-md-12">
-                <input type="button" id="guardar" class="btn btn-default btn-block" value="Validar">
+                <input type="button" id="guardar" class="btn btn-success" value="Guardar">
             </div>
         </div>
         </form>

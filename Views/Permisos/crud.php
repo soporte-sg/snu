@@ -55,7 +55,7 @@
             url: '?c=permisos&a=ver',
             data: 'id=' + id,
             beforeSend: function() {
-                $('#index').html("<h5 class='text-center'> <img src='View/img/gifs/cargando-loading-009.gif'> Cargando Información</h5>");
+                $('#index').html("<h5 class='text-center'> <img src='Assets/images/gifs/cargando-loading-026.gif'> Cargando Información</h5>");
             },
             success: function(resp) {
                 $('#index').html(resp);

@@ -17,6 +17,7 @@
                                 <option value="<?php echo  $value->id ?>"><?php echo  ucwords($value->rol)  ?></option>
                             <?php endforeach; ?>
                         </select>
+                        
                         <br><br>
                     </div>
                     <div id="resultado" class="col-md-12"></div>
@@ -32,7 +33,10 @@
 <script>
     function Permisos() {
         var id = document.getElementById('tipousuario').value;
-        $.ajax({
+       console.log(id)
+        if(id >0){
+
+            $.ajax({
             data: {
                 id: id
             },
@@ -43,8 +47,13 @@
             },
             success: function(resp) {
                 $('#resultado1').html(resp);
-                //$('#resultado').html("<div class='alert alert-success'></div>");
+                // $('#error').html("");
             }
         });
+        }else{
+            $('#resultado1').html("<h5 class='text-center'> Porfavor selecciona un rol</h5>");
+
+        }
+        
     };
 </script>

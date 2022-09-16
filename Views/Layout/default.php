@@ -265,7 +265,7 @@ $servicios = $servicio->Servicio();
 
                         </ul>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">pie_chart</i>
                             <span>indicadores</span>
@@ -278,7 +278,7 @@ $servicios = $servicio->Servicio();
                                 <a href="?c=indicadors&a=add">Crear Ficha</a>
                             </li>
                         </ul>
-                    </li>
+                    </li> -->
                     <!-- <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">content_copy</i>

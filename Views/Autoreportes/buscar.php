@@ -11,36 +11,41 @@
                 <div class="row clearfix">
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label for="">
-                                <label>Estado</label>
-                                <select name="est" id="est" class="form-control">
+                            <div class="form-line">
+                                    <label>Estado</label>
+                                    <select name="est" id="est" class="form-control">
+                                        <option value=" ">Seleccionar</option>
+                                        <option value="En Tramite">Tratamiento</option>
+                                        <option value="Revisión">Revisión</option>
+                                        <option value="Aprobacion">Verificado</option>
+                                    </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <div class="form-line">
+                                <label>Tipo de evento</label>
+                                <select name="inci" id="inci" class="form-control">
                                     <option value=" ">Seleccionar</option>
-                                    <option value="En Tramite">Tratamiento</option>
-                                    <option value="Revisión">Revisión</option>
-                                    <option value="Aprobacion">Verificado</option>
+                                    <option value="AI">ACTOS INSEGUROS</option>
+                                    <option value="CI">CONDICIONES INSEGURAS</option>
+                                    <option value="SNC">SERVICIOS NO CONFORMES</option>
                                 </select>
+                            </div>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label>Tipo de evento</label>
-                            <select name="inci" id="inci" class="form-control">
-                                <option value=" ">Seleccionar</option>
-                                <option value="AI">ACTOS INSEGUROS</option>
-                                <option value="CI">CONDICIONES INSEGURAS</option>
-                                <option value="SNC">SERVICIOS NO CONFORMES</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label>Proceso</label>
-                            <select name="proceso" id="proceso" class="form-control" id="select_categoria">
-                                <option value="NA">SELECCIONAR</option>
-                                <?php foreach ($procesos as $pro) : ?>
-                                    <option value="<?php echo $pro->Iniciales; ?>"><?php echo $pro->Iniciales . '-' . $pro->NombreProceso; ?></option>
-                                <?php endforeach; ?>
-                            </select>
+                            <div class="form-line">
+                                <label>Proceso</label>
+                                <select name="proceso" id="proceso" class="form-control" id="select_categoria">
+                                    <option value="NA">Seleccionar</option>
+                                    <?php foreach ($procesos as $pro) : ?>
+                                        <option value="<?php echo $pro->Iniciales; ?>"><?php echo $pro->Iniciales . '-' . $pro->NombreProceso; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-12  text-center">

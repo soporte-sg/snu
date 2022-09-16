@@ -94,7 +94,7 @@
                                 <div class="form-group">
                                     <div class="form-line">
                                         <label>Adjuntar Archivo</label>
-                                        <input type="file" name="filename" class='form-control' value="">
+                                        <input type="file" id="Archivo" name="filename" class='form-control' data-toggle="tooltip" data-placement="right" title="El peso maximo del archivo es de 2MB y debe ser en formato word o excel" value="">
                                         <input type="hidden" name="dir" class='form-control' value="">
 
                                     </div>
@@ -104,12 +104,12 @@
                                 <div class="form-group">
                                     <div class="form-line">
                                         <label>Justificación</label>
-                                        <textarea name="Descripcion" id="Descripcion" cols="50" rows="5" class="form-control"></textarea>
+                                        <textarea name="Descripcion" id="Descripcion" cols="50" rows="5" class="form-control" data-toggle="tooltip" data-placement="right" placeholder="Da un detalle de tu solicitud, nombre del documento/formato y su importancia " title="Da un detalle de tu solicitud, nombre del documento/formato y su importancia "></textarea>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-12">
-                                <input type="button" id="guardar" class="neu btn-block" value="Solicitar">
+                                <input type="button" id="guardar" class="btn btn-success" value="Guardar">
                             </div>
                         </div>
                 </div>
@@ -124,22 +124,24 @@
         var TipoDocumento = document.getElementById("TipoDocumento").value
         var Proceso = document.getElementById("Proceso").value
         var TipoSolicitud = document.getElementById("TipoSolicitud").value
-        $.ajax({
-            type: "POST",
-            url: '?c=solicitudes&a=descripcion',
-            data: {
-                TipoDocumento: TipoDocumento,
-                Proceso: Proceso,
-                TipoSolicitud: TipoSolicitud
-            },
-            beforeSend: function() {
-                $('#index').html("<h5 class='text-center'> <img src='View/img/gifs/cargando-loading-009.gif'> Cargando Información</h5>");
-            },
-            success: function(resp) {
-                $('#index').html(resp);
-                $('#respuesta').html("");
-            }
-        });
+        
+            $.ajax({
+                type: "POST",
+                url: '?c=solicitudes&a=descripcion',
+                data: {
+                    TipoDocumento: TipoDocumento,
+                    Proceso: Proceso,
+                    TipoSolicitud: TipoSolicitud
+                },
+                beforeSend: function() {
+                    $('#index').html("<h5 class='text-center'> <img src='View/img/gifs/cargando-loading-009.gif'> Cargando Información</h5>");
+                },
+                success: function(resp) {
+                    $('#index').html(resp);
+                    $('#respuesta').html("");
+                }
+            });
+        
     });
 
 
@@ -147,26 +149,37 @@
     $(document).on('click', '#guardar', function(e) {
         // var data = $("#formResponder").serialize();
         var formData = new FormData($("#formSolicitud")[0]);
+        if(($('#Descripcion').val()!='')){
+            $.ajax({
+                url: "?c=solicitudes&a=Registrar",
+                type: "POST",
+                data: formData,
+                contentType: false,
+                cache: false,
+                processData: false,
+                success: function(data) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'BIEN HECHO!!',
+                        timer: 1500
+                    }, )
+                    setTimeout(function() {
+                        window.location = '?c=solicitudes&a=index';
+                        // window.location.reload();
+                    }, 2000)
 
-        $.ajax({
-            url: "?c=solicitudes&a=Registrar",
-            type: "POST",
-            data: formData,
-            contentType: false,
-            cache: false,
-            processData: false,
-            success: function(data) {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'BIEN HECHO!!',
+                }
+            });
+        }else{
+            Swal.fire({
+                    icon: 'error',
+                    title: '¡COMPLETA TODOS LOS CAMPOS!',
                     timer: 1500
                 }, )
                 setTimeout(function() {
-                     window.location = '?c=solicitudes&a=index';
-                       window.location.reload(1);
-                }, 2000)
-
-            }
-        });
+                    // window.location = '?c=usuarios&a=index2';
+                    // window.location.reload();
+                }, 1500)
+        }    
     });
 </script>

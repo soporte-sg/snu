@@ -58,7 +58,7 @@
 					<input type="hidden" name="estado" id="estado" class="form-control" value="En Tramite">
 					<input type="hidden" name="fechaRegistro" id="fechaRegistro" class="form-control" value="<?= date('Y-m-d') ?>">
 					<input type="hidden" name="usuario" id="usuario" class="form-control" value="<?= $_SESSION['user']->FullName ?>">
-					<input type="button" id="guardar" class="btn btn-default btn-block" value="Registrar">
+					<input type="button" id="guardar" class="btn btn-success" value="Guardar">
 				</div>
 			</div>
 		</form>
@@ -121,7 +121,7 @@
 					timer: 1500
 				}, )
 				setTimeout(function() {
-				  // window.location = '?c=autoreportes&a=buscarIndex';
+				  window.location = '?c=autoreportes&a=buscarIndex';
 					// window.location.reload(1);
 				}, 2000)
 

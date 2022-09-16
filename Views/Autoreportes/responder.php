@@ -111,16 +111,16 @@
 								<br>
 								<label for="">
 									Descripción las acciones a tomar</label>
-								<textarea name="respuesta" id="respuesta" class="form-control" value=""> "Lo necesitamos que responda: “por qué paso, que hacer para que no vuelva a pasar y cuando se realiza". </textarea>
+								<textarea name="respuesta" id="respuesta" class="form-control" value="" >Lo que necesitamos que responda: “por qué paso, que hacer para que no vuelva a pasar y cuando se realiza" </textarea>
 							
 							</div>
 							<?php
 							//debug($recurrente);
 							if ($recurrente >= 2) : ?>
 								<div class="col-md-4 col-md-offset-4 text-center">
-									<p class="text-warning">Advertencia!!<br> el proceso al ya tiene 2 o mas incidentes registrados
+									<p class="text-warning">Advertencia!!<br> el proceso al que hace referencia ya tiene 2 o mas incidentes registrados
 										por favor solicite una acción correctiva para continuar</p>
-									<a href="" class='btn  btn-success'>SOLICITAR ACCIÓN CORRECTIVA</a>
+									<button href="" class='btn btn-success'>SOLICITAR ACCION</button>
 									<br>
 									<label for="">No de la acción correctiva</label>
 									<input type="number" name="num_accion_corr" id="num_accion_corr" class="form-control" min="1" value="">
@@ -180,7 +180,7 @@
 						<?php else : ?>
 							<div class="col-md-12 text-center"><br>
 								
-								<input type="button" id="guardar" class="btn btn-default btn-block" value="Registrar">
+								<input type="button" id="guardar" class="btn btn-success" value="Guardar">
 
 							</div>
 						<?php endif; ?>					
@@ -209,7 +209,7 @@
 						timer: 1500
 					}, )
 					setTimeout(function() {
-						 window.location = '?c=autoreportes&a=buscarIndex';
+						//  window.location = '?c=autoreportes&a=buscarIndex';
 						// window.location.reload(1);
 					}, 2000)
 
