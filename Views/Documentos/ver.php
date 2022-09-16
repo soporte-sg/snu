@@ -36,7 +36,7 @@
                         <td>
                             <?php if ($_SESSION['user']->rol_id == 4 or $_SESSION['user']->rol_id == 1) : ?>
                                 <a data-toggle="modal" href='#modal-id' type="button" onclick="Edit('<?php echo $value->id ?>')" type="button" title="Actualizar datos del Documento">
-                                    <i class="material-icons">system_update</i>
+                                    <i class="material-icons">edit</i>
                                 </a>
                             <?php endif; ?>
                         </td>
