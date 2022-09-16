@@ -31,7 +31,7 @@
                     
 
                     </td>
-                    <td class="text-center"><span><a onclick="Clientes_Edit('<?php echo $cliente->cliente_id ?>')" class="btn btn-primary  text-center" data-toggle="modal" data-target="#modelId">Editar</a></span></td>
+                    <td class="text-center"><span><a onclick="Clientes_Edit('<?php echo $cliente->cliente_id ?>')" class="btn btn-primary  text-center" data-toggle="modal" data-target="#modelId"><i class="glyphicon glyphicon-edit" title="Actualizar"></i> Editar</a></span></td>
                 </tr>
                 <?php endforeach; ?>    
             </tbody>

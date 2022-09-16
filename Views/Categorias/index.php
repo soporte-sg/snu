@@ -30,7 +30,7 @@
                             <td><?php echo  $value->codigo ?></td>
                             <td><?php echo  $value->vidautil ?></td>
                             <td>
-                                <a onclick="Editar('<?php echo $value->id ?>')" data-toggle="modal" href='#modal-id'><i class="glyphicon glyphicon-user" title="Actualizar"></i></a>
+                                <a onclick="Editar('<?php echo $value->id ?>')" data-toggle="modal" href='#modal-id'><i class="glyphicon glyphicon-edit" title="Actualizar"></i></a>
                                 <a onclick="Borrar('<?php echo $value->id ?>')"><i class="glyphicon glyphicon-trash" title="Eliminar"></i></a>
                             </td>
                         </tr>

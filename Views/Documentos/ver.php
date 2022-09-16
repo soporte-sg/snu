@@ -57,9 +57,9 @@
             <div class="modal-body" id="resultado">
                 
             </div>
-            <div class="modal-footer">
+            <!-- <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

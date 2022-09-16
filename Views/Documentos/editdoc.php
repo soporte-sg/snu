@@ -77,7 +77,7 @@
                 </div>
             </div>
             <div class="col-md-12">
-                <input type="button" id="guardar" class="btn btn-default btn-block" value="Actualizar">
+                <input type="button" id="guardar" class="btn btn-success" value="Guardar">
             </div>
         </div>
     </div>
@@ -86,7 +86,9 @@
     $(document).on('click', '#guardar', function(e) {
         // var data = $("#formResponder").serialize();
         var formData = new FormData($("#formEditDoc")[0]);
-        $.ajax({
+
+        if(($("#CodDocumento").val()!="")&&($("#Proceso").val()!="")&&($("#NomDocumento").val()!="")&&($("#Version").val()!="")&&($("#proteccion").val()!="")&&($("#Emision").val()!="")){
+            $.ajax({
             url: "?c=documentos&a=Registrar",
             type: "POST",
             data: formData,
@@ -105,5 +107,17 @@
                 }, 2000)
             }
         });
+        }else{
+            Swal.fire({
+                    icon: 'error',
+                    title: '¡Porfavor llena todos los campos!',
+                    timer: 1500
+                }, )
+                setTimeout(function() {
+                    //window.location = '?c=solicitudes&a=index';
+                    // window.location.reload(1);
+                }, 2000)
+        }
+        
     });
 </script>
