@@ -154,7 +154,7 @@ $servicios = $servicio->Servicio();
                             <span>Inicio</span>
                         </a>
                     </li>                    
-                    <li>
+                    <!-- <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">settings</i>
                             <span>Indicadores</span>
@@ -164,7 +164,7 @@ $servicios = $servicio->Servicio();
                                 <a href="?c=indicadors&a=index">Gestionar</a>
                             </li>                            
                         </ul>
-                    </li> 
+                    </li>  -->
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">settings</i>

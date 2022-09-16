@@ -1,162 +1,185 @@
+
 <?php
-//nombrar la clase
 class Pqrsf
 {
-    // crear los atributos poner los mismo nombre de la tb
+	private $pdo;
+	
+    public $id;
+    public $url;
+    public $nombres;
+    public $apellidos;
+    public $tipo_peticion;
+    public $identificacion;
+    public $correo;
+    public $n_contacto;
+    public $descripcion;
+    public $fecha_registro;
+    public $estado;
+    public $radicado;
 
-    private $pdo; // atributo de la conexion a bd
-    public $proceso; //atributo del objeto
 
-
+    
     public function __CONSTRUCT()
-    {
-        try {
-            $this->pdo = Database::StartUp();
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
-    }
+	{
+		try
+		{
+			$this->pdo = Database::StartUp();     
+		}
+		catch(Exception $e)
+		{
+			die($e->getMessage());
+		}
+	}
+	public function Imagen($id){
+		try
+		{
+			
 
+			$stm = $this->pdo->prepare("SELECT filename, dir FROM colegios WHERE id= $id");
+			$stm->execute();
 
-    public function Index()
-    {
-        try {
-            $result = array();
-            $stm = $this->pdo->prepare("SELECT * FROM  usuarios ");
-            $stm->execute();
-            return $stm->fetchAll(PDO::FETCH_OBJ);
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
-    }
+			return $stm->fetch(PDO::FETCH_OBJ);
+		}
+		catch(Exception $e)
+		{
+			die($e->getMessage());
+		}
+	}
 
-    public function Categoriaevento()
-    {
-        try {
-            $result = array();
-            $stm = $this->pdo->prepare("SELECT * FROM  categoriaeventos ");
-            $stm->execute();
-            return $stm->fetchAll(PDO::FETCH_OBJ);
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
-    }
+	public function Listar()
+	{
+		try
+		{
+			$result = array();
 
-    public function Add(Mantenimiento $data)
-    {
-        try {
+			$stm = $this->pdo->prepare("SELECT * FROM pqrs");
+			$stm->execute();
 
-            $stm = "INSERT INTO tb_proceso_noconformes(proceso, cargo_id, TbCondiciones_id, descEvento, lugarEvento,                
-                        estado, fechaRegistro, fechaValidacion, respuesta, usuario,observacion_1, observacion, fechaRespuesta, num_accion_corr )
-            VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            $this->pdo->prepare($stm)->execute(array(
-                $data->proceso,
-                $data->cargo_id,
-                $data->TbCondiciones_id,
-                $data->descEvento,
-                $data->lugarEvento,
-                $data->estado,
-                $data->fechaRegistro,
-                $data->fechaValidacion,
-                $data->respuesta,
-                $data->usuario,
-                $data->observacion_1,
-                $data->observacion,
-                $data->fechaRespuesta,
-                $data->num_accion_corr,
-            ));
-            $id_cliente = $this->pdo->lastInsertId();
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
-    }
+			return $stm->fetchAll(PDO::FETCH_OBJ);
+		}
+		catch(Exception $e)
+		{
+			die($e->getMessage());
+		}
+	}
 
-    public function Edit(Mantenimiento $data)
-    {
-        try {
-            $sql = "UPDATE tb_proceso_noconformes SET nombre='$data->nombre', direccion='$data->direccion', telefono='$data->telefono',
-                correos='$data->correos', salario='$data->salario', matriz='$data->matriz', fechainicio='$data->fechainicio',
-                rector='$data->rector'  WHERE id = $data->id";
+	public function Obtener($id)
+	{
+		try 
+		{
+			$stm = $this->pdo
+			          ->prepare("SELECT * FROM pqrs WHERE id = ?");
+			          
+
+			$stm->execute(array($id));
+			return $stm->fetch(PDO::FETCH_OBJ);
+		} catch (Exception $e) 
+		{
+			die($e->getMessage());
+		}
+	}
+
+	public function Eliminar($id)
+	{
+		try 
+		{
+			$stm = $this->pdo->prepare("DELETE FROM pqrs WHERE id = ?");			          
+
+			$stm->execute(array($id));
+		} catch (Exception $e) 
+		{
+			die($e->getMessage());
+		}
+	}
+
+	public function Actualizar($data)
+	{
+	    
+	    
+	                 $id=$data->id;
+	                 $nombre = $data->nombre; 
+                     $apellido =  $data->apellido;
+                     $identificacion = $data->identificacion;
+                     $direccion =  $data->direccion;
+                     $celular =  $data->celular;
+                     $telefono_fijo =  $data->telefono_fijo;
+                     $email =  $data->email;
+                     $n_empresa =  $data->n_empresa;
+                     $lugar_hecho =  $data->lugar_hecho;
+                     $dirigido =  $data->dirigido;
+                     $tipopqrs =  $data->tipopqrs; 
+                     $f_registro =  $data->f_registro;
+                     $descripcion =  $data->descripcion;
+                     $f_respuesta = $data->f_respuesta; 
+                     $respuesta =  $data->respuesta; 
+                     $estado =  $data->estado;
+                     $usuario =  $data->usuario;
+	    
+	    
+	   
+		try 
+		{
+			$sql = "UPDATE pqrs SET f_respuesta='$f_respuesta', respuesta='$respuesta', estado='$estado',usuario='$usuario' WHERE id = $id";
             $this->pdo->prepare($sql)->execute();
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
-    }
-    public function RespuestaEdit(Mantenimiento $data)
-    {
-        try {
-            $sql = "UPDATE  tb_proceso_noconformes SET estado='$data->estado', fechaRespuesta='$data->fechaRespuesta', conciliacion='$data->conciliacion',
-                taccion='$data->taccion', respuesta='$data->respuesta', num_accion_corr='$data->num_accion_corr' , 	fechaValidacion='$data->fechaValidacion', observacion='$data->observacion', observacion1='$data->observacion1'  WHERE id = $data->id";
-            $this->pdo->prepare($sql)->execute();
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
-    }
+			
+		} catch (Exception $e) 
+		{
+			die($e->getMessage());
+		}
+	}
 
+	public function Registrar(Pqrs $data)
+	{
+	   // print_r($data);
+	   // exit();
+		try 
+		{
+		$sql = "INSERT INTO pqrs (url, tipo_peticion,nombres,apellidos,identificacion,email,n_contacto,descripcion,fecha_registro,estado,radicado,empresa) 
+		        VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
 
+		$this->pdo->prepare($sql)
+		     ->execute( 
+		         
+				array(  $data->url,
+				        $data->tipo_peticion,
+                        $data->nombres, 
+                        $data->apellidos,
+                        $data->identificacion,
+                        $data->correo, 
+                        $data->n_contacto,
+                        $data->descripcion, 
+                        $data->fecha_registro,
+                        $data->estado, 
+                        $data->radicado,
+                        $data->empresa
+                        
+                        
+                )
+			);
+		   
+		} catch (Exception $e) 
+		{
+			die($e->getMessage());
+		}
+	}
+	
 
-    public function GetAutoreporte($campo, $valor)
-    {
-
-        try {
-
-            $stm = $this->pdo->prepare("SELECT  tb_proceso_noconformes.*,tb_condiciones.* , tb_proceso_noconformes.usuario as user, tb_proceso_noconformes.id as id1
-            FROM  tb_proceso_noconformes, tb_condiciones 
-            WHERE 
-             $campo='$valor'
-             AND
-             tb_proceso_noconformes.TbCondiciones_id=tb_condiciones.id
-                
-           ");
+	public function Max()
+	{
+		try 
+		{
+			$stm = $this->pdo->prepare("SELECT MAX(id) as l_id  FROM pqrs ");
+			          
             $stm->execute();
-
-            return $stm->fetchAll(PDO::FETCH_OBJ);
-        } catch (Exception $e) {
-        }
-    }
-
-    public function GetAutorep($id)
-    {
-
-        try {
-
-            $stm = $this->pdo->prepare("SELECT  tb_proceso_noconformes.*,tb_condiciones.* , tb_proceso_noconformes.usuario as user, tb_proceso_noconformes.id as id1 
-            FROM  tb_proceso_noconformes, tb_condiciones 
-            WHERE 
-            tb_proceso_noconformes.id='$id'
-             AND
-             tb_proceso_noconformes.TbCondiciones_id=tb_condiciones.id           
-            ");
-            $stm->execute();
-
-            return $stm->fetch(PDO::FETCH_OBJ);
-        } catch (Exception $e) {
-        }
-    }
-
-    public function Recurrente($pro, $cond)
-    {
-        try {
-
-            $stm = $this->pdo->prepare("SELECT COUNT(tb_proceso_noconformes.id) AS cantidad
-            FROM  tb_proceso_noconformes
-            WHERE 
-            tb_proceso_noconformes.proceso='$pro'
-             AND
-             tb_proceso_noconformes.TbCondiciones_id='$cond'           
-            ");
-            $stm->execute();
-
-            return $stm->fetch(PDO::FETCH_OBJ);
-        } catch (Exception $e) {
-        }
-    }
-
-    public function Delete()
-    {
-        try {
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
-    }
+			return $stm->fetch(PDO::FETCH_OBJ);
+		} catch (Exception $e) 
+		{
+			die($e->getMessage());
+		}
+	}
+	
+	
+	
+	
+	
 }
