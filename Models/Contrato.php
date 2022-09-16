@@ -217,7 +217,6 @@ class Contrato
         }
     }
 
-
    	public function Historial($id)
 	{
 		try 
@@ -272,12 +271,8 @@ class Contrato
                 
 	    
 	$sql = "UPDATE persona_contratos SET  cargo_id=$cargo_id, duracion='$duracion', tipo_contrato=$tipo_contrato, inicio_contrato='$inicio_contrato', valor=$valor, aux_trans=$aux_trans WHERE id = '$id'";
-			                            
-			                            
-        $this->pdo->prepare($sql)->execute();
-            
-            
-		} catch (Exception $e) 
+		$this->pdo->prepare($sql)->execute();
+       } catch (Exception $e) 
 		{
 			die($e->getMessage());
 		}
@@ -285,12 +280,10 @@ class Contrato
 
 	public function Registrar(Contrato $data)
 	{
-	  
 		try 
 		{
 		$sql = "INSERT INTO persona_contratos (persona_id, cargo_id, duracion, tipo_contrato, inicio_contrato, valor, aux_trans, registro, usuario) 
 		        VALUES (?,?,?,?,?,?,?,?,?)";
-
 		$this->pdo->prepare($sql)->execute(
 				array(
                         $data->usuario_id, 
@@ -306,7 +299,6 @@ class Contrato
 			);
 			$sql0 = "UPDATE personal SET  rol_id='3'  WHERE id = '$data->usuario_id'";
 			$this->pdo->prepare($sql0)->execute();
-
 		} catch (Exception $e) 
 		{
 			die($e->getMessage());
@@ -314,34 +306,51 @@ class Contrato
 	}
 	
    public function GenerarContrato($id){
-	   try {
-		
-		$stm = $this->pdo->prepare("SELECT persona_contratos.*,cargos.cargo,contratos.nombre as contrato, contratos.contenido, personal.*
+	   try {		
+		$stm = $this->pdo->prepare("SELECT persona_contratos.*,cargos.cargo,contratos.nombre as contrato, contratos.contenido, personal.* 
 			FROM persona_contratos, contratos, cargos, personal
 			WHERE
 			persona_contratos.tipo_contrato=contratos.id
 			AND			
 			persona_contratos.persona_id=personal.id
 			AND			
-			persona_contratos.id = ?");        
-
-			$stm->execute(array($id));
+			persona_contratos.id = ?");      
+            $stm->execute(array($id));
 			return $stm->fetch(PDO::FETCH_OBJ);
-
 	   } catch (Exception $e) 
 	   {
 		   die($e->getMessage());
 	   }
    }
 
+   public function FirmaContrato($contrato_id){
+      try {
+		$stm = $this->pdo->prepare("SELECT * 
+			FROM contrato_firmas
+			WHERE
+			contrato_firmas.contrato_id= ?
+			");      
+            $stm->execute(array($contrato_id));
+			return $stm->fetch(PDO::FETCH_OBJ);
+	  } catch (Exception $e) 
+	  {
+		  die($e->getMessage());
+	  }
+   }
 
+ public function Firmar($contrato_id, $img, $registro)
+ {
+	try {
+		$sql = "INSERT INTO contrato_firmas (contrato_id,imgfirma,registro) 
+		        VALUES (?,?,?)";
+				$this->pdo->prepare($sql)->execute(array($contrato_id, $img, $registro));
+	} catch (Exception $e) 
+	{
+		die($e->getMessage());
+	}
+ }
 
-
-
-
-
-
-
+//------------------------------//
 	public function Novedades($id)
 	{
 		try 

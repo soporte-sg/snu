@@ -112,7 +112,7 @@ class TrasladosController
         $traslado = new Traslado();
         $producto = new Producto();
         $producto = $producto->VerProducto($_REQUEST['producto_id']);
-        $sede = new Categoria();
+        $sede = new Sede();
         $sede = $sede->Index();
         $ubicacion = new Ubicacion();
         $ubicacion = $ubicacion->Index();

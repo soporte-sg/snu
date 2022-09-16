@@ -113,6 +113,17 @@ class SolicitudesController
         $val->crear == 1  ?  require_once 'Views/Solicitudes/view.php' : require_once 'Views/seguridad/error.php';
         require_once 'Views/Layout/foot.php';
     }
+    public function View()
+    {
+        $solicitudes =  $this->model->GetSolicitud($_REQUEST['id']);
+        $seguridad = new Permiso();
+        $modulo = 'solicitudes';
+        $tipo = $_SESSION['rol_id'];
+        $val = $seguridad->Validar($modulo, $tipo);
+        // require_once 'Views/Layout/default.php';
+        $val->crear == 1  ?  require_once 'Views/Solicitudes/view.php' : require_once 'Views/seguridad/error.php';
+        require_once 'Views/Layout/foot.php';
+    }
 
     public function Descripcion()
     {

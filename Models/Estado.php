@@ -45,7 +45,7 @@ class Estado
         }
     }
 
-    public function Add(Categoria $data)
+    public function Add(Estado $data)
     {
         try {
 
@@ -62,7 +62,7 @@ class Estado
         }
     }
 
-    public function Edit(Categoria $data)
+    public function Edit(Estado $data)
     {
         try {
             $sql = "UPDATE estados SET nombre='$data->nombre',modified='$data->modified'

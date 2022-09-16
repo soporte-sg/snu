@@ -15,8 +15,7 @@ class UsuariosController
     function Indexadmin()
     {
 
-        $usuarios = $this->model->Index();
-       
+        $usuarios = $this->model->Index();       
         require_once 'Views/Layout/clientes.php';
         require_once 'Views/Usuarios/index.php';
         require_once 'Views/Layout/foot.php';
@@ -74,8 +73,7 @@ class UsuariosController
         $usuario->email = $_REQUEST['email'];
         $usuario->identificacion = $_REQUEST['identificacion'];
         $usuario->cliente_id = $_REQUEST['cliente_id'];       
-        // $usuario->cargo_id = $_REQUEST['cargo_id'];
-       
+        // $usuario->cargo_id = $_REQUEST['cargo_id'];       
         $usuario->rol_id = $_REQUEST['rol_id'];
         $usuario->estado = $_REQUEST['estado'];
 

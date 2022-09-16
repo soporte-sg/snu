@@ -17,20 +17,15 @@ $servicios = $servicio->Servicio();
     <title>SNU sistema de normalización universal</title>
     <!-- Favicon-->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
-
     <!-- Bootstrap Core Css -->
     <link href="Assets/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
-
     <!-- Waves Effect Css -->
     <link href="Assets/plugins/node-waves/waves.css" rel="stylesheet" />
-
     <!-- Animation Css -->
     <link href="Assets/plugins/animate-css/animate.css" rel="stylesheet" />
-
     <!-- JQuery DataTable Css -->
     <link rel="stylesheet" href="Assests/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="Assests/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
@@ -86,8 +81,8 @@ $servicios = $servicio->Servicio();
 </script>
 
 <body class="theme">
-    <!-- Page Loader 
-    <div class="page-loader-wrapper">
+    <!-- Page Loader  -->
+    <!-- <div class="page-loader-wrapper">
         <div class="loader">
             <div class="preloader">
                 <div class="spinner-layer pl-red">
@@ -101,7 +96,7 @@ $servicios = $servicio->Servicio();
             </div>
             <p>Cargando los recursos</p>
         </div>
-    </div>-->
+    </div> -->
     <!-- #END# Page Loader -->
     <!-- Overlay For Sidebars -->
     <div class="overlay"></div>
@@ -120,7 +115,6 @@ $servicios = $servicio->Servicio();
                     <li><img src="Assets/img/uploads/colegio/<?php echo $_SESSION['datos_cliente']->filename ?>" alt="User" class="imgbrand" /></li>
                      #END# Call Search -->
                 </ul>
-                <!-- Call Search -->
                 <ul class="nav navbar-nav navbar-right">
                     <?php foreach ($servicios as $value) : ?>
                         <li><a href="<?= $value->dir ?>" class="btn"><span><?= $value->oferta ?></span></a></li>
@@ -128,8 +122,6 @@ $servicios = $servicio->Servicio();
                     <!-- Call Search -->
                     <li><a href="?c=seguridad&a=Logout" class="btn-circle"><span><i class="glyphicon glyphicon-off"></i></span></a></li>
                     <!-- #END# Call Search -->
-                </ul>
-                <!-- #END# Call Search -->
                 </ul>
             </div>
 
@@ -144,8 +136,7 @@ $servicios = $servicio->Servicio();
                 <div class="image">
                     <img src="Assets/img/uploads/colegio/<?php echo $_SESSION['datos_cliente']->filename ?>" width="90" height="90" alt="">
                 </div>
-                <div class="info-container">
-                </div>
+                <div class="info-container"></div>
             </div>
             <!-- #User Info -->
             <!-- Menu -->
@@ -158,115 +149,35 @@ $servicios = $servicio->Servicio();
                         <div class="email"> <?= $entrada->ULTIMA ?></div>
                     </li>
                     <li class="active">
-                        <a href="?c=clientes&a=dashboard">
+                        <a href="?c=clientes&a=inventario">
                             <i class="material-icons">home</i>
                             <span>Inicio</span>
                         </a>
-                    </li>
+                    </li>                    
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">settings</i>
-                            <span>Configuración</span>
+                            <span>Indicadores</span>
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="?c=usuarios&a=index2">usuarios</a>
-                            </li>
-                            <li>
-                                <a href="?c=cargos&a=index">Cargos</a>
-                            </li>
-                            <li>
-                                <a href="?c=procesos&a=index">Procesos</a>
-                            </li>
-                            <li>
-                                <a href="?c=permisos&aindex">Permisos</a>
-                            </li>
-                            <!-- <li>
-                                <a href="?c=ubicaciones&a=index">Ubicaciones</a>
-                            </li>
-                            <li>
-                                <a href="?c=sedes&a=index">Sedes</a>
-                            </li>
-                            <li>
-                                <a href="?c=depreciacions&a=index">Depreciación</a>
-                            </li> -->
+                                <a href="?c=indicadors&a=index">Gestionar</a>
+                            </li>                            
                         </ul>
-                    </li>
+                    </li> 
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">widgets</i>
-                            <span>Solicitudes</span>
+                            <i class="material-icons">settings</i>
+                            <span>PQRS</span>
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="?c=solicitudes&a=index">Consultar</a>
-                            </li>
-                            <li>
-                                <a href="?c=solicitudes&a=add">Registrar</a>
-                            </li>
+                                <a href="?c=indicadors&a=index">Gestionar</a>
+                            </li>                            
                         </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">swap_calls</i>
-                            <span>Autoreportes</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="?c=autoreportes&a=add">Registro del evento</a>
-                            </li>
-                            <li>
-                                <a href="?c=autoreportes&a=buscarIndex">Consulta del evento</a>
-                            </li>
-                            <!-- <li>
-                                <a href="pages/ui/badges.html">Consolidado de eventos</a>
-                            </li> 
-                            <li>
-                                <a href="pages/ui/breadcrumbs.html">Clasificacion de eventos</a>
-                            </li>-->
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">assignment</i>
-                            <span>Documentos</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="?c=documentos&a=index">Consultar</a>
-                            </li>
-                            <?php if ($_SESSION['user']->rol_id == 1) : ?>
-                                <li>
-                                    <!-- <a href="pages/forms/advanced-form-elements.html">Subir</a> -->
-                                </li>
-                            <?php endif; ?>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">view_list</i>
-                            <span>Doc Externos</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="?c=doc_exts&a=index">Consultar</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">perm_media</i>
-                            <span>Formatos</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="?c=formatos&a=index">Consultar</a>
-                            </li>
-
-                        </ul>
-                    </li>
+                    </li>                 
                     
-                    <li class="header">Servicios</li>
+                    <li class="header"></li>
                     <?php if ($_SESSION['user']->rol_id == 1) : ?>
                         <li>
                             <a href="?c=clientes&a=index">
@@ -275,16 +186,6 @@ $servicios = $servicio->Servicio();
                             </a>
                         </li>
                     <?php endif; ?>
-
-                    <!-- <li>
-                        <?php foreach ($servicios as $value) : ?>
-                            <a href="<?= $value->dir ?>">
-                                <i class="material-icons">update</i>
-                                <span><?= $value->oferta ?></span>
-                            </a>
-                        <?php endforeach; ?>
-                    </li> -->
-
                 </ul>
             </div>
             <!-- #Menu -->
@@ -301,6 +202,5 @@ $servicios = $servicio->Servicio();
         </aside>
         <!-- #END# Left Sidebar -->
     </section>
-
     <section class="content">
         <div class="container-fluid">

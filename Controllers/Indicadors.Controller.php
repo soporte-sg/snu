@@ -25,7 +25,7 @@ class IndicadorsController
     $indicadors = $this->model->Index();
     $cargo = new Cargo();
     $cargos = $cargo->CargoIndex();
-    require_once 'Views/Layout/default.php';
+    require_once 'Views/Layout/estadistico.php';
     require_once 'Views/Indicadors/index.php';
     require_once 'Views/Layout/foot.php';
   }
@@ -41,7 +41,7 @@ class IndicadorsController
     if (isset($_REQUEST['id'])) {
       $indicador = $this->model->GetIndicador($_REQUEST['id']);print_r($indicador);
     }
-    require_once 'Views/Layout/default.php';
+    require_once 'Views/Layout/estadistico.php';
     require_once 'Views/Indicadors/add.php';
     require_once 'Views/Layout/foot.php';
   }
@@ -133,7 +133,7 @@ public function Datos()
   $metas = new Meta();
   $metas = $metas->GetMetas($_REQUEST['id']);
  
-  require_once 'Views/Layout/default.php';
+  require_once 'Views/Layout/estadistico.php';
   require_once 'Views/Indicadors/datos.php'; 
   require_once 'Views/Layout/foot.php';
 }
@@ -161,7 +161,7 @@ public function VerDatos ()
   $accion = new Accion();
   $acciones= $accion->GetAccionInd($_REQUEST['indicador_id']);
   $indicador=$this->model->GetIndicador($_REQUEST['indicador_id']);
-  require_once 'Views/Layout/default.php';
+  require_once 'Views/Layout/estadistico.php';
   require_once 'Views/Indicadors/ver.php'; 
   require_once 'Views/Layout/foot.php';
 }

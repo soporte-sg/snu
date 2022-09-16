@@ -20,7 +20,7 @@ class Permiso
     public function Index()
     {
         try {
-            $stm = $this->pdo->prepare("SELECT * FROM rols WHERE id != 1");
+            $stm = $this->pdo->prepare("SELECT * FROM normalizacion_snu.rols WHERE id != 1");
             $stm->execute();
             return $stm->fetchAll(PDO::FETCH_OBJ);
         } catch (Exception $e) {
@@ -60,7 +60,7 @@ class Permiso
         $modified = date('Y-m-d');
         try {
 
-            $stm = "INSERT INTO rols(rol, created, modified )
+            $stm = "INSERT INTO normalizacion_snu.rols(rol, created, modified )
                 VALUES(?, ?, ?)";
             $this->pdo->prepare($stm)->execute(array($rol, $created, $modified));
         } catch (Exception $e) {
@@ -81,7 +81,7 @@ class Permiso
     public function getRol($id)
     {
         try {
-            $stm = $this->pdo->prepare("SELECT * FROM rols WHERE id=$id");
+            $stm = $this->pdo->prepare("SELECT * FROM normalizacion_snu.rols WHERE id=$id");
             $stm->execute();
             return $stm->fetch(PDO::FETCH_OBJ);
         } catch (Exception $e) {

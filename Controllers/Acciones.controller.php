@@ -23,7 +23,6 @@ class AccionesController
 
     public function Crud()
     {
-
         # code...
         $accion = new Accion();
         $accion->id=$_REQUEST['a_id'];

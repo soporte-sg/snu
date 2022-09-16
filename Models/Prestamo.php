@@ -19,6 +19,8 @@ class Prestamo
     public  $observaciones;
     public  $created;
     public  $modified;
+    public $dellate_entrada;
+    public $fecha_entrada;
 
     public function __CONSTRUCT()
     {
@@ -44,10 +46,12 @@ class Prestamo
             $stm = $this->pdo->prepare("SELECT prestamos.* ,
             prestamos.id as prestamoId, 
             productos.nombre,
-            productos.carateristicas,
-             productos.id as productoId 
-            FROM  prestamos, productos 
-            WHERE prestamos.producto_id= productos.id             
+            productos.carateristicas, productos.serie,
+            productos.id as productoId,
+            estados.nombre as estado
+            FROM  prestamos, productos, estados 
+            WHERE prestamos.producto_id= productos.id  
+            AND productos.estado_id=estados.id           
             AND prestamos.id=$id");
             $stm->execute();
             return $stm->fetch(PDO::FETCH_OBJ);
@@ -60,10 +64,11 @@ class Prestamo
     public function Add(Prestamo $data)
     {
         try {
-            $stm = "INSERT INTO `prestamos`(`producto_id`, `fecha_entrega`, `nombre_bene`, `apellido_bene`, `identificacion_bene`, `ubicacion_bene`, `num-contacto`, `correo`, `tipo_bene`, `tipo`, `funcionario`, `num_prestamo`, `barrio`, `observaciones`, `dellate_entrada`, `fecha_entrada`, `created`, `modified`)
-            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $stm = "INSERT INTO `prestamos`(`producto_id`, `fecha_entrega`, `nombre_bene`, `apellido_bene`, 
+            `identificacion_bene`, `ubicacion_bene`, `num_contacto`, `correo`, `tipo_bene`, `tipo`, `funcionario`,
+             `num_prestamo`, `barrio`, `observaciones`, `dellate_entrada`, `fecha_entrada`, `created`, `modified`)
+            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $this->pdo->prepare($stm)->execute(array(
-
                 $data->producto_id,
                 $data->fecha_entrega,
                 $data->nombre_bene,
@@ -78,10 +83,10 @@ class Prestamo
                 $data->num_prestamo,
                 $data->barrio,
                 $data->observaciones,
-                $data->dellate_entrada = null,
-                $data->fecha_entrada = null,
-                $data->created,
-                $data->modified
+                $data->dellate_entrada = 'null',
+                $data->fecha_entrada = '0000-00-00',
+                $data->created=date('Y-m-d'),
+                $data->modified='0000-00-00'
             ));
             $_SESSION['id_producto'] = $this->pdo->lastInsertId();
         } catch (Exception $e) {
@@ -98,7 +103,7 @@ class Prestamo
             die($e->getMessage());
         }
     }
-    public function Edit()
+    public function Soporte()
     {
         try {
         } catch (Exception $e) {

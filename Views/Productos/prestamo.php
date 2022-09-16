@@ -69,7 +69,8 @@
                                                 <td colspan="2" class="text-center">
                                                     <div class="btn-group" role="group" aria-label="Basic example">
                                                         <button type="button"  onclick="Ver('<?=$value->prestamoId?>')"  class="btn btn-default"> Ver</button>
-                                                        <button type="button"  onclick="Recibir('<?=$value->prestamoId?>')" class="btn btn-primary">Devolución</button>
+                                                        <button type="button"  onclick="Soporte('<?=$value->prestamoId?>')"  class="btn btn-default"> Soporte</button>
+                                                        <button type="button"  onclick="Recibir('<?=$value->prestamoId?>')" class="btn btn-success">Devolución</button>
                                                         
                                                     </div>
                                                 </td>
@@ -132,6 +133,23 @@
         $.ajax({
             type: "POST",
             url: '?c=productos&a=recibir',
+            data: {
+                prestamoId: prestamoId
+            },
+            beforeSend: function() {
+                $('#resultado').html("<h5 class='text-center'>Cargando Información</h5>");
+            },
+            success: function(resp) {
+                $('#resultado').html(resp);
+                $('#respuesta').html("");
+            }
+        });
+    };
+    function Soporte(prestamoId) {
+        //var prestamoId = document.getElementById("ver").value
+        $.ajax({
+            type: "POST",
+            url: '?c=productos&a=soporteprestamo',
             data: {
                 prestamoId: prestamoId
             },

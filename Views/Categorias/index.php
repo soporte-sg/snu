@@ -56,11 +56,7 @@
                 <h4 class="modal-title"></h4>
             </div>
             <div class="modal-body" id="index">
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-            </div>
+            </div>           
         </div>
     </div>
 </div>
@@ -76,7 +72,6 @@
             }
         });
     }
-
     function Editar(val) {
         $.ajax({
             type: "POST",
@@ -86,9 +81,8 @@
                 $('#index').html(resp);
                 $('#respuesta').html("");
             }
-        });
+        });              
     }
-
     function Borrar(val) {
         Swal.fire({
                 title: "¿Estás seguro de eliminar esta categorias?",

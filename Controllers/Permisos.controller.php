@@ -8,8 +8,7 @@ class PermisosController
         $this->model = new Permiso();
     }
 
-    public function Index()
-    {
+    public function Index()    {
         $roles = $this->model->Index();
         $_SESSION['rol_id'] == 1 ?  require_once 'Views/Layout/clientes.php' : require_once 'Views/Layout/default.php';
         require_once 'Views/Permisos/index.php';

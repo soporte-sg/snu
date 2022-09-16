@@ -37,8 +37,7 @@ class RecuperacionController
            $recuperar->apellidos;
            $recuperar->identificacion;
            $recuperar->username;
-           $recuperar->email;
-           
+           $recuperar->email;           
            $rand= rand(3, $recuperar->identificacion);
            $pass=$rand;          
            $clave=md5($pass);
@@ -54,7 +53,7 @@ class RecuperacionController
            }
 
         }else{         
-            echo'Los datos no fueron encontrados,verifica la informacion y trata de nuevo';
+            return 'Los datos no fueron encontrados,verifica la informacion y trata de nuevo';
         }    
 
       

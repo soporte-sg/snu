@@ -3,9 +3,7 @@
         margin: 10px auto;
         text-align: center;
         max-width: 100%;
-
     }
-
     .box {
         /* box-shadow: 5px 5px 15px black;**/
         box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.2);
@@ -20,11 +18,11 @@
             </div>
             <div class="body">
                 <div class="row">
-                    <div class="col-md-12 ">
+                    <!-- <div class="col-md-12 ">
                         <div class="container-img">
                             <img src="<?= $producto->dir . '/' . $producto->filename ?>" class="box" alt="Image" width="180px" height="auto">
                         </div>
-                    </div>
+                    </div> -->
                     <div class="col-md-12">
                         <div class="col-md-4">
                             <div class="form-group form-float">
@@ -165,10 +163,10 @@
                                             <td><?php echo utf8_encode($mantenimiento->recomendacion)  ?></td>
                                             <td><?php echo utf8_encode($mantenimiento->detalles) ?></td>
                                             <td><?php echo utf8_encode($mantenimiento->verificacion) ?></td>
-                                            <td class="actions">
+                                            <!-- <td class="actions">
                                                 <a href="<?php echo APP_WWW . 'mantenimientos/edit/' . $mantenimiento->id . '/' . $producto->id ?>" class="glyphicon glyphicon-wrench" title="informe del mantenimiento"> </a>
                                                 <a href="<?php echo APP_WWW . 'mantenimientos/edit1/' . $mantenimiento->id . '/' . $producto->id ?>" class="glyphicon glyphicon-check" title="Verificacion y validacion de mantenimiento"> </a>
-                                            </td>
+                                            </td> -->
                                         </tr>
                                     <?php endforeach; ?>
                                 </table>

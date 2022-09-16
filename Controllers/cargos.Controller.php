@@ -13,10 +13,9 @@ class CargosController
     /*crear los metodos necesarios*/
     public function Index()
     {
-        session_start();
         $cargos = $this->model->CargoIndex();
         require_once 'Views/Layout/default.php';
-        require_once 'Views/cargos/index.php';
+        require_once 'Views/Cargos/index.php';
         require_once 'Views/Layout/footer.php';
     }
     public function Add()
@@ -27,7 +26,7 @@ class CargosController
             $cargo = $this->model->GetCargos($_REQUEST['id']);
         }
         $procesos = $proceso->getProceso();
-        require_once 'Views/cargos/crud.php';
+        require_once 'Views/Cargos/crud.php';
     }
     public function Crud()
     {

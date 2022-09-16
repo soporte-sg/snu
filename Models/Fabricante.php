@@ -5,6 +5,7 @@ class Fabricante
     // crear los atributos poner los mismo nombre de la tb
 
     private $pdo; // atributo de la conexion a bd
+    public $id; //atributo del objeto
     public $nombres; //atributo del objeto
     public $created; //atributo del objeto
     public $modified; //atributo del objeto
@@ -45,7 +46,7 @@ class Fabricante
     }
     
 
-    public function Add(Categoria $data)
+    public function Add(Fabricante $data)
     {
         try {
 
@@ -63,7 +64,7 @@ class Fabricante
         }
     }
 
-    public function Edit(Categoria $data)
+    public function Edit(Fabricante $data)
     {
         try {
             $sql = "UPDATE fabricantes SET nombres='$data->nombres', modified='$data->modified'

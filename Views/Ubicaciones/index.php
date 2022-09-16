@@ -6,7 +6,7 @@
                <h2>Ubicaciones</h2> 
             </div>
             <div class="col-md-2">
-                <button onclick="Add()" data-toggle="modal" href='#modal-id' class="neu pull-right"><i class="glyphicon glyphicon-plus"></i> Registrar</button>
+                <button onclick="Add()" data-toggle="modal" href='#modal-id' class="neu pull-right">Registrar ubicación</button>
             </div>
         </div>
     </div>
@@ -52,12 +52,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title"></h4>
             </div>
-            <div class="modal-body" id="index">
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-            </div>
+            <div class="modal-body" id="index"></div>            
         </div>
     </div>
 </div>

@@ -1,24 +1,12 @@
 <?php
-
-class Autoreporte
+//nombrar la clase
+class Pqrsf
 {
-    private $pdo;
-    public $proceso;
-    public $cargo_id;
-    public $TbCondiciones_id;
-    public $descEvento;
-    public $lugarEvento;
-    public $estado;
-    public $fechaRegistro;
-    public $fechaValidacion;
-    public $respuesta;
-    public $usuario;
-    public $observacion_1;
-    public $observacion;
-    public $fechaRespuesta;
-    public $num_accion_corr;
-    public $conciliacion;
-    public $taccion;
+    // crear los atributos poner los mismo nombre de la tb
+
+    private $pdo; // atributo de la conexion a bd
+    public $proceso; //atributo del objeto
+
 
     public function __CONSTRUCT()
     {
@@ -42,7 +30,6 @@ class Autoreporte
         }
     }
 
-
     public function Categoriaevento()
     {
         try {
@@ -55,7 +42,7 @@ class Autoreporte
         }
     }
 
-    public function Add(Autoreporte $data)
+    public function Add(Mantenimiento $data)
     {
         try {
 
@@ -73,10 +60,10 @@ class Autoreporte
                 $data->fechaValidacion,
                 $data->respuesta,
                 $data->usuario,
-                $data->observacion_1='-',
-                $data->observacion='-',
-                $data->fechaRespuesta='0000-00-00',
-                $data->num_accion_corr='',
+                $data->observacion_1,
+                $data->observacion,
+                $data->fechaRespuesta,
+                $data->num_accion_corr,
             ));
             $id_cliente = $this->pdo->lastInsertId();
         } catch (Exception $e) {
@@ -84,7 +71,7 @@ class Autoreporte
         }
     }
 
-    public function Edit(Autoreporte $data)
+    public function Edit(Mantenimiento $data)
     {
         try {
             $sql = "UPDATE tb_proceso_noconformes SET nombre='$data->nombre', direccion='$data->direccion', telefono='$data->telefono',
@@ -95,7 +82,7 @@ class Autoreporte
             die($e->getMessage());
         }
     }
-    public function RespuestaEdit(Autoreporte $data)
+    public function RespuestaEdit(Mantenimiento $data)
     {
         try {
             $sql = "UPDATE  tb_proceso_noconformes SET estado='$data->estado', fechaRespuesta='$data->fechaRespuesta', conciliacion='$data->conciliacion',
@@ -165,8 +152,6 @@ class Autoreporte
         }
     }
 
-
-   
     public function Delete()
     {
         try {

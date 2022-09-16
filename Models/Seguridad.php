@@ -1,5 +1,4 @@
 <?php
-require_once 'App.php';
 
 class Seguridad
 {
@@ -47,7 +46,7 @@ class Seguridad
         }
     }
 
-    public function SubirImg($files){      
+    public function SubirImg($files){     
 
         $nombre = mt_rand(1, 10000000);
         // get details of the uploaded file 1

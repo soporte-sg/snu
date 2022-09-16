@@ -89,7 +89,6 @@ class ContratacionController
         $contrato->duracion = $_REQUEST['duracion'];
         $contrato->registro = date('Y-m-d');
         $contrato->id > 0 ? $this->model->Actualizar($contrato) : $this->model->Registrar($contrato);
-        
     }
     public function Historial()
     {
@@ -102,11 +101,41 @@ class ContratacionController
     }
 
     public function GenerarContrato()
-    {  
+    {
         $datos =  $this->model->GenerarContrato($_REQUEST['id']);
+        $firma =  $this->model->FirmaContrato($_REQUEST['id']);
         require_once 'Views/Layout/talento.php';
         require_once 'Views/Contratos/generar_contrato.php';
         require_once 'Views/Layout/foot.php';
-        
+    }
+    public function Exportar()
+    {
+        $datos =  $this->model->GenerarContrato($_REQUEST['id']);
+        $firma =  $this->model->FirmaContrato($_REQUEST['id']);
+        require_once 'Assets/dompdf/autoload.inc.php';
+        require_once 'Views/Contratos/exportar.php';
+    }
+    public function Firmar()
+    {
+        require_once 'Views/Contratos/firmar.php';
+    }
+    public function Getfirma()
+    {
+        $img = $_POST['base64'];       
+        $img = str_replace('data:image/png;base64,', '', $img);
+        $fileData = base64_decode($img);
+        $fileName = uniqid() . '.png';
+        file_put_contents($fileName, $fileData);
+        $origen =  $fileName;     
+        $destino = "Assets/firmas/".$fileName; #Copiar pero cambiar nombre        
+        $resultado = copy($origen, $destino);        
+        $this->model->Firmar($_REQUEST['contrato'], $fileName, date('Y-m-d'));
+       $id= $_REQUEST['contrato'];
+        echo"
+        <script> window.close() 
+        window.open('?c=contratacion&a=generarContrato&id=".$id."') 
+        </script>
+        ";
+
     }
 }

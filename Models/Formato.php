@@ -95,7 +95,7 @@ class Formato
 
         try {
 
-            $stm = $this->pdo->prepare("SELECT * FROM  Formatos WHERE id='$id'");
+            $stm = $this->pdo->prepare("SELECT * FROM  formatos WHERE id='$id'");
             $stm->execute();
             return $stm->fetch(PDO::FETCH_OBJ);
         } catch (Exception $e) {
@@ -137,7 +137,7 @@ class Formato
                 $data->Recuperacion,
                 $data->TiempoRetencion,
                 $data->DispFinal,
-                $data->Responsable        
+                $data->Responsable       
                 
             ));
 
@@ -161,8 +161,6 @@ class Formato
             die($e->getMessage());
         }
     }
-
-
     public function SubirDoc()
     {
         $fileTmpPath = $_FILES['filename']['tmp_name'];

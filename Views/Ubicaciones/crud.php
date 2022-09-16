@@ -2,12 +2,15 @@
     <form id="formCrud" name="formCrud">
         <div class="col-md-12">
             <div class="form-group">
-                <label for="">Ubicación</label>
-                <input type="text" id="nombre" name="nombre" value="<?php echo $ubicacion->nombre ?>" class="form-control">
+                <div class="form-line">
+                    <label for="">Ubicación</label>
+                    <input type="text" id="nombre" name="nombre" value="<?php echo $ubicacion->nombre ?>" class="form-control">
+                </div>
             </div>
         </div>
         <div class="col-md-12">
             <div class="form-group">
+            <div class="form-line">
                 <label for="">Sede</label>
                 <select name="sede_id" id="sede_id" class="form-control" required="required">
                     <?php foreach ($sedes as $value) : ?>
@@ -15,8 +18,8 @@
                     <?php endforeach; ?>
                 </select>
             </div>
+            </div>
         </div>
-
         <div class="col-md-12">
             <input type="hidden" id="created" name="created" value="<?php echo date('Y-m-d') ?>" class="form-control">
             <input type="hidden" id="id" name="id" value="<?php echo $ubicacion->id ?>" class="form-control">
@@ -41,7 +44,6 @@
                     window.location.reload();
                 }, 2000)
             }
-
         })
     });
 </script>

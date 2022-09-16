@@ -2,16 +2,15 @@
 <?php
 $num01 = date('Y');
 $num02 = date('d');
-$num = $num01 . $num02 . $_REQUEST['id']; ?>
+$num03 = $num01 . $num02 . $_REQUEST['id'];
+$num= rand(5,$num03);
+?>
 <div class="row clearfix">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card">
             <div class="header">
-                <h2>REGISTRO DE PRESTAMO</h2>
-                <a href="" class="btn btn-succes text-left">Imprimir</a>
-            </div>
-            <?php //debug($id); 
-            ?>
+                <h2>REGISTRO DE PRESTAMO</h2>                
+            </div>            
             <div class="body">
                 <form action="" id="formPrestamo" name="formPrestamo" method="POST" role="form">
                     <div class="row">
@@ -22,6 +21,8 @@ $num = $num01 . $num02 . $_REQUEST['id']; ?>
                                     <div class="form-line">
                                         <label for="">Consecutivo</label>
                                         <input type="text" class="form-control" id="cons" name="cons" placeholder="" Value='<?= $num ?>'>
+                                        <input type="hidden" class="form-control" id="id" name="id" placeholder="" Value=''>
+                                        <input type="hidden" class="form-control" id="producto_id" name="producto_id" placeholder="" Value='<?= $_REQUEST['id'] ?>'>
                                     </div>
                                 </div>
                             </div>
@@ -72,7 +73,7 @@ $num = $num01 . $num02 . $_REQUEST['id']; ?>
                                 <div class="form-group">
                                     <div class="form-line">
                                         <label for="">Correo Electronico</label>
-                                        <input type="number" class="form-control" id="correo" name="correo" placeholder="">
+                                        <input type="text" class="form-control" id="correo" name="correo" placeholder="">
                                     </div>
                                 </div>
                             </div>
@@ -92,22 +93,20 @@ $num = $num01 . $num02 . $_REQUEST['id']; ?>
                             </div>
                             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                                 <div class="form-group">
-                                <div class="form-line">
-                                    <label for="">Tramite</label>
-                                    <select name="tramite" id="tramite" class="form-control" required="required">
-                                        <option value="prestamo">Prestamo</option>
-                                        <option value="entrega"> Entrega</option>
-                                        <option value="" selected>seleccionar</option>
-                                    </select>
+                                    <div class="form-line">
+                                        <label for="">Tramite</label>
+                                        <select name="tramite" id="tramite" class="form-control" required="required">
+                                            <option value="prestamo" selected>Prestamo</option>                                            
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
                             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                                 <div class="form-group">
                                     <div class="form-line">
                                         <label for="">Barrio Residencia</label>
-                                        <input type="number" class="form-control" id="barrio" name="barrio" placeholder="">
+                                        <input type="text" class="form-control" id="barrio" name="barrio" placeholder="">
                                     </div>
                                 </div>
                             </div>
@@ -115,7 +114,7 @@ $num = $num01 . $num02 . $_REQUEST['id']; ?>
                                 <div class="form-group">
                                     <div class="form-line">
                                         <label for="">Dirección Residencia</label>
-                                        <input type="number" class="form-control" id="direccion" name="direccion" placeholder="">
+                                        <input type="text" class="form-control" id="direccion" name="direccion" placeholder="">
                                     </div>
                                 </div>
                             </div>
@@ -123,7 +122,7 @@ $num = $num01 . $num02 . $_REQUEST['id']; ?>
                                 <div class="form-group">
                                     <div class="form-line">
                                         <label for="">Funcionario</label>
-                                        <input type="number" class="form-control" id="funcionario" name="funcionario" placeholder="">
+                                        <input type="text" class="form-control" id="funcionario" name="funcionario" placeholder="">
                                     </div>
                                 </div>
                             </div>
@@ -136,7 +135,7 @@ $num = $num01 . $num02 . $_REQUEST['id']; ?>
                                 </div>
                             </div>
                             <div class="col-xs-4 col-sm-4 col-md-12 col-lg-12">
-                            <input type="button" id="guardar" class="neu btn-block" value="Registrar">
+                                <input type="button" id="guardar" class="neu btn-block" value="Registrar">
                             </div>
                         </div>
                     </div>
@@ -145,30 +144,30 @@ $num = $num01 . $num02 . $_REQUEST['id']; ?>
         </div>
 
         <script>
-    $(document).on('click', '#guardar', function(e) {
-        // var data = $("#formResponder").serialize();
-        var formData = new FormData($("#formPrestamo")[0]);
-       // var idp= document.getElementById("id").value
-        
-        $.ajax({
-            url: "?c=productos&a=addPrestamo",
-            type: "POST",
-            data: formData,
-            contentType: false,
-            cache: false,
-            processData: false,
-            success: function(data) {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'BIEN HECHO!!',
-                    timer: 1500
-                }, )
-                setTimeout(function() {
-                    // window.location = '?c=productos&a=Ver&id='+idp;
-                    // window.location.reload(1);
-                }, 2000)
+            $(document).on('click', '#guardar', function(e) {
+                // var data = $("#formResponder").serialize();
+                var formData = new FormData($("#formPrestamo")[0]);
+                // var idp= document.getElementById("id").value
 
-            }
-        });
-    });
-</script>
+                $.ajax({
+                    url: "?c=productos&a=addPrestamo",
+                    type: "POST",
+                    data: formData,
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    success: function(data) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'BIEN HECHO!!',
+                            timer: 1500
+                        }, )
+                        setTimeout(function() {
+                            // window.location = '?c=productos&a=Ver&id='+idp;
+                               window.location.reload(1);
+                        }, 2000)
+
+                    }
+                });
+            });
+        </script>

@@ -16,7 +16,7 @@ class ProcesosController
         
         $procesos = $this->model->getProceso();
         require_once 'Views/Layout/default.php';
-        require_once 'Views/procesos/index.php';
+        require_once 'Views/Procesos/index.php';
         require_once 'Views/Layout/footer.php';
     }
     public function Add()
@@ -25,7 +25,7 @@ class ProcesosController
         if (isset($_REQUEST['id'])) {
             $proceso = $this->model->getProcesos($_REQUEST['id']);
         }
-        require_once 'Views/procesos/crud.php';
+        require_once 'Views/Procesos/crud.php';
     }
     public function Crud()
     {

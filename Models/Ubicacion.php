@@ -61,7 +61,7 @@ class Ubicacion
         }
     }
 
-    public function Add(Categoria $data)
+    public function Add(Ubicacion $data)
     {
         try {
 
@@ -79,7 +79,7 @@ class Ubicacion
         }
     }
 
-    public function Edit(Categoria $data)
+    public function Edit(Ubicacion $data)
     {
         try {
             $sql = "UPDATE ubicacions SET nombre='$data->nombre', sede_id='$data->sede_id',modified='$data->modified'

@@ -20,7 +20,7 @@ class Usuario
     public function __CONSTRUCT()
     {
         try {
-            $this->pdo = Database::StartUp();
+            $this->pdo = Database::StartUp01();
         } catch (Exception $e) {
             die($e->getMessage());
         }
@@ -30,11 +30,13 @@ class Usuario
     {
         try {
             $stm = $this->pdo->prepare("SELECT usuarios.*, rols.rol, clientes.nombre AS cliente
-            FROM  usuarios
-             LEFT JOIN clientes ON clientes.id = usuarios.cliente_id
-             JOIN rols ON usuarios.rol_id=rols.id");
+            FROM  usuarios, rols, clientes
+            WHERE
+             clientes.id = usuarios.cliente_id
+             AND usuarios.rol_id=rols.id
+              ORDER BY clientes.nombre ");
             $stm->execute();
-            return $stm->fetch(PDO::FETCH_OBJ);
+            return $stm->fetchAll(PDO::FETCH_OBJ);
         } catch (Exception $e) {
             die($e->getMessage());
         }
@@ -103,7 +105,7 @@ class Usuario
     {
         try {
             $sql = "INSERT INTO normalizacion_snu.usuarios (nombres, apellidos, identificacion, cliente_id, cargo_id, email, rol_id, squema_id,username, password,estado,  created, modified) 
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?)";
 
             $this->pdo->prepare($sql)
                 ->execute(

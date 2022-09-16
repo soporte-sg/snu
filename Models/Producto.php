@@ -76,6 +76,7 @@ class Producto
             die($e->getMessage());
         }
     }
+    
     public function VerProducto($id)
     {
         try {
