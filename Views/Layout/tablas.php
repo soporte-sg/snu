@@ -12,7 +12,7 @@
 <script src="Assests/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <script>
     $(function() {
-        $("#example1").DataTable({
+        $("#tabla").DataTable({
 
             language: {
                 search: "Buscar:",

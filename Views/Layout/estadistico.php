@@ -72,14 +72,12 @@ $servicios = $servicio->Servicio();
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2KNSD09LYH"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
-
     function gtag() {
         dataLayer.push(arguments);
     }
     gtag('js', new Date());
     gtag('config', 'G-2KNSD09LYH');
 </script>
-
 <body class="theme">
     <!-- Page Loader  -->
     <!-- <div class="page-loader-wrapper">
@@ -124,7 +122,6 @@ $servicios = $servicio->Servicio();
                     <!-- #END# Call Search -->
                 </ul>
             </div>
-
         </div>
     </nav>
     <!-- #Top Bar -->
@@ -153,18 +150,7 @@ $servicios = $servicio->Servicio();
                             <i class="material-icons">home</i>
                             <span>Inicio</span>
                         </a>
-                    </li>                    
-                    <!-- <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">settings</i>
-                            <span>Indicadores</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="?c=indicadors&a=index">Gestionar</a>
-                            </li>                            
-                        </ul>
-                    </li>  -->
+                    </li>                   
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">settings</i>
@@ -172,11 +158,10 @@ $servicios = $servicio->Servicio();
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="?c=indicadors&a=index">Gestionar</a>
+                                <a href="?c=pqrs&a=index">Gestionar</a>
                             </li>                            
                         </ul>
-                    </li>                 
-                    
+                    </li>               
                     <li class="header"></li>
                     <?php if ($_SESSION['user']->rol_id == 1) : ?>
                         <li>

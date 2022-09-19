@@ -22,15 +22,14 @@
                         <th>Menu</th>
                     </tr>
                 </thead>
-                <tbody>
-                   
+                <tbody>                   
                     <?php foreach ($documentos as $value) : ?>
                         <tr>
                             <td width=11% ><?= $value->CodFormato ?></td>
-                            <td><a href="<?= $value->RutaFormato ?>"><?= $value->NomFormato ?></a></td>
+                            <td><a href="<?= $value->RutaFormato ?>" target="_blank"><?=$value->NomFormato?></a></td>
                             <td><?= $value->Version ?></td>
                             <td><?= $value->Actualizacion == '0000-00-00' ? $value->Emision : $value->Actualizacion ?></td>
-                            <td><a href="<?= $value->Recuperacion ?>"><?= $value->Almacenamiento ?></a></td>
+                            <td><a href="<?= $value->Recuperacion ?>"  target="_blank"><?= $value->Almacenamiento ?></a></td>
                             <td><?= $value->Proteccion ?></td>
                             <td width=2%><?= $value->TiempoRetencion ?></td>
                             <td><?= $value->DispFinal ?></td>
@@ -41,7 +40,7 @@
                                 </a>-->
                                 <?php if ($_SESSION['user']->rol_id == 4 or $_SESSION['user']->rol_id == 1) : ?>
                                     <a data-toggle="modal" href='#modal-id' type="button" onclick="Edit('<?= $value->id ?>')" type="button" title="Actualizar datos del Documento">
-                                        <i class="material-icons">system_update</i>
+                                        <i class="material-icons">edit</i>
                                     </a>
                                 <?php endif; ?>
                             </td>

@@ -52,7 +52,7 @@
                                         </a>
                                         <?php if ($_SESSION['user']->rol_id == 4 or $_SESSION['user']->rol_id == 1) : ?>
                                             <a href="?c=solicitudes&a=edit&id=<?php echo $sgcManejoDocumental->id ?>" type="button" title="Actualizar datos de la Solicitud">
-                                                <i class="material-icons">system_update</i>
+                                                <i class="material-icons">edit</i>
                                             </a>
                                         <?php endif; ?>
 
@@ -67,7 +67,7 @@
                                         </a>
                                         <?php if ($_SESSION['user']->rol_id == 4 or $_SESSION['user']->rol_id == 1) : ?>
                                             <a href="?c=solicitudes&a=edit&id=<?php echo $sgcManejoDocumental->id ?>" type="button" title="Actualizar datos de la Solicitud">
-                                                <i class="material-icons">system_update</i>
+                                                <i class="material-icons">edit</i>
                                             </a>
                                         <?php endif; ?>
                                     <?php endif; ?>
@@ -104,7 +104,7 @@
             url: '?c=solicitudes&a=View',
             data: 'id=' + id,
             beforeSend: function() {
-                $('#index').html("<h5 class='text-center'> <img src='View/img/gifs/cargando-loading-009.gif'> Cargando Información</h5>");
+                $('#index').html("<h5 class='text-center'> <img src='View/img/gifs/cargando-loading-026.gif'> Cargando Información</h5>");
             },
             success: function(resp) {
                 $('#index').html(resp);
@@ -119,7 +119,7 @@
             url: '?c=permisos&a=edit',
             data: 'id=' + id,
             beforeSend: function() {
-                $('#index').html("<h5 class='text-center'> <img src='View/img/gifs/cargando-loading-009.gif'> Cargando Información</h5>");
+                $('#index').html("<h5 class='text-center'> <img src='View/img/gifs/cargando-loading-026.gif'> Cargando Información</h5>");
             },
             success: function(resp) {
                 $('#index').html(resp);

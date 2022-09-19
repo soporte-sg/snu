@@ -23,16 +23,17 @@ class MantenimientosController
     }
     public function IndexTodo()
     {
-        $plan= $this->model->IndexTodo();
-        
+        $plan= $this->model->IndexTodo();        
         require_once 'Views/Mantenimientos/indextodo.php';
+        require_once 'Views/Layout/foot.php';
         
     }
     public function Planear()
     {    
         $sede= new Sede();   
         $sedes= $sede->Index();
-        require_once 'Views/Mantenimientos/planear.php';        
+        require_once 'Views/Mantenimientos/planear.php';    
+        require_once 'Views/Layout/foot.php';   
     }
 
     public function Descripcion()

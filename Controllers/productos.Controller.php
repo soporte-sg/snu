@@ -39,6 +39,7 @@ class ProductosController
     {
         $productos = $this->model->Xubicacion($_REQUEST['ubicacion_id']);
         require_once 'Views/Productos/xubicacion.php';
+        require_once 'Views/Layout/foot.php';
     }
     public function ProductoxPrestamo()
     {

@@ -265,6 +265,18 @@ $servicios = $servicio->Servicio();
 
                         </ul>
                     </li>
+                    <!-- <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">chat</i>
+                            <span>PQRSF</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="?c=pqrsf&a=index">Consultar</a>
+                            </li>
+
+                        </ul>
+                    </li> -->
                     
                     <li class="header">Servicios</li>
                     <?php if ($_SESSION['user']->rol_id == 1) : ?>

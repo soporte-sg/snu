@@ -33,30 +33,51 @@
 <script src="Assets/js/pages/index.js"></script>
 <!-- Demo Js -->
 <script src="Assets/js/demo.js"></script>
+
 <!-- Page specific script -->
 <script>
-    $(function() {
-        $("#example1").DataTable({
-
-            language: {
-                search: "Buscar:",
-                paginate: {
-            previous: '‹',
-            next:     '›'
-        },
-        aria: {
-            paginate: {
-                previous: 'Anterior',
-                next:     'Siguiente'
-            }
-        }
-            },
+    $(document).ready(function() {
+    $('#table').DataTable( {
+        order: [[3, 'desc'], [0, 'desc']],
+        "language": {
+            "lengthMenu": "Mostrar _MENU_ Registros por pagina",
+            "zeroRecords": "Nada se encontro",
+            "info": "Mostrando pag _PAGE_ de _PAGES_",
+            "infoEmpty": "No hay registros disponibles",
+            "infoFiltered": "(filtered from _MAX_ total records)",
+            "search": "Filtrar:",
             "responsive": true,
-            "lengthChange": false,
             "autoWidth": true,
-            "buttons": ["copy", "csv", "excel", "pdf", "print"]
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    });
+            paginate: {
+            previous: '‹‹',
+            next:     '››'
+        },
+
+        }
+    } );
+} );
+    // $(function() {
+    //     $("#example1").DataTable({
+
+    //         language: {
+    //             search: "Buscar:",
+    //             paginate: {
+    //         previous: '‹',
+    //         next:     '›'
+    //     },
+    //     aria: {
+    //         paginate: {
+    //             previous: 'Anterior',
+    //             next:     'Siguiente'
+    //         }
+    //     }
+    //         },
+    //         "responsive": true,
+    //         "lengthChange": false,
+    //         "autoWidth": true,
+    //         "buttons": ["copy", "csv", "excel", "pdf", "print"]
+    //     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    // });
 </script>
 </body>
 

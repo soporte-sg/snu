@@ -171,7 +171,7 @@
 
             </div>
             <div class="col-md-12">
-                <input type="button" id="guardar" class="btn btn-success" value="Guardar">
+                <input type="button" id="guardar" class="btn btn-success" value="Validar">
             </div>
         </form>
     </div>

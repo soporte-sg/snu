@@ -8,12 +8,13 @@
 }
 </style>
 <? $referer = $_SERVER['HTTP_REFERER'];?>
-<table id="example1" class="table table-bordered">
+<table id="table" class="table table-bordered">
     <thead>
         <tr>
             <th>Número</th>
             <th>Nombre</th>
             <th>Caracteriscas</th>
+            <th>Estado</th>
             <th>Menu</th>
         </tr>
     </thead> <img src="" width="" alt="">
@@ -22,7 +23,8 @@
             <tr>
                 <td width="5%"><?= $value->id ?></td>
                 <td width="15%"><?= $value->nombre ?></td>
-                <td width="60%" ><?= utf8_encode(substr( $value->carateristicas, 50)) ?></td>
+                <td width="40%" ><?= utf8_encode($value->carateristicas)?></td>
+                <td width="20%" ><?= $value->estado?></td>
                 <td width="20%">
                     <a  data-toggle="modal" data-target="#modelId"  onclick="Ficha('<?=$value->id ?>')" title="Ver Ficha Tecnica"><i class="glyphicon glyphicon-wrench"></i></a>
                    <?php if($referer!="https://calidadsnu.com/snu/?c=productos&a=prestamos"):?>
@@ -51,18 +53,6 @@
          </div>
     </div>
 </div>
-<!-- DataTables  & Plugins -->
-<script src="Assests/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="Assests/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="Assests/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="Assests/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<script src="Assests/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-<script src="Assests/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="Assests/plugins/pdfmake/pdfmake.min.js"></script>
-<script src="Assests/plugins/pdfmake/vfs_fonts.js"></script>
-<script src="Assests/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-<script src="Assests/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-<script src="Assests/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <script>    
         function Ficha(val) {
                 var id = val;
@@ -112,28 +102,4 @@
                     }
                 })
             }
-</script>
-<script>
-    $(function() {
-        $("#example1").DataTable({
-
-            language: {
-                search: "Buscar:",
-                paginate: {
-            previous: '‹',
-            next:     '›'
-        },
-        aria: {
-            paginate: {
-                previous: 'Anterior',
-                next:     'Siguiente'
-            }
-        }
-            },
-            "responsive": true,
-            "lengthChange": false,
-            "autoWidth": true,
-            "buttons": ["excel", "pdf"]
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    });
 </script>

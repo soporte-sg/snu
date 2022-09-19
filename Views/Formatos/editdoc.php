@@ -140,10 +140,10 @@
                     timer: 1500
                 }, )
                 setTimeout(function() {
-                    // window.location = '?c=solicitudes&a=index';
-                    // $('#modal-id').modal('hide');
-                    // $( "#table" ).load(window.location.href + " #table" );
-                    // window.location.reload(1);
+                    //  window.location = '?c=solicitudes&a=index';
+                    //  $('#modal-id').modal('hide');
+                    //  $( "#table" ).load(window.location.href + " #table" );
+                        window.location.reload();
                 }, 2000)
 
             }

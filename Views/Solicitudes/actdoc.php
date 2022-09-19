@@ -119,9 +119,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-12">
-                <input type="button" id="guardar" class="btn btn-success" value="Guardar">
+                <div class="col-md-12">
+                    <input type="button" id="guardar" class="btn btn-success" value="Validar">
+                </div>
             </div>
         </form>
     </div>
@@ -171,7 +171,7 @@
                     timer: 1500
                 }, )
                 setTimeout(function() {
-                   // window.location = '?c=solicitudes&a=index';
+                    // window.location = '?c=solicitudes&a=index';
                     // window.location.reload(1);
                 }, 2000)
 

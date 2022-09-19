@@ -75,7 +75,6 @@ class SolicitudesController
 
     public function Registrar()
     {
-
         $solicitud = new Solicitud();
         @$solicitud->id = $_REQUEST['id'];
         $solicitud->NombreSolicitante = $_REQUEST['NombreSolicitante'];
@@ -91,12 +90,9 @@ class SolicitudesController
         $solicitud->Descripcion = $_REQUEST['Descripcion'];
         $solicitud->filename = $_FILES['filename']['name'];
         $solicitud->dir = 'Assets/Solicitudes/' . $_SESSION['datos_cliente']->nombre . '/';
-
-
         $solicitud->id > 0 ?
             $this->model->Actualizar($solicitud) :
             $this->model->Registrar($solicitud);
-
         $documento = new Documento();
         $documentos = $documento->SubirDoc();
     }

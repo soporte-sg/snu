@@ -1,4 +1,5 @@
-<?php //print_r($solicitud) ?>
+<?php //print_r($solicitud) 
+?>
 
 <!-- CPU Usage -->
 <div class="row clearfix">
@@ -10,11 +11,9 @@
                         <h2>RESPONDER SOLICITUD # <?= $solicitud->id ?></h2>
                     </div>
                 </div>
-
             </div>
             <div class="body">
-                <div class="row clearfix">         
-
+                <div class="row clearfix">
                     <div class="col-sm-4">
                         <div class="form-group">
                             <div class="form-line">

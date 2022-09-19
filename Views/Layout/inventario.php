@@ -201,7 +201,7 @@ $servicios=$servicio->Servicio();
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">format_paint</i>
-                            <span>Manteniento</span>
+                            <span>Mantenimiento</span>
                         </a>
                         <ul class="ml-menu">
                             <li>
