@@ -5,8 +5,8 @@
             <small>de clic en el proceso para ver el listado de documentos</small>
         </h2>
     </div>
-    <div class="body">
-    <table id="example1" class="table table-bordered">
+    <div class="body">        
+    <table id="table" class="table table-bordered">
             <thead>
                 <tr>
                     <th>Código</th>
@@ -20,7 +20,7 @@
                 <?php foreach ($documentos as $value) : ?>
                     <tr>
                         <td><?= $value->codigo?></td>                     
-                        <td><?= $value->nombre ?></td>
+                        <td><a href="Assets/img/Externos/<?=$value->codigo?>.pdf" target="_blank" ><?= $value->nombre ?></a></td>
                         <td><?= $value->expedicion ?></td>  
                         <td><?= $value->descripcion ?></td>                       
                         <td>

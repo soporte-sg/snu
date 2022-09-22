@@ -16,7 +16,7 @@
                                 <label for="">Procesos</label>
                                 <select name="proceso_id" id="proceso_id" class="form-control">
                                     <?php foreach ($procesos as $value) : ?>
-                                        <option value="<?php echo $value->Iniciales ?>" <?php echo $value->Iniciales == $cargo->proceso_id ? 'selected' : '' ?>> <?=$value->Iniciales.' '.$value->NombreProceso?></option>
+                                        <option value="<?php echo $value->id ?>" <?php echo $value->id == $cargo->proceso_id ? 'selected' : '' ?>> <?=$value->Iniciales.' '.$value->NombreProceso?></option>
                                     <?php endforeach; ?>
                                 </select>
                         </div>
@@ -43,8 +43,8 @@
                     timer: 2000
                 }, )
                 setTimeout(function() {
-                  //  window.location = '?c=solicitudes&a=index';
-                  window.location.reload();
+                   // window.location = '?c=solicitudes&a=index';
+                 // window.location.reload();
                 }, 2000)
             }
 

@@ -1,3 +1,5 @@
+<?php //print_r($solicitudes) ?>
+
 <a href='?c=solicitudes&a=add' class="neu">Registrar Solicitud</a>
 <div class="card">
     <div class="header text-center">
@@ -6,7 +8,8 @@
     <div class="body">
         <div class="sgcDocumentos index">
             <div class="table-responsive">
-                <table id="table" class="table table-bordered">
+                <table id="table" class="table table-bordered table-striped table-hover">
+
                     <thead>
                         <tr>
                             <th>No</th>
@@ -36,7 +39,7 @@
                                         echo '<i class="material-icons" title="solicitud aprobada">verified_user</i>';
                                     }
                                     if ($sgcManejoDocumental->Aprobado == 'no') {
-                                        echo '<i  class="material-icons" title=" solicitud Recazado">igligt_off</i>';
+                                        echo '<i  class="material-icons" title=" solicitud Rechazado">highlight_off</i>';
                                     }
                                     if (empty($sgcManejoDocumental->Aprobado)) {
                                         echo '<i class="material-icons" title=" solicitud en espera de respuesta">feedback</i>';
@@ -46,8 +49,8 @@
                                 <td class="actions">
                                     <?php
                                     if ($sgcManejoDocumental->Aprobado == 'si') : ?>
-                                 
-                                 <a onclick="Ver('<?php echo $sgcManejoDocumental->id ?>')" data-toggle="modal" href='#modal-id' type="button" title="Ver datos de la Solicitud">
+
+                                        <a onclick="Ver('<?php echo $sgcManejoDocumental->id ?>')" data-toggle="modal" href='#modal-id' type="button" title="Ver datos de la Solicitud">
                                             <i class="material-icons">visibility</i>
                                         </a>
                                         <?php if ($_SESSION['user']->rol_id == 4 or $_SESSION['user']->rol_id == 1) : ?>
@@ -78,13 +81,9 @@
                 </table>
             </div>
         </div>
-
     </div>
 </div>
-
-
 <!-- #END# CPU Usage -->
-
 <div class="modal fade" id="modal-id">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -102,25 +101,18 @@
         $.ajax({
             type: "POST",
             url: '?c=solicitudes&a=View',
-            data: 'id=' + id,
-            beforeSend: function() {
-                $('#index').html("<h5 class='text-center'> <img src='View/img/gifs/cargando-loading-026.gif'> Cargando Información</h5>");
-            },
+            data: 'id=' + id,            
             success: function(resp) {
                 $('#index').html(resp);
                 $('#respuesta').html("");
             }
         });
     }
-
     function Editar(id) {
         $.ajax({
             type: "POST",
             url: '?c=permisos&a=edit',
-            data: 'id=' + id,
-            beforeSend: function() {
-                $('#index').html("<h5 class='text-center'> <img src='View/img/gifs/cargando-loading-026.gif'> Cargando Información</h5>");
-            },
+            data: 'id=' + id,            
             success: function(resp) {
                 $('#index').html(resp);
                 $('#respuesta').html("");

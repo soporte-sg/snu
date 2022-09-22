@@ -5,9 +5,9 @@ $data = new Estadistica();
 $entrada = $data->Get();
 $servicio = new Servicio();
 $servicios = $servicio->Servicio();
-//print_r($servicios);
 ?>
 <!DOCTYPE html>
+
 <html>
 
 <head>
@@ -16,7 +16,7 @@ $servicios = $servicio->Servicio();
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title>SNU sistema de normalización universal</title>
     <!-- Favicon-->
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
@@ -25,36 +25,34 @@ $servicios = $servicio->Servicio();
     <!-- Bootstrap Core Css -->
     <link href="Assets/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
 
-    <!-- Waves Effect Css -->
-    <link href="Assets/plugins/node-waves/waves.css" rel="stylesheet" />
+    <!-- Waves Effect Css 
+    <link href="Assets/plugins/node-waves/waves.css" rel="stylesheet" />-->
 
     <!-- Animation Css -->
     <link href="Assets/plugins/animate-css/animate.css" rel="stylesheet" />
 
     <!-- JQuery DataTable Css -->
-    <link rel="stylesheet" href="Assests/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="Assests/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-    <link rel="stylesheet" href="Assests/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-    <!-- Morris Chart Css
-    <link href="Assets/plugins/morrisjs/morris.css" rel="stylesheet" />-->
+    <link href="Assets/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
+
     <!-- Custom Css -->
     <link href="Assets/css/style.css" rel="stylesheet">
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
-    <link href="Assets/css/themes/all-themes.css" rel="stylesheet" />
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <link href="Assets/css/themes/all-themes.css" rel="stylesheet" />    
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
     <script>
-        $(document).ready(function() {
-            function disableBack() {
-                window.history.forward()
-            }
-            window.onload = disableBack();
-            window.onpageshow = function(e) {
-                if (e.persisted)
-                    disableBack();
-            }
-        });
-    </script>
+    $(document).ready(function() {
+        function disableBack() {
+            window.history.forward()
+        }
+        window.onload = disableBack();
+        window.onpageshow = function(e) {
+            if (e.persisted)
+                disableBack();
+        }
+    });
+</script>   
     <style>
         .imgbrand {
             padding: 10px;
@@ -73,7 +71,7 @@ $servicios = $servicio->Servicio();
         }
     </style>
 </head>
-<!-- Google tag (gtag.js) -->
+<!-- Google tag (gtag.js) 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2KNSD09LYH"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
@@ -83,10 +81,10 @@ $servicios = $servicio->Servicio();
     }
     gtag('js', new Date());
     gtag('config', 'G-2KNSD09LYH');
-</script>
+</script>-->
 
 <body class="theme">
-    <!-- Page Loader 
+    <!-- Page Loader :)
     <div class="page-loader-wrapper">
         <div class="loader">
             <div class="preloader">
@@ -262,22 +260,8 @@ $servicios = $servicio->Servicio();
                             <li>
                                 <a href="?c=formatos&a=index">Consultar</a>
                             </li>
-
                         </ul>
                     </li>
-                    <!-- <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">chat</i>
-                            <span>PQRSF</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="?c=pqrsf&a=index">Consultar</a>
-                            </li>
-
-                        </ul>
-                    </li> -->
-                    
                     <li class="header">Servicios</li>
                     <?php if ($_SESSION['user']->rol_id == 1) : ?>
                         <li>
@@ -287,7 +271,6 @@ $servicios = $servicio->Servicio();
                             </a>
                         </li>
                     <?php endif; ?>
-
                     <!-- <li>
                         <?php foreach ($servicios as $value) : ?>
                             <a href="<?= $value->dir ?>">
@@ -296,7 +279,6 @@ $servicios = $servicio->Servicio();
                             </a>
                         <?php endforeach; ?>
                     </li> -->
-
                 </ul>
             </div>
             <!-- #Menu -->
@@ -313,6 +295,5 @@ $servicios = $servicio->Servicio();
         </aside>
         <!-- #END# Left Sidebar -->
     </section>
-
     <section class="content">
         <div class="container-fluid">

@@ -255,6 +255,17 @@ class Solicitud
         }
 
 
+        if ($TipoDocumento == 'externo' and $TipoSolicitud == 'creacion') {
+
+            echo '<div class="col-sm-3">
+                <div class="form-group">
+                    <div class="form-line">
+                        <label>Descripción</label>
+                        <input type="text" name="Codigo" id="Codigo" value="Codigo Automatico" class="form-control" required>
+                    </div>
+                </div>
+            </div>';
+        }
         if ($TipoDocumento == 'externo' and ($TipoSolicitud == 'actualizacion' or $TipoSolicitud == 'eliminacion')) {
 
             try {

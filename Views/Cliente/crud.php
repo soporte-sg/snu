@@ -1,7 +1,5 @@
 <?php $mail = explode('~', $clientes->correos); ?>
 <!-- Basic Validation -->
-
-
         <form action="?c=clientes&a=Registrar" method="POST" enctype="multipart/form-data">
             <div class="row justify-content-center">
                 <div class="col-md-6">

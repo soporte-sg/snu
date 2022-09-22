@@ -13,7 +13,8 @@
     <div class="body">
         <!-- Table -->
         <div class="panel panel-body">
-            <table id="table" class="table table-bordered">
+            <div class="responsive">
+            <table id="tableCargo" class="table table-bordered">
                 <thead>
                     <tr>
                         <th>Nombre</th>
@@ -22,26 +23,20 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- <?php print_r($cargos)?> -->
                     <?php foreach ($cargos as $value) : ?>
                         <tr>
                             <td><?php echo  $value->cargo ?></td>
-                            <td><?php echo  $value->proceso_id ?></td>
-
+                            <td><?php echo  $value->NombreProceso ?></td>
                             <td>
                                 <a onclick="Editar('<?php echo $value->id ?>')" data-toggle="modal" href='#modal-id'><i class="glyphicon glyphicon-edit" title="Actualizar"></i></a>
                                 <a onclick="Borrar('<?php echo $value->id ?>')"><i class="glyphicon glyphicon-trash" title="Eliminar"></i></a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Proceso</th>
-                        <th>Menu</th>
-                    </tr>
-                </tfoot>
+                </tbody>                
             </table>
+            </div>
         </div>
     </div>
 </div>
@@ -55,7 +50,7 @@
             <div class="modal-body" id="index">
 
             </div>
-            <!-- <div class="modal-footer">
+            <!--<div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
             </div> -->
         </div>
@@ -106,7 +101,7 @@
                                 timer: 2000
                             }, )
                             setTimeout(function() {
-                                //  window.location = '?c=solicitudes&a=index';
+                                //window.location = '?c=solicitudes&a=index';
                                 window.location.reload();
                             }, 2000)
                         }

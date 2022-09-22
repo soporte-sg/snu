@@ -43,7 +43,7 @@ class Doc_ext
             die($e->getMessage());
         }
     }
-    
+
     public function getDocCod($codigo)
     {
         try {
@@ -120,16 +120,15 @@ class Doc_ext
 
         try {
 
-            $stm = "INSERT INTO sgcexternos(codigo, proceso, nombre, expedicion, descripcion, filename, dir )
-            VALUES(?, ?, ?, ?, ?, ?, ?)";
+            $stm = "INSERT INTO sgcexternos(codigo, proceso, nombre, expedicion, descripcion)
+            VALUES(?, ?, ?, ?, ? )";
             $this->pdo->prepare($stm)->execute(array(
                 $data->codigo,
                 $data->proceso,
                 $data->nombre,
                 $data->expedicion,
-                $data->descripcion,               
-                $data->filename= $_FILES['filename']['name'],                
-                $data->dir = 'Assets/Solicitudes/'.$_SESSION['datos_cliente']->nombre.'/'
+                $data->descripcion,
+
             ));
 
             $id = $this->pdo->lastInsertId();
@@ -155,31 +154,36 @@ class Doc_ext
 
     public function SubirDoc()
     {
+
+         $_REQUEST['a'];
         $fileTmpPath = $_FILES['filename']['tmp_name'];
         $fileName = $_FILES['filename']['name'];
         $fileSize = $_FILES['filename']['size'];
         $fileType = $_FILES['filename']['type'];
         $fileNameCmps = explode(".", $fileName);
         $fileExtension = strtolower(end($fileNameCmps));
-        $newFileName = $fileName ;
-        $allowedfileExtensions = array( 'xls', 'doc', 'pdf','docx');
+        $newFileName = $fileName;
+        $allowedfileExtensions = array('xls', 'doc', 'pdf', 'docx');
         if (in_array($fileExtension, $allowedfileExtensions)) {
             // directory in which the uploaded file will be moved
-            $uploadFileDir = 'Assets/Solicitudes/'.$_SESSION['datos_cliente']->nombre.'/';
+            if ($_REQUEST['a'] == "GestionDocext") {
+             echo    $uploadFileDir = 'Assets/img/Externos/';
+            } else {
+                echo  $uploadFileDir = 'Assets/Solicitudes/' . $_SESSION['datos_cliente']->nombre . '/';
+            }
             $dest_path = $uploadFileDir . $newFileName;
             if (!file_exists($uploadFileDir)) {
                 mkdir($uploadFileDir, 0777, true);
             }
             if (move_uploaded_file($fileTmpPath, $dest_path)) {
-                 $message = 'El archivo se cargó correctamente.';
+               echo $message = 'El archivo se cargó correctamente.';
             } else {
-                $message = 'Hubo algún error al mover el archivo al directorio de carga. Asegúrese de que el servidor web pueda escribir en el directorio de carga.';
+                echo $message = 'Hubo algún error al mover el archivo al directorio de carga. Asegúrese de que el servidor web pueda escribir en el directorio de carga.';
             }
-        }else{
-                echo'<script type = "text/javascript">
+        } else {
+            echo '<script type = "text/javascript">
                     alert("La solictud fue gestionada , el archivo no pudo se subido, revisa el formato, recuerda que debe ser .pdf");
                     </script> ';
-
         }
     }
 }

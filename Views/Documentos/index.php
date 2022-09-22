@@ -2,8 +2,8 @@
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
         <div class="button-demo">
-            <?php foreach ($procesos as $value) : ?>
-                <button type="button" onclick="Ver('<?= $value->Iniciales ?>')" class="btn btn-default btn-sm waves-effect"><strong><?= $value->Iniciales ?></strong><br><?= $value->NombreProceso ?></button>
+            <?php foreach ($procesos as $valor) : ?>
+                <button type="button" onclick="Ver('<?= $valor->Iniciales ?>')" class="btn btn-default btn-sm "><strong><?= $valor->Iniciales ?></strong><br><?= $valor->NombreProceso ?></button>
             <?php endforeach; ?>
         </div>
 
@@ -11,8 +11,8 @@
     </div>
     <!-- #END# Bootstrap Default Buttons -->
     <script>
-        function Ver(val) {
-            var id = val
+        function Ver(valor) {
+            var id = valor
             $.ajax({
                 data: {
                     id: id

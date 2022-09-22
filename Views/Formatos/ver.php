@@ -7,7 +7,7 @@
     </div>
     <div class="responsive">
     <div class="body">        
-            <table id="example1" class="table table-bordered table-striped">
+            <table id="tableDoc" class="table table-bordered table-striped">
                 <thead>
                     <tr>
                         <th>Código</th>

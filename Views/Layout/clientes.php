@@ -6,46 +6,57 @@ header('Content-type: text/html; charset=utf-8');
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>SNU-sistema de Normalización Universal</title>
-    <!-- Favicon
-    <link rel="icon" href="favicon.ico" type="image/x-icon">-->
+    <title>SNU sistema de normalización universal</title>  
+    <!-- Favicon-->
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
     <!-- Bootstrap Core Css -->
     <link href="Assets/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+
     <!-- Waves Effect Css -->
     <link href="Assets/plugins/node-waves/waves.css" rel="stylesheet" />
+
     <!-- Animation Css -->
     <link href="Assets/plugins/animate-css/animate.css" rel="stylesheet" />
+
     <!-- JQuery DataTable Css -->
-    <link rel="stylesheet" href="Assests/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="Assests/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-    <link rel="stylesheet" href="Assests/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <link href="Assets/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
+
     <!-- Custom Css -->
     <link href="Assets/css/style.css" rel="stylesheet">
+
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="Assets/css/themes/all-themes.css" rel="stylesheet" />
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <!--alertas-->
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <!--alertas-->
-    <script>
-        $(document).ready(function() {
-            function disableBack() {
-                window.history.forward()
-            }
-            window.onload = disableBack();
-            window.onpageshow = function(e) {
-                if (e.persisted)
-                    disableBack();
-            }
-        });
-    </script>
+    <script src="Assets/plugins/jquery-datatable/extensions/Language/Spanish.json"></script>    
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
+    <!-- Jquery Core Js -->
+     <script src="Assets/plugins/jquery/jquery.min.js"></script> 
+    <style>
 
+
+        .imgbrand {
+            padding: 10px;
+            width: 78px;
+            height: 78px;
+        }
+
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+
+        .image {
+            background-color: #F4F6F6;
+            border-radius: 10%;
+            box-shadow: 2px 2px 10px 2px gray;
+        }
+    </style>
 </head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-C1M8CKX4E1"></script>
@@ -60,7 +71,7 @@ header('Content-type: text/html; charset=utf-8');
 </script>
 
 <body class="theme">
-    <!-- Page Loader  :)-->
+    <!-- Page Loader  -->
     <!-- <div class="page-loader-wrapper">
         <div class="loader">
             <div class="preloader">
@@ -80,31 +91,6 @@ header('Content-type: text/html; charset=utf-8');
     <!-- Overlay For Sidebars -->
     <div class="overlay"></div>
     <!-- #END# Overlay For Sidebars -->
-    <!-- Top Bar -->
-    <nav class="navbar">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
-                <a href="javascript:void(0);" class="bars"></a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar-collapse">
-                <ul class="nav navbar-nav navbar-left">
-                    <!-- Call Search 
-                    <li><img src="Assets/img/uploads/colegio/<?php echo $_SESSION['datos_cliente']->filename ?>" alt="User" class="imgbrand" /></li>
-                     #END# Call Search -->
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <!-- Call Search -->
-                    <a href="?c=seguridad&a=Logout" class="navbar-brand btn btn-circle " href="index.html"><i class="glyphicon glyphicon-off"></i></a>
-                    <!-- #END# Call Search -->
-                </ul>
-                <!--  -->
-            </div>
-
-        </div>
-    </nav>
-    <!-- #Top Bar -->
-
     <section>
         <!-- Left Sidebar -->
         <aside id="leftsidebar" class="sidebar">

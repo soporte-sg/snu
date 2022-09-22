@@ -49,7 +49,7 @@ class Cargo
 
 		try {
 			$result = array();
-			$stm = $this->pdo->prepare(" SELECT cargos.id,  cargos.cargo, cargos.proceso_id   
+			$stm = $this->pdo->prepare(" SELECT cargos.id, cargos.cargo, cargos.proceso_id   
                FROM cargos  
                WHERE cargos.id = $cargo_id");
 			$stm->execute();
@@ -79,7 +79,7 @@ class Cargo
 
 		try {
 			$result = array();
-			$stm = $this->pdo->prepare(" SELECT cargos.id,  cargos.cargo, cargos.proceso_id FROM cargos");
+			$stm = $this->pdo->prepare(" SELECT cargos.id,  cargos.cargo, cargos.proceso_id, procesos.NombreProceso FROM cargos , procesos WHERE cargos.proceso_id=procesos.id ");
 			$stm->execute();
 			return $stm->fetchAll(PDO::FETCH_OBJ);
 		} catch (Exception $e) {
@@ -124,7 +124,7 @@ class Cargo
 	public function Edit(Cargo $data)
 	{
 		try {
-			$sql = "UPDATE cargos SET cliente_id='$data->cliente_id', cargo='$data->cargo', proceso_id='$data->proceso_id'  WHERE id = $data->id";
+			$sql = "UPDATE cargos SET  cargo='$data->cargo', proceso_id='$data->proceso_id'  WHERE id = $data->id";
 			$this->pdo->prepare($sql)->execute();
 		} catch (Exception $e) {
 			die($e->getMessage());

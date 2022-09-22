@@ -38,10 +38,9 @@ class FormatosController
     public function Ver()
     {
 
-        $documentos = $this->model->getDocs($_REQUEST['id']);
-        require_once 'Views/Layout/tablas0.php';
+        $documentos = $this->model->getDocs($_REQUEST['id']);        
         require_once 'Views/Formatos/ver.php';
-        require_once 'Views/Layout/tablas.php';
+        require_once 'Views/Layout/foot.php';
     }
 
     public function Getdoc()

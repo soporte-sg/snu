@@ -19,7 +19,7 @@ class DocumentosController
 
         require_once 'Views/Layout/default.php';
         require_once 'Views/Documentos/index.php';
-        require_once 'Views/Layout/foot.php';
+         require_once 'Views/Layout/foot.php';
     }
 
     public function AddEdit()
@@ -31,25 +31,23 @@ class DocumentosController
         }
         require_once 'Views/Layout/clientes.php';
         require_once 'Views/Roles/crud.php';
-        require_once 'Views/Layout/foot.php';
+        //require_once 'Views/Layout/foot.php';
     }
 
 
     public function Ver()
     {
 
-        $documentos = $this->model->getDocs($_REQUEST['id']);
-        //equire_once 'Views/Layout/default.php';
-         require_once 'Views/Layout/tablas0.php';
+        $documentos = $this->model->getDocs($_REQUEST['id']);      
          require_once 'Views/Documentos/ver.php';
-         require_once 'Views/Layout/tablas.php';
+         require_once 'Views/Layout/foot.php';
     }
 
     public function Getdoc()
     {
 
         $documentos = $this->model->getDoc($_REQUEST['doc_id']);
-        //equire_once 'Views/Layout/default.php';
+        //require_once 'Views/Layout/default.php';
         require_once 'Views/Documentos/getdoc.php';
         // require_once 'Views/Layout/foot.php';
     }

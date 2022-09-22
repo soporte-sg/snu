@@ -117,8 +117,8 @@
                 Proceso: Proceso,
                 TipoSolicitud: TipoSolicitud
             },
-            beforeSend: function() {
-                $('#index').html("<h5 class='text-center'> <img src='View/img/gifs/cargando-loading-009.gif'> Cargando Información</h5>");
+            beforeSend: function() { 
+                $('#index').html("<h5 class='text-center'> <img src='Assets/images/gifs/cargando-loading-026.gif'> Cargando Información</h5>");
             },
             success: function(resp) {
                 $('#index').html(resp);
@@ -145,7 +145,7 @@
                     timer: 1500
                 }, )
                 setTimeout(function() {
-                     window.location = '?c=solicitudes&a=index';
+                       window.location = '?c=solicitudes&a=index';
                       // window.location.reload(1);
                 }, 2000)
 

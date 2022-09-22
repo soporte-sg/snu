@@ -16,7 +16,7 @@ class CargosController
         $cargos = $this->model->CargoIndex();
         require_once 'Views/Layout/default.php';
         require_once 'Views/Cargos/index.php';
-        require_once 'Views/Layout/footer.php';
+        require_once 'Views/Layout/foot.php';
     }
     public function Add()
     {

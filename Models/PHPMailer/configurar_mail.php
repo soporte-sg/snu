@@ -2,10 +2,10 @@
 	include('class.phpmailer.php');
 	$mail = new PHPMailer(true);
 	$mail->IsSMTP();	
-  //$mail->Port = 26;
+    //$mail->Port = 26;
 	$mail->Port = 25;
-//	$mail->SMTPSecure = "pop3";
-   // $mail->SMTPSecure ="tls";
+    //$mail->SMTPSecure = "pop3";
+    //$mail->SMTPSecure ="tls";
     $mail->Host = "smtp.gmail.com";
 	$mail->SMTPAuth = false;
 	$mail->SMTPDebug  = 2;
@@ -16,6 +16,6 @@
 	$mail->FromName = "Servicios Generales del valle";
 	$mail->Subject = "Mensaje del SGV";
 	$mail->CharSet = 'UTF-8';
-	/*$mail->Password = 'Infatim2020*';*/
+
 	
 ?>

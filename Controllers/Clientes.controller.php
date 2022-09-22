@@ -5,12 +5,14 @@ require_once 'Models/Seguridad.php';
 require_once 'Models/Solicitud.php';
 require_once 'Models/Permiso.php';
 require_once 'Models/Producto.php';
+require_once 'Models/Grafico.php';
 
 class ClientesController
 {
     public function __CONSTRUCT()
     {
         $this->model = new Cliente();
+        
     }
 
     public function Verificar()
@@ -42,11 +44,13 @@ class ClientesController
     public function Dashboard()
     {
         $solicitud = new Solicitud();
+        $grafico= new Grafico();
         $solicitudes = $solicitud->SolicitudesTotal();
         $si = $solicitud->SolicitudesSi();
         $no = $solicitud->SolicitudesNo();
         $rev = $solicitud->SolicitudesRev();
         $vacias = $solicitud->SolicitudesVacias();
+       $solbymes= $grafico->SolByMes();
 
         require_once 'Views/Layout/default.php';
         require_once 'Views/Cliente/dashboard.php';
@@ -70,7 +74,6 @@ class ClientesController
         $no = $solicitud->SolicitudesNo();
         $rev = $solicitud->SolicitudesRev();
         $vacias = $solicitud->SolicitudesVacias();
-
         require_once 'Views/Layout/talento.php';
         require_once 'Views/Cliente/dashboard.php';
         require_once 'Views/Layout/footer.php';
@@ -79,12 +82,11 @@ class ClientesController
 
     public function Index()
     {
-        $clientes = $this->model->getCliente();
-       // require_once 'Views/Layout/test.php';
-       require_once 'Views/Layout/clientes.php';
+        $clientes = $this->model->getCliente();      
+          require_once 'Views/Layout/clientes.php';
           require_once 'Views/Cliente/index.php';
-        require_once 'Views/Layout/foot.php';
-      //  require_once 'Views/Layout/test_foot.php';
+          require_once 'Views/Layout/foot.php';
+     
     }
 
 

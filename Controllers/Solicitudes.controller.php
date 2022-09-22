@@ -41,7 +41,7 @@ class SolicitudesController
         $solicitudes = $solicitud->Solicitudes();
         require_once 'Views/Layout/default.php';
         $val->leer == 1  ? require_once 'Views/Solicitudes/index.php' : require_once 'Views/seguridad/error.php';
-        require_once 'Views/Layout/footer.php';
+        require_once 'Views/Layout/foot.php';
     }
 
     public function Add()
@@ -105,7 +105,7 @@ class SolicitudesController
         $modulo = 'solicitudes';
         $tipo = $_SESSION['rol_id'];
         $val = $seguridad->Validar($modulo, $tipo);
-        require_once 'Views/Layout/clientes.php';
+        require_once 'Views/Layout/default.php';
         $val->crear == 1  ?  require_once 'Views/Solicitudes/view.php' : require_once 'Views/seguridad/error.php';
         require_once 'Views/Layout/foot.php';
     }
@@ -115,10 +115,9 @@ class SolicitudesController
         $seguridad = new Permiso();
         $modulo = 'solicitudes';
         $tipo = $_SESSION['rol_id'];
-        $val = $seguridad->Validar($modulo, $tipo);
-        // require_once 'Views/Layout/default.php';
+        $val = $seguridad->Validar($modulo, $tipo);      
         $val->crear == 1  ?  require_once 'Views/Solicitudes/view.php' : require_once 'Views/seguridad/error.php';
-        require_once 'Views/Layout/foot.php';
+        
     }
 
     public function Descripcion()
@@ -258,7 +257,6 @@ class SolicitudesController
         $solictud->Aprobado = $_REQUEST['Aprobado']; //estado
         $this->model->ActualizaGestion($solictud);
         /* Actualiza la solicitud*/
-
         if ($documento->id > 0) {
             $documento->Actualizacion = $_REQUEST['Actualizacion'];
             $documentos = $documento->Actualizar($documento);
@@ -271,7 +269,7 @@ class SolicitudesController
     public function GestionDocext()
     {
 
-        $documento = new Doc_ext();
+         $documento = new Doc_ext();
         @$documento->id = $_REQUEST['id'];
         $documento->codigo = $_REQUEST['codigo'];
         $documento->proceso = $_REQUEST['proceso'];
@@ -281,7 +279,6 @@ class SolicitudesController
         $documento->filename = $_FILES['filename']['name'];
         $documento->dir = $_REQUEST['dir'];
         /*fin datos documento*/
-
         $solictud = new Solicitud();
         $solictud->id = $_REQUEST['sol_id'];
         $solictud->EjecucionCambio = $_REQUEST['EjecucionCambio'];
@@ -296,7 +293,6 @@ class SolicitudesController
         } else {
             $documentos = $documento->Registrar($documento);
         }
-
         $documentos = $documento->SubirDoc();
     }
 }

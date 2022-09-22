@@ -129,8 +129,8 @@
                     timer: 1500
                 }, )
                 setTimeout(function() {
-                     window.location = '?c=solicitudes&a=index';
-                    // window.location.reload(1);
+                       window.location = '?c=solicitudes&a=index';
+                     //window.location.reload(1);
                 }, 2000)
 
             }
