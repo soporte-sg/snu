@@ -22,6 +22,7 @@
                 beforeSend: function() {
                     $('#index').html("<div class='text-center'> <div class='preloader'><div class='spinner-layer pl-red'><div class='circle-clipper left'><div class='circle'></div></div><div class='circle-clipper right'><div class='circle'></div></div></div></div><p>Cargando Información</p> </div>");
                 },
+                
                 success: function(resp) {
                     $('#index').html(resp);
                     //$('#resultado').html("<div class='alert alert-success'></div>");

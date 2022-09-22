@@ -39,8 +39,9 @@ class DocumentosController
     {
 
         $documentos = $this->model->getDocs($_REQUEST['id']);      
+         
          require_once 'Views/Documentos/ver.php';
-         require_once 'Views/Layout/foot.php';
+        //  require_once 'Views/Layout/foot.php';
     }
 
     public function Getdoc()
